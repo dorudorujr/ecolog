@@ -1,10 +1,17 @@
 import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';
+import 'package:hooks_riverpod/hooks_riverpod.dart';
+import 'package:flutter_hooks/flutter_hooks.dart';
+
+import 'package:ecolog/application_model/firebases/remote_config/remote_config.dart';
+import 'package:ecolog/widgets/widgets.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp();
-  runApp(MyApp());
+  runApp(
+    ProviderScope(child: MyApp())
+  );
 }
 
 class MyApp extends StatelessWidget {
@@ -20,9 +27,20 @@ class MyApp extends StatelessWidget {
   }
 }
 
-class HomeScreen extends StatelessWidget {
+class HomeScreen extends HookWidget {
   @override
   Widget build(BuildContext context) {
-    return Scaffold();
+    return Scaffold(
+      appBar: AppBar(title: const Text('バージョンアップダイアログ')),
+      body: SafeArea(
+        child: Center(
+          child: useProvider(updateRequesterProvider).when(
+            loading: () => const CircularProgressIndicator(),
+            error: (error, stack) => ErrorWidget(error),
+            data: (requestType) => VersionCheckDialog(requestType: requestType),
+          ),
+        ),
+      ),
+    );
   }
 }
