@@ -11,8 +11,36 @@ dependencies:
     sdk: flutter
   cupertino_icons: ^1.0.3
 
+  # riverpod
+  hooks_riverpod: ^0.14.0+3
+  flutter_hooks: ^0.16.0
+
+  # freezed
+  freezed_annotation: ^0.14.1
+
+  # state notifier
+  flutter_state_notifier:
+  state_notifier:
+
+  # firebase
+  cloud_firestore:
+  firebase_core:
+  firebase_auth:
+  firebase_remote_config:
+
+  # http
+  http: ^0.13.3
+
 dev_dependencies:
   flutter_test:
     sdk: flutter
+
+  # 自動生成ツール
+  build_runner: ^2.0.2
+  freezed: ^0.14.1+3
+  json_serializable: ^4.1.1
+
+  # テスト
+  mockito: ^5.0.7
 flutter:
   uses-material-design: true
