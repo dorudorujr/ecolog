@@ -1,0 +1,1 @@
+export 'package:ecolog/application_model/models/update_request_type.dart';
