@@ -13,7 +13,7 @@ final remoteConfigProvider = Provider<RemoteConfig>((ref) {
   // タイムアウトとフェッチのインターバル時間を設定する
   rc.setConfigSettings(RemoteConfigSettings(
     fetchTimeout: const Duration(minutes: 1),
-    minimumFetchInterval: Duration.zero,
+    minimumFetchInterval: const Duration(minutes: 12),
   ));
   return rc;
 });
