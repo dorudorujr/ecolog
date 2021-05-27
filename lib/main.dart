@@ -4,6 +4,7 @@ import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 
 import 'package:ecolog/application_model/firebases/remote_config/remote_config.dart';
+import 'package:ecolog/application_model/firebases/firestore/forced_update/forced_update.dart';
 import 'package:ecolog/widgets/widgets.dart';
 
 Future<void> main() async {
@@ -34,7 +35,8 @@ class HomeScreen extends HookWidget {
       appBar: AppBar(title: const Text('バージョンアップダイアログ')),
       body: SafeArea(
         child: Center(
-          child: useProvider(updateRequesterProvider).when(
+          // FutureProviderなので、 `when` で loading, error, data のハンドリングができる
+          child: useProvider(forcedUpdateProvider).when(
             loading: () => const CircularProgressIndicator(),
             error: (error, stack) => ErrorWidget(error),
             data: (requestType) => VersionCheckDialog(requestType: requestType),
