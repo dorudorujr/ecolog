@@ -23,10 +23,10 @@ dependencies:
   state_notifier:
 
   # firebase
-  cloud_firestore:
-  firebase_core:
+  cloud_firestore: ^2.2.0
+  firebase_core: ^1.1.0
   firebase_auth:
-  firebase_remote_config:
+  firebase_remote_config: ^0.10.0-dev.2
 
   # http
   http: ^0.13.3
