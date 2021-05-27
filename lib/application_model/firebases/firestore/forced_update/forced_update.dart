@@ -1,0 +1,1 @@
+export 'package:ecolog/application_model/firebases/firestore/forced_update/forced_update_provider.dart';
