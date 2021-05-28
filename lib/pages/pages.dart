@@ -1,0 +1,1 @@
+export 'package:ecolog/pages/splash_page.dart';
