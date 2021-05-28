@@ -1,0 +1,1 @@
+export 'package:ecolog/controllers/splash/splash_controller.dart';

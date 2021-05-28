@@ -1,0 +1,1 @@
+export 'package:ecolog/application_model/models/splash_status_type.dart';
