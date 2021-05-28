@@ -47,4 +47,7 @@ dev_dependencies:
   # テスト
   mockito: ^5.0.7
 flutter:
+  assets:
+    - images/
+
   uses-material-design: true
