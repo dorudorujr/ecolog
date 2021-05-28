@@ -1,13 +1,13 @@
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:package_info/package_info.dart';
-import 'dart:convert';
 import 'package:version/version.dart';
 
 import 'package:ecolog/application_model/entities/update_info_entity/update_info_entity.dart';
 import 'package:ecolog/application_model/models/models.dart';
 
 /// 強制アップデートProvider
+/// TODO: error時の処理対応
 final forcedUpdateProvider = FutureProvider<UpdateRequestType>((ref) async {
   // 現在のアプリバージョンを取得するためにPackageInfoを利用
   final appPackageInfo = await PackageInfo.fromPlatform();
