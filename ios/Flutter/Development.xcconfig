@@ -1,0 +1,14 @@
+//
+//  Development.xcconfig
+//  Runner
+//
+//  Created by 杉岡成哉 on 2021/05/28.
+//
+
+// Configuration settings file format documentation can be found at:
+// https://help.apple.com/xcode/#/dev745c5c974
+
+FLUTTER_FLAVOR=Development
+PRODUCT_BUNDLE_IDENTIFIER=com.sugiokaseiya.ecolog.development
+DISPLAY_NAME=Ecolog dev
+FLUTTER_TARGET=lib/main.dart

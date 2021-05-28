@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 
-import 'package:ecolog/application_model/firebases/firestore/forced_update/forced_update.dart';
 import 'package:ecolog/application_model/models/models.dart';
 import 'package:ecolog/widgets/widgets.dart';
 import 'package:ecolog/controllers/splash/splash.dart';
