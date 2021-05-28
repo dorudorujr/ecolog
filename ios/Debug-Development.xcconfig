@@ -1,0 +1,12 @@
+//
+//  Debug-Development.xcconfig
+//  Runner
+//
+//  Created by 杉岡成哉 on 2021/05/28.
+//
+
+// Configuration settings file format documentation can be found at:
+// https://help.apple.com/xcode/#/dev745c5c974
+
+#include "Debug.xcconfig"
+#include "Development.xcconfig"
