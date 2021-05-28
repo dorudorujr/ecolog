@@ -41,8 +41,7 @@ class SplashController extends StateNotifier<SplashStatusType> {
     final hasNewVersion = requiredVersion > currentVersion;
     // 強制アップデート有効期間内かどうか
     final isEnabled = enabledAt.compareTo(DateTime.now()) > 0;
-
-    print('hasNewVersion:${DateTime.now()},${enabledAt}');
+    
     return hasNewVersion && isEnabled;
   }
 }
