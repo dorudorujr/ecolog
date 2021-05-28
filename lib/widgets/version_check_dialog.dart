@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import 'package:ecolog/application_model/models/models.dart';
+import 'package:ecolog/util/const/string/const_string.dart';
 
 class VersionCheckDialog extends StatelessWidget {
   const VersionCheckDialog({Key? key,}) : super(key: key);
@@ -19,7 +19,7 @@ class VersionCheckDialog extends StatelessWidget {
             // AndroidのBackボタンで閉じられないようにする
             onWillPop: () async => false,
             child: AlertDialog(
-              title: const Text('最新の更新があります。\nアップデートをお願いします。'),
+              title: const Text(ConstString.versionCheckDialogText),
               actions: [
                 TextButton(
                   onPressed: () {
@@ -29,7 +29,7 @@ class VersionCheckDialog extends StatelessWidget {
                     );
                     Navigator.of(context).pop();
                   },
-                  child: const Text('アップデート'),
+                  child: const Text(ConstString.versionCheckDialogButtonText),
                 ),
               ],
             ),
