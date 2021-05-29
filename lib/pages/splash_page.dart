@@ -5,6 +5,7 @@ import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:ecolog/application_model/models/models.dart';
 import 'package:ecolog/widgets/widgets.dart';
 import 'package:ecolog/controllers/splash/splash.dart';
+import 'package:ecolog/pages/pages.dart';
 
 class SplashPage extends HookWidget {
   @override
@@ -25,7 +26,7 @@ class SplashPage extends HookWidget {
       case SplashStatusType.forcibly:
         return VersionCheckDialog();
       default:
-        return Center();  
+        return StartPage();
     }
   }
 }
