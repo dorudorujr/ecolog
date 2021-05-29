@@ -35,6 +35,8 @@ dependencies:
   package_info: ^2.0.0
   version: ^2.0.0
 
+  flutter_svg: ^0.22.0
+
 dev_dependencies:
   flutter_test:
     sdk: flutter
