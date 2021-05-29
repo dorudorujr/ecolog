@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 
 import 'package:ecolog/util/const/string/const_string.dart';
 import 'package:ecolog/widgets/widgets.dart';
@@ -13,7 +14,11 @@ class StartPage extends StatelessWidget {
         child: Column(
           children: [
             SizedBox(height: deviceCenterHeight - 250,),
-            Image.asset("images/logo@2x.png"),
+            SvgPicture.asset(
+              'images/logo.svg',
+              width: 180,
+              height: 50,
+            ),
             Spacer(),
             PrimaryButton(
               width: 275,
