@@ -1,0 +1,1 @@
+export 'package:ecolog/util/provider/package_info/package_info_provider.dart';
