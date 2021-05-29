@@ -1,7 +1,6 @@
 import 'package:flutter_test/flutter_test.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:flutter/material.dart';
-import 'dart:io';
 
 import 'package:ecolog/controllers/splash/splash.dart';
 import 'package:ecolog/application_model/entities/update_info_entity/update_info_entity.dart';
@@ -11,7 +10,7 @@ import 'package:ecolog/util/provider/package_info/package_info.dart';
 
 void main() {
   WidgetsFlutterBinding.ensureInitialized();
-  test('requiredVersion true && enabledAt true', () async {
+  test('アップデート必要バージョン && 有効期限内', () async {
     final updateInfo = UpdateInfoEntity(
         requiredVersion: '2.0.0',
         enabledAt: DateTime.now().add(const Duration(days: 1)));
@@ -26,6 +25,139 @@ void main() {
 
     target.stream.listen((event) {
       expect(event, SplashStatusType.forcibly);
+    });
+  });
+
+  test('アップデート不要バージョン && 有効期限外', () async {
+    final updateInfo = UpdateInfoEntity(
+        requiredVersion: "1.0.0",
+        enabledAt: DateTime.now().add(const Duration(days: -1)));
+
+    final container = ProviderContainer(
+      overrides: [
+        forcedUpdateProvider.overrideWithValue(AsyncValue.data(updateInfo)),
+        packageInfoProvider.overrideWithValue(AsyncValue.data('2.0.0')),
+      ]
+    );
+
+    final target = container.read(splashControllerProvider.notifier);
+
+    target.stream.listen((event) {
+      expect(event, SplashStatusType.notSignIn);
+    });
+  });
+
+  test('アップデート不要バージョン && 有効期限内', () async {
+    final updateInfo = UpdateInfoEntity(
+        requiredVersion: "1.0.0",
+        enabledAt: DateTime.now().add(const Duration(days: 1)));
+
+    final container = ProviderContainer(
+        overrides: [
+          forcedUpdateProvider.overrideWithValue(AsyncValue.data(updateInfo)),
+          packageInfoProvider.overrideWithValue(AsyncValue.data('2.0.0')),
+        ]
+    );
+
+    final target = container.read(splashControllerProvider.notifier);
+
+    target.stream.listen((event) {
+      expect(event, SplashStatusType.notSignIn);
+    });
+  });
+
+  test('アップデート必要バージョン && 有効期限外', () async {
+    final updateInfo = UpdateInfoEntity(
+        requiredVersion: "2.0.0",
+        enabledAt: DateTime.now().add(const Duration(days: -1)));
+
+    final container = ProviderContainer(
+        overrides: [
+          forcedUpdateProvider.overrideWithValue(AsyncValue.data(updateInfo)),
+          packageInfoProvider.overrideWithValue(AsyncValue.data('1.0.0')),
+        ]
+    );
+
+    final target = container.read(splashControllerProvider.notifier);
+
+    target.stream.listen((event) {
+      expect(event, SplashStatusType.notSignIn);
+    });
+  });
+
+  test('アップデートバージョンと同値 && 有効期限と同値', () async {
+    final updateInfo = UpdateInfoEntity(
+        requiredVersion: "2.0.0",
+        enabledAt: DateTime.now());
+
+    final container = ProviderContainer(
+        overrides: [
+          forcedUpdateProvider.overrideWithValue(AsyncValue.data(updateInfo)),
+          packageInfoProvider.overrideWithValue(AsyncValue.data('2.0.0')),
+        ]
+    );
+
+    final target = container.read(splashControllerProvider.notifier);
+
+    target.stream.listen((event) {
+      expect(event, SplashStatusType.notSignIn);
+    });
+  });
+
+  test('アップデートバージョンと同値 && 有効期限内', () async {
+    final updateInfo = UpdateInfoEntity(
+        requiredVersion: "2.0.0",
+        enabledAt: DateTime.now().add(const Duration(days: 1)));
+
+    final container = ProviderContainer(
+        overrides: [
+          forcedUpdateProvider.overrideWithValue(AsyncValue.data(updateInfo)),
+          packageInfoProvider.overrideWithValue(AsyncValue.data('2.0.0')),
+        ]
+    );
+
+    final target = container.read(splashControllerProvider.notifier);
+
+    target.stream.listen((event) {
+      expect(event, SplashStatusType.notSignIn);
+    });
+  });
+
+  test('アップデートバージョンと同値 && 有効期限外', () async {
+    final updateInfo = UpdateInfoEntity(
+        requiredVersion: "2.0.0",
+        enabledAt: DateTime.now().add(const Duration(days: 1)));
+
+    final container = ProviderContainer(
+        overrides: [
+          forcedUpdateProvider.overrideWithValue(AsyncValue.data(updateInfo)),
+          packageInfoProvider.overrideWithValue(AsyncValue.data('2.0.0')),
+        ]
+    );
+
+    final target = container.read(splashControllerProvider.notifier);
+
+    target.stream.listen((event) {
+      expect(event, SplashStatusType.notSignIn);
+    });
+  });
+
+  test('アップデートバージョン以上 && 有効期限同値', () async {
+    final updateInfo = UpdateInfoEntity(
+        requiredVersion: "1.0.0",
+        enabledAt: DateTime.now());
+
+    final container = ProviderContainer(
+        overrides: [
+          forcedUpdateProvider.overrideWithValue(AsyncValue.data(updateInfo)),
+          packageInfoProvider.overrideWithValue(AsyncValue.data('2.0.0')),
+        ]
+    );
+
+    final target = container.read(splashControllerProvider.notifier);
+
+    target.stream.listen((event) {
+      expect(event, SplashStatusType.notSignIn);
     });
   });
 }
