@@ -3,6 +3,7 @@ import 'package:flutter_svg/flutter_svg.dart';
 
 import 'package:ecolog/util/const/string/const_string.dart';
 import 'package:ecolog/widgets/widgets.dart';
+import 'package:ecolog/generated/assets.gen.dart';
 
 class StartPage extends StatelessWidget {
   @override
@@ -14,10 +15,9 @@ class StartPage extends StatelessWidget {
         child: Column(
           children: [
             SizedBox(height: deviceCenterHeight - 250,),
-            SvgPicture.asset(
-              'images/logo.svg',
+            Assets.images.logo.svg(
               width: 180,
-              height: 50,
+              height: 50
             ),
             Spacer(),
             PrimaryButton(
