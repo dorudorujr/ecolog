@@ -48,8 +48,16 @@ dev_dependencies:
 
   # テスト
   mockito: ^5.0.7
+
+flutter_gen:
+  output: lib/generated/
+
+  integrations:
+    flutter_svg: true
+
 flutter:
   assets:
     - images/
+    - images/logo.svg
 
   uses-material-design: true
