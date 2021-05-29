@@ -14,14 +14,14 @@ class SplashPage extends HookWidget {
       body: SafeArea(
         child: Center(
           /// 強制アップデート有無
-          child: splashCoordinator(useProvider(splashControllerProvider))
+          child: _splashCoordinator(useProvider(splashControllerProvider))
         ),
       ),
     );
   }
 
   /// splash画面の遷移処理
-  Widget splashCoordinator(SplashStatusType type) {
+  Widget _splashCoordinator(SplashStatusType type) {
     switch(type) {
       case SplashStatusType.forcibly:
         return VersionCheckDialog();
