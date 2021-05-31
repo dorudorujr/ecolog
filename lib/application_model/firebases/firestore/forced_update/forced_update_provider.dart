@@ -8,6 +8,5 @@ final forcedUpdateProvider = FutureProvider<UpdateInfoEntity>((ref) async {
   final collection = await FirebaseFirestore.instance.collection('version').get();
   final data = collection.docs.first.data();
 
-  /// TODO: error時の処理対応
   return UpdateInfoEntity.fromJson(data);
 });

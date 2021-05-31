@@ -23,12 +23,17 @@ class SplashController extends StateNotifier<SplashStatusType> {
 
   /// testで使用するためにnot private
   Future<void> _check() async {
-    final isForcedUpdate = await _isForcedUpdate(await _read(forcedUpdateProvider.future));
+    try {
+      final isForcedUpdate = await _isForcedUpdate(await _read(forcedUpdateProvider.future));
 
-    if (isForcedUpdate) {
-      state = SplashStatusType.forcibly;
-    } else {
-      state = SplashStatusType.notSignIn;
+      if (isForcedUpdate) {
+        state = SplashStatusType.forcibly;
+      } else {
+        state = SplashStatusType.notSignIn;
+      }
+    } catch (e) {
+      ///Logとして表示するようにする
+      print('error:${e}');
     }
   }
 
