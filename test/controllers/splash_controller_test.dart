@@ -24,7 +24,7 @@ void main() {
     final target = container.read(splashControllerProvider.notifier);
 
     target.stream.listen((event) {
-      expect(event, SplashStatusType.forcibly);
+      expect(event, SplashState(error: null, type: SplashStatusType.forcibly));
     });
   });
 
@@ -43,7 +43,7 @@ void main() {
     final target = container.read(splashControllerProvider.notifier);
 
     target.stream.listen((event) {
-      expect(event, SplashStatusType.notSignIn);
+      expect(event, SplashState(error: null, type: SplashStatusType.notSignIn));
     });
   });
 
@@ -62,7 +62,7 @@ void main() {
     final target = container.read(splashControllerProvider.notifier);
 
     target.stream.listen((event) {
-      expect(event, SplashStatusType.notSignIn);
+      expect(event, SplashState(error: null, type: SplashStatusType.notSignIn));
     });
   });
 
@@ -81,7 +81,7 @@ void main() {
     final target = container.read(splashControllerProvider.notifier);
 
     target.stream.listen((event) {
-      expect(event, SplashStatusType.notSignIn);
+      expect(event, SplashState(error: null, type: SplashStatusType.notSignIn));
     });
   });
 
@@ -100,7 +100,7 @@ void main() {
     final target = container.read(splashControllerProvider.notifier);
 
     target.stream.listen((event) {
-      expect(event, SplashStatusType.notSignIn);
+      expect(event, SplashState(error: null, type: SplashStatusType.notSignIn));
     });
   });
 
@@ -119,7 +119,7 @@ void main() {
     final target = container.read(splashControllerProvider.notifier);
 
     target.stream.listen((event) {
-      expect(event, SplashStatusType.notSignIn);
+      expect(event, SplashState(error: null, type: SplashStatusType.notSignIn));
     });
   });
 
@@ -138,7 +138,7 @@ void main() {
     final target = container.read(splashControllerProvider.notifier);
 
     target.stream.listen((event) {
-      expect(event, SplashStatusType.notSignIn);
+      expect(event, SplashState(error: null, type: SplashStatusType.notSignIn));
     });
   });
 
@@ -157,7 +157,7 @@ void main() {
     final target = container.read(splashControllerProvider.notifier);
 
     target.stream.listen((event) {
-      expect(event, SplashStatusType.notSignIn);
+      expect(event, SplashState(error: null, type: SplashStatusType.notSignIn));
     });
   });
 }
