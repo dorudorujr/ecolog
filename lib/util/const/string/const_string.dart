@@ -8,4 +8,10 @@ class ConstString {
   static const startPageSignInButton = 'SignIn';
   static const startPageUseTermsOfUseButton = '利用規約';
   static const startPagePrivacyPolicyButton = 'プライバシーボリシー';
+
+  /// Error Dialog
+  static const commonErrorTitle = '予期せぬエラーが発生しました';
+
+  /// common
+  static const commonOK = 'OK';
 }
