@@ -16,7 +16,6 @@ class SplashController extends StateNotifier<SplashStatusType> {
     () async {
       await _check();
     }();
-    //check();
   }
 
   final Reader _read;
@@ -32,7 +31,7 @@ class SplashController extends StateNotifier<SplashStatusType> {
         state = SplashStatusType.notSignIn;
       }
     } catch (e) {
-      ///Logとして表示するようにする
+      ///TODO:Logとして表示するようにする
       print('error:${e}');
     }
   }
