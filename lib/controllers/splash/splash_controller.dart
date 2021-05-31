@@ -6,29 +6,38 @@ import 'package:ecolog/application_model/models/models.dart';
 import 'package:ecolog/application_model/firebases/firestore/forced_update/forced_update.dart';
 import 'package:ecolog/application_model/entities/update_info_entity/update_info_entity.dart';
 import 'package:ecolog/util/provider/package_info/package_info.dart';
+import 'splash_state.dart';
 
-final splashControllerProvider = StateNotifierProvider<SplashController, SplashStatusType>(
+final splashControllerProvider = StateNotifierProvider<SplashController, SplashState>(
     (ref) => SplashController(ref.read),
 );
 
-class SplashController extends StateNotifier<SplashStatusType> {
-  SplashController(this._read) : super(SplashStatusType.load) {
+class SplashController extends StateNotifier<SplashState> {
+  SplashController(this._read) : super(SplashState()) {
     () async {
       await _check();
     }();
-    //check();
   }
 
   final Reader _read;
 
   /// testで使用するためにnot private
   Future<void> _check() async {
-    final isForcedUpdate = await _isForcedUpdate(await _read(forcedUpdateProvider.future));
+    try {
+      final isForcedUpdate = await _isForcedUpdate(await _read(forcedUpdateProvider.future));
 
-    if (isForcedUpdate) {
-      state = SplashStatusType.forcibly;
-    } else {
-      state = SplashStatusType.notSignIn;
+      if (isForcedUpdate) {
+        state = state.copyWith(type: SplashStatusType.forcibly);
+      } else {
+        state = state.copyWith(type: SplashStatusType.notSignIn);
+      }
+    } catch (e) {
+      ///TODO:Logとして表示するようにする
+      print('error:${e.runtimeType}');
+      state = state.copyWith(
+          error: e as Error,
+          type: SplashStatusType.load
+      );
     }
   }
 
