@@ -37,6 +37,8 @@ dependencies:
 
   flutter_svg: ^0.22.0
 
+  simple_logger:
+
 dev_dependencies:
   flutter_test:
     sdk: flutter
