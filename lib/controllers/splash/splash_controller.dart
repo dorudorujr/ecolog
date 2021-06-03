@@ -6,6 +6,7 @@ import 'package:ecolog/application_model/models/models.dart';
 import 'package:ecolog/application_model/firebases/firestore/forced_update/forced_update.dart';
 import 'package:ecolog/application_model/entities/update_info_entity/update_info_entity.dart';
 import 'package:ecolog/util/provider/package_info/package_info.dart';
+import 'package:ecolog/util/util.dart';
 import 'splash_state.dart';
 
 final splashControllerProvider = StateNotifierProvider<SplashController, SplashState>(
@@ -32,8 +33,7 @@ class SplashController extends StateNotifier<SplashState> {
         state = state.copyWith(type: SplashStatusType.notSignIn);
       }
     } catch (e) {
-      ///TODO:Logとして表示するようにする
-      print('error:${e.runtimeType}');
+      logger.shout('SplashController Error:${e}');
       state = state.copyWith(
           error: e as Error,
           type: SplashStatusType.load
