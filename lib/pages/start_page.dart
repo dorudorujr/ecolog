@@ -1,12 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 
 import 'package:ecolog/util/const/string/const_string.dart';
 import 'package:ecolog/widgets/widgets.dart';
 import 'package:ecolog/generated/assets.gen.dart';
-import 'package:ecolog/application_model/firebases/auth/anonymous/anonymous.dart';
 import 'package:ecolog/pages/pages.dart';
+import 'package:ecolog/controllers/start/start.dart';
 
 
 class StartPage extends HookWidget {
@@ -14,7 +15,7 @@ class StartPage extends HookWidget {
   Widget build(BuildContext context) {
     final deviceHeight = MediaQuery.of(context).size.height;
     final deviceCenterHeight = deviceHeight / 2;
-    final anonymousAuthentication = useProvider(anonymousAuthenticationProvider);
+    final controller = useProvider(startControllerProvider.notifier);
 
     return SafeArea(
         child: Column(
@@ -29,7 +30,7 @@ class StartPage extends HookWidget {
               width: 275,
               height: 47,
               text: ConstString.startPageStartButton,
-              onPressed: () async { await didStartPageSignInButtonPush(context,anonymousAuthentication);},
+              onPressed: () async { await didStartPageSignInButtonPush(context,controller);},
             ),
             SizedBox(height: 16,),
             SecondaryButton(
@@ -56,11 +57,11 @@ class StartPage extends HookWidget {
   }
 
   //TODO: この辺の遷移周りの関数をどうにかしたい
-  Future<void> didStartPageSignInButtonPush(BuildContext context,AnonymousAuthentication anonymousAuthentication) async {
+  Future<void> didStartPageSignInButtonPush(BuildContext context,StartController controller) async {
     /// TODO: signout機能を実装したら削除する
-    await anonymousAuthentication.signout();
+    await FirebaseAuth.instance.signOut();
 
-    anonymousAuthentication.authentication().then((user) {
+    controller.anonymousSignIn().then((user) {
       Navigator.push(
         context,
           MaterialPageRoute(builder: (context) => HomePage(),)
