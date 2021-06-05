@@ -1,3 +1,4 @@
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
@@ -16,43 +17,51 @@ class StartPage extends HookWidget {
     final deviceHeight = MediaQuery.of(context).size.height;
     final deviceCenterHeight = deviceHeight / 2;
     final controller = useProvider(startControllerProvider.notifier);
+    final state = useProvider(startControllerProvider);
 
-    return SafeArea(
-        child: Column(
-          children: [
-            SizedBox(height: deviceCenterHeight - 250,),
-            Assets.images.logo.svg(
-              width: 180,
-              height: 50
+    return Stack(
+      fit: StackFit.expand,
+      clipBehavior: Clip.hardEdge,
+      children: [
+        SafeArea(
+            child: Column(
+              children: [
+                SizedBox(height: deviceCenterHeight - 250,),
+                Assets.images.logo.svg(
+                    width: 180,
+                    height: 50
+                ),
+                Spacer(),
+                PrimaryButton(
+                  width: 275,
+                  height: 47,
+                  text: ConstString.startPageStartButton,
+                  onPressed: () async { await didStartPageSignInButtonPush(context,controller);},
+                ),
+                SizedBox(height: 16,),
+                SecondaryButton(
+                  width: 275,
+                  height: 47,
+                  text: ConstString.startPageSignInButton,
+                  onPressed: () {},
+                ),
+                SizedBox(height: 16,),
+                SizedBox(
+                  width: 275,
+                  child: Row(
+                    children: [
+                      TextButton(onPressed: () {}, child: const Text(ConstString.startPageUseTermsOfUseButton)),
+                      Spacer(),
+                      TextButton(onPressed: () {}, child: const Text(ConstString.startPagePrivacyPolicyButton))
+                    ],
+                  ),
+                ),
+                SizedBox(height: 25,)
+              ],
             ),
-            Spacer(),
-            PrimaryButton(
-              width: 275,
-              height: 47,
-              text: ConstString.startPageStartButton,
-              onPressed: () async { await didStartPageSignInButtonPush(context,controller);},
-            ),
-            SizedBox(height: 16,),
-            SecondaryButton(
-              width: 275,
-              height: 47,
-              text: ConstString.startPageSignInButton,
-              onPressed: () {},
-            ),
-            SizedBox(height: 16,),
-            SizedBox(
-              width: 275,
-              child: Row(
-                children: [
-                  TextButton(onPressed: () {}, child: const Text(ConstString.startPageUseTermsOfUseButton)),
-                  Spacer(),
-                  TextButton(onPressed: () {}, child: const Text(ConstString.startPagePrivacyPolicyButton))
-                ],
-              ),
-            ),
-            SizedBox(height: 25,)
-          ],
         ),
+        FullScreenLoading(isHidden: !state.isLoading,),
+      ],
     );
   }
 
