@@ -11,11 +11,9 @@ class SplashPage extends HookWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: SafeArea(
-        child: Center(
-          /// 強制アップデート有無
+      body: Center(
+        /// 強制アップデート有無
           child: _splashCoordinator(useProvider(splashControllerProvider))
-        ),
       ),
     );
   }
