@@ -12,6 +12,7 @@ class AnonymousAuthentication {
     return _firebaseAuth.signInAnonymously();
   }
 
+  ///TODO: 正しい場所に移す
   Future<void> signout() async {
     await _firebaseAuth.signOut();
   }
