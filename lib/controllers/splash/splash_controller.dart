@@ -35,7 +35,7 @@ class SplashController extends StateNotifier<SplashState> {
     } on Exception catch (e) {
       logger.shout('SplashController Error:${e}');
       state = state.copyWith(
-          error: e as Error,
+          exception: e as Exception,
           type: SplashStatusType.load
       );
     }

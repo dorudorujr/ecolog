@@ -7,7 +7,7 @@ part 'splash_state.freezed.dart';
 @freezed
 abstract class SplashState with _$SplashState {
   factory SplashState({
-    Error? error,
+    Exception? exception,
     @Default(SplashStatusType.load) type,
   }) = _SplashState;
 
