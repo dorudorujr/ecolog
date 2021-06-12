@@ -32,7 +32,7 @@ class SplashController extends StateNotifier<SplashState> {
       } else {
         state = state.copyWith(type: SplashStatusType.notSignIn);
       }
-    } catch (e) {
+    } on Exception catch (e) {
       logger.shout('SplashController Error:${e}');
       state = state.copyWith(
           error: e as Error,
