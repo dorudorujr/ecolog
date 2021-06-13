@@ -16,9 +16,10 @@ final _privateConstructorUsedError = UnsupportedError(
 class _$SplashStateTearOff {
   const _$SplashStateTearOff();
 
-  _SplashState call({Error? error, dynamic type = SplashStatusType.load}) {
+  _SplashState call(
+      {Exception? exception, dynamic type = SplashStatusType.load}) {
     return _SplashState(
-      error: error,
+      exception: exception,
       type: type,
     );
   }
@@ -29,7 +30,7 @@ const $SplashState = _$SplashStateTearOff();
 
 /// @nodoc
 mixin _$SplashState {
-  Error? get error => throw _privateConstructorUsedError;
+  Exception? get exception => throw _privateConstructorUsedError;
   dynamic get type => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
@@ -42,7 +43,7 @@ abstract class $SplashStateCopyWith<$Res> {
   factory $SplashStateCopyWith(
           SplashState value, $Res Function(SplashState) then) =
       _$SplashStateCopyWithImpl<$Res>;
-  $Res call({Error? error, dynamic type});
+  $Res call({Exception? exception, dynamic type});
 }
 
 /// @nodoc
@@ -55,14 +56,14 @@ class _$SplashStateCopyWithImpl<$Res> implements $SplashStateCopyWith<$Res> {
 
   @override
   $Res call({
-    Object? error = freezed,
+    Object? exception = freezed,
     Object? type = freezed,
   }) {
     return _then(_value.copyWith(
-      error: error == freezed
-          ? _value.error
-          : error // ignore: cast_nullable_to_non_nullable
-              as Error?,
+      exception: exception == freezed
+          ? _value.exception
+          : exception // ignore: cast_nullable_to_non_nullable
+              as Exception?,
       type: type == freezed
           ? _value.type
           : type // ignore: cast_nullable_to_non_nullable
@@ -78,7 +79,7 @@ abstract class _$SplashStateCopyWith<$Res>
           _SplashState value, $Res Function(_SplashState) then) =
       __$SplashStateCopyWithImpl<$Res>;
   @override
-  $Res call({Error? error, dynamic type});
+  $Res call({Exception? exception, dynamic type});
 }
 
 /// @nodoc
@@ -93,14 +94,14 @@ class __$SplashStateCopyWithImpl<$Res> extends _$SplashStateCopyWithImpl<$Res>
 
   @override
   $Res call({
-    Object? error = freezed,
+    Object? exception = freezed,
     Object? type = freezed,
   }) {
     return _then(_SplashState(
-      error: error == freezed
-          ? _value.error
-          : error // ignore: cast_nullable_to_non_nullable
-              as Error?,
+      exception: exception == freezed
+          ? _value.exception
+          : exception // ignore: cast_nullable_to_non_nullable
+              as Exception?,
       type: type == freezed ? _value.type : type,
     ));
   }
@@ -109,25 +110,27 @@ class __$SplashStateCopyWithImpl<$Res> extends _$SplashStateCopyWithImpl<$Res>
 /// @nodoc
 
 class _$_SplashState extends _SplashState {
-  _$_SplashState({this.error, this.type = SplashStatusType.load}) : super._();
+  _$_SplashState({this.exception, this.type = SplashStatusType.load})
+      : super._();
 
   @override
-  final Error? error;
+  final Exception? exception;
   @JsonKey(defaultValue: SplashStatusType.load)
   @override
   final dynamic type;
 
   @override
   String toString() {
-    return 'SplashState(error: $error, type: $type)';
+    return 'SplashState(exception: $exception, type: $type)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other is _SplashState &&
-            (identical(other.error, error) ||
-                const DeepCollectionEquality().equals(other.error, error)) &&
+            (identical(other.exception, exception) ||
+                const DeepCollectionEquality()
+                    .equals(other.exception, exception)) &&
             (identical(other.type, type) ||
                 const DeepCollectionEquality().equals(other.type, type)));
   }
@@ -135,7 +138,7 @@ class _$_SplashState extends _SplashState {
   @override
   int get hashCode =>
       runtimeType.hashCode ^
-      const DeepCollectionEquality().hash(error) ^
+      const DeepCollectionEquality().hash(exception) ^
       const DeepCollectionEquality().hash(type);
 
   @JsonKey(ignore: true)
@@ -145,11 +148,11 @@ class _$_SplashState extends _SplashState {
 }
 
 abstract class _SplashState extends SplashState {
-  factory _SplashState({Error? error, dynamic type}) = _$_SplashState;
+  factory _SplashState({Exception? exception, dynamic type}) = _$_SplashState;
   _SplashState._() : super._();
 
   @override
-  Error? get error => throw _privateConstructorUsedError;
+  Exception? get exception => throw _privateConstructorUsedError;
   @override
   dynamic get type => throw _privateConstructorUsedError;
   @override
