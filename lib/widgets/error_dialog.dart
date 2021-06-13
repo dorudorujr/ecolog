@@ -3,7 +3,12 @@ import 'package:flutter/material.dart';
 import 'package:ecolog/util/const/string/const_string.dart';
 
 class ErrorDialog extends StatelessWidget {
-  const ErrorDialog({Key? key,}) : super(key: key);
+  const ErrorDialog({
+    Key? key,
+    this.dialogTitle,
+  }) : super(key: key);
+
+  final String? dialogTitle;
 
   @override
   Widget build(BuildContext context) {
@@ -14,7 +19,7 @@ class ErrorDialog extends StatelessWidget {
         context: context,
         builder: (context) {
           return AlertDialog(
-            title: const Text(ConstString.commonErrorTitle),
+            title: Text(dialogTitle ?? ConstString.commonErrorTitle),
             actions: [
               TextButton(
                 onPressed: () {
