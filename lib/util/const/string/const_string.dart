@@ -9,8 +9,13 @@ class ConstString {
   static const startPageUseTermsOfUseButton = '利用規約';
   static const startPagePrivacyPolicyButton = 'プライバシーボリシー';
 
-  /// Error Dialog
-  static const commonErrorTitle = '予期せぬエラーが発生しました';
+  /// Common Error Dialog
+  static const commonErrorTitle = '予期せぬエラーが発生しました。時間をおいて再度お試しください';
+  static const commonNetworkErrorTitle = '通信環境が不安定のようです。時間をおいて再度お試しください';
+
+  /// Firebase Error Dialog
+  static const firebaseErrorTooManyRequests = '回線が混雑しています。もう一度試してみてください。';
+  static const firebaseErrorUserNotFound = 'このアカウントは存在しません。';
 
   /// common
   static const commonOK = 'OK';
