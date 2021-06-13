@@ -70,7 +70,7 @@ class StartPage extends HookWidget {
     /// TODO: signout機能を実装したら削除する
     await FirebaseAuth.instance.signOut();
 
-    controller.anonymousSignIn().then((user) {
+    controller.anonymousSignIn().then((_) {
       Navigator.push(
         context,
           MaterialPageRoute(builder: (context) => HomePage(),)
