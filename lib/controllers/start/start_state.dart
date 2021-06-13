@@ -5,7 +5,7 @@ part 'start_state.freezed.dart';
 @freezed
 abstract class StartState with _$StartState {
   factory StartState({
-    Error? error,
+    Exception? exception,
     @Default(false) isLoading,
   }) = _StartState;
 

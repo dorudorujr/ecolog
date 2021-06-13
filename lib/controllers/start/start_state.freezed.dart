@@ -16,9 +16,9 @@ final _privateConstructorUsedError = UnsupportedError(
 class _$StartStateTearOff {
   const _$StartStateTearOff();
 
-  _StartState call({Error? error, dynamic isLoading = false}) {
+  _StartState call({Exception? exception, dynamic isLoading = false}) {
     return _StartState(
-      error: error,
+      exception: exception,
       isLoading: isLoading,
     );
   }
@@ -29,7 +29,7 @@ const $StartState = _$StartStateTearOff();
 
 /// @nodoc
 mixin _$StartState {
-  Error? get error => throw _privateConstructorUsedError;
+  Exception? get exception => throw _privateConstructorUsedError;
   dynamic get isLoading => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
@@ -42,7 +42,7 @@ abstract class $StartStateCopyWith<$Res> {
   factory $StartStateCopyWith(
           StartState value, $Res Function(StartState) then) =
       _$StartStateCopyWithImpl<$Res>;
-  $Res call({Error? error, dynamic isLoading});
+  $Res call({Exception? exception, dynamic isLoading});
 }
 
 /// @nodoc
@@ -55,14 +55,14 @@ class _$StartStateCopyWithImpl<$Res> implements $StartStateCopyWith<$Res> {
 
   @override
   $Res call({
-    Object? error = freezed,
+    Object? exception = freezed,
     Object? isLoading = freezed,
   }) {
     return _then(_value.copyWith(
-      error: error == freezed
-          ? _value.error
-          : error // ignore: cast_nullable_to_non_nullable
-              as Error?,
+      exception: exception == freezed
+          ? _value.exception
+          : exception // ignore: cast_nullable_to_non_nullable
+              as Exception?,
       isLoading: isLoading == freezed
           ? _value.isLoading
           : isLoading // ignore: cast_nullable_to_non_nullable
@@ -77,7 +77,7 @@ abstract class _$StartStateCopyWith<$Res> implements $StartStateCopyWith<$Res> {
           _StartState value, $Res Function(_StartState) then) =
       __$StartStateCopyWithImpl<$Res>;
   @override
-  $Res call({Error? error, dynamic isLoading});
+  $Res call({Exception? exception, dynamic isLoading});
 }
 
 /// @nodoc
@@ -92,14 +92,14 @@ class __$StartStateCopyWithImpl<$Res> extends _$StartStateCopyWithImpl<$Res>
 
   @override
   $Res call({
-    Object? error = freezed,
+    Object? exception = freezed,
     Object? isLoading = freezed,
   }) {
     return _then(_StartState(
-      error: error == freezed
-          ? _value.error
-          : error // ignore: cast_nullable_to_non_nullable
-              as Error?,
+      exception: exception == freezed
+          ? _value.exception
+          : exception // ignore: cast_nullable_to_non_nullable
+              as Exception?,
       isLoading: isLoading == freezed ? _value.isLoading : isLoading,
     ));
   }
@@ -108,25 +108,26 @@ class __$StartStateCopyWithImpl<$Res> extends _$StartStateCopyWithImpl<$Res>
 /// @nodoc
 
 class _$_StartState extends _StartState {
-  _$_StartState({this.error, this.isLoading = false}) : super._();
+  _$_StartState({this.exception, this.isLoading = false}) : super._();
 
   @override
-  final Error? error;
+  final Exception? exception;
   @JsonKey(defaultValue: false)
   @override
   final dynamic isLoading;
 
   @override
   String toString() {
-    return 'StartState(error: $error, isLoading: $isLoading)';
+    return 'StartState(exception: $exception, isLoading: $isLoading)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other is _StartState &&
-            (identical(other.error, error) ||
-                const DeepCollectionEquality().equals(other.error, error)) &&
+            (identical(other.exception, exception) ||
+                const DeepCollectionEquality()
+                    .equals(other.exception, exception)) &&
             (identical(other.isLoading, isLoading) ||
                 const DeepCollectionEquality()
                     .equals(other.isLoading, isLoading)));
@@ -135,7 +136,7 @@ class _$_StartState extends _StartState {
   @override
   int get hashCode =>
       runtimeType.hashCode ^
-      const DeepCollectionEquality().hash(error) ^
+      const DeepCollectionEquality().hash(exception) ^
       const DeepCollectionEquality().hash(isLoading);
 
   @JsonKey(ignore: true)
@@ -145,11 +146,12 @@ class _$_StartState extends _StartState {
 }
 
 abstract class _StartState extends StartState {
-  factory _StartState({Error? error, dynamic isLoading}) = _$_StartState;
+  factory _StartState({Exception? exception, dynamic isLoading}) =
+      _$_StartState;
   _StartState._() : super._();
 
   @override
-  Error? get error => throw _privateConstructorUsedError;
+  Exception? get exception => throw _privateConstructorUsedError;
   @override
   dynamic get isLoading => throw _privateConstructorUsedError;
   @override
