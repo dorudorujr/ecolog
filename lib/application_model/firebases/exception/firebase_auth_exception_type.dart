@@ -4,6 +4,7 @@ enum FirebaseAuthExceptionType {
   Undefined,
   TooManyRequests,
   UserNotFound,
+  NetworkRequestFailed,
 }
 
 extension FirebaseAuthExceptionTypeExt on FirebaseAuthExceptionType {
@@ -15,6 +16,8 @@ extension FirebaseAuthExceptionTypeExt on FirebaseAuthExceptionType {
         return ConstString.firebaseErrorTooManyRequests;
       case FirebaseAuthExceptionType.UserNotFound:
         return ConstString.firebaseErrorUserNotFound;
+      case FirebaseAuthExceptionType.NetworkRequestFailed:
+        return ConstString.commonNetworkErrorTitle;
     }
   }
 }

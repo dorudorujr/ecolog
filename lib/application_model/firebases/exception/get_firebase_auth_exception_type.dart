@@ -10,6 +10,8 @@ class GetFirebaseAuthExceptionType {
         return FirebaseAuthExceptionType.TooManyRequests;
       case 'user-not-found':
         return FirebaseAuthExceptionType.UserNotFound;
+      case 'network-request-failed':
+        return FirebaseAuthExceptionType.NetworkRequestFailed;
       default:
         return FirebaseAuthExceptionType.Undefined;
     }
