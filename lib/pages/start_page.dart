@@ -81,16 +81,12 @@ class StartPage extends HookWidget {
   }
 
   /// ErrorDialog表示判定
-  Widget showErrorDialogHandler(Exception? e) {
-    if (e != null) {
-      if (e is FirebaseAuthException) {
-        final type = GetFirebaseAuthExceptionType.getFirebaseAuthExceptionType(e);
-        return ErrorDialog(dialogTitle: type.message,);
-      } else {
-        return ErrorDialog();
-      }
+  Widget showErrorDialogHandler(Exception? exception) {
+    if (exception is FirebaseAuthException) {
+      final type = GetFirebaseAuthExceptionType.getFirebaseAuthExceptionType(exception);
+      return ErrorDialog(dialogTitle: type.message, isShow: true,);
     } else {
-      return Center();
+      return ErrorDialog(isShow: exception != null,);
     }
   }
 }
