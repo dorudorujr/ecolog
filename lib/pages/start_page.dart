@@ -1,4 +1,3 @@
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
@@ -9,6 +8,8 @@ import 'package:ecolog/widgets/widgets.dart';
 import 'package:ecolog/generated/assets.gen.dart';
 import 'package:ecolog/pages/pages.dart';
 import 'package:ecolog/controllers/start/start.dart';
+import 'package:ecolog/application_model/firebases/exception/export_exception.dart';
+
 
 
 class StartPage extends HookWidget {
@@ -61,6 +62,7 @@ class StartPage extends HookWidget {
             ),
         ),
         FullScreenLoading(isHidden: !state.isLoading,),
+        showErrorDialogHandler(state.exception),
       ],
     );
   }
@@ -76,5 +78,19 @@ class StartPage extends HookWidget {
           MaterialPageRoute(builder: (context) => HomePage(),)
       );
     });
+  }
+
+  /// ErrorDialog表示判定
+  Widget showErrorDialogHandler(Exception? e) {
+    if (e != null) {
+      if (e is FirebaseAuthException) {
+        final type = GetFirebaseAuthExceptionType.getFirebaseAuthExceptionType(e);
+        return ErrorDialog(dialogTitle: type.message,);
+      } else {
+        return ErrorDialog();
+      }
+    } else {
+      return Center();
+    }
   }
 }
