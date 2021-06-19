@@ -17,6 +17,12 @@ class ConstString {
   static const firebaseErrorTooManyRequests = '回線が混雑しています。もう一度試してみてください。';
   static const firebaseErrorUserNotFound = 'このアカウントは存在しません。';
 
+  /// ErrorPage
+  static const errorPageTitle = 'エラーが発生しました';
+  static const errorPageDescription = '誠に申し訳ありませんが予期しないエラーが発生しました。';
+  static const errorPageButton = 'エラー発生手順を報告';
+  static const errorPageErrorCode = 'エラーの概要';
+
   /// common
   static const commonOK = 'OK';
 }
