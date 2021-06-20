@@ -10,6 +10,7 @@ class ConstString {
   static const startPagePrivacyPolicyButton = 'プライバシーボリシー';
 
   /// config_page
+  static const configPageAppBarTitle = '設定';
   static const configPageAppSectionHeader = 'アプリについて';
   static const configPageTermsOfUse = '利用規約';
   static const configPagePrivacyPolicy = 'プライバシーポリシー';
