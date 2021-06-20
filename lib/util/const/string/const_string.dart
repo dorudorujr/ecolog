@@ -9,6 +9,13 @@ class ConstString {
   static const startPageUseTermsOfUseButton = '利用規約';
   static const startPagePrivacyPolicyButton = 'プライバシーボリシー';
 
+  /// config_page
+  static const configPageAppSectionHeader = 'アプリについて';
+  static const configPageTermsOfUse = '利用規約';
+  static const configPagePrivacyPolicy = 'プライバシーポリシー';
+  static const configPageLogOut = 'ログアウト';
+  static const configPageVersion = 'バージョン';
+
   /// Common Error Dialog
   static const commonErrorTitle = '予期せぬエラーが発生しました。時間をおいて再度お試しください';
   static const commonNetworkErrorTitle = '通信環境が不安定のようです。時間をおいて再度お試しください';
