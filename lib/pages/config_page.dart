@@ -1,34 +1,72 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_hooks/flutter_hooks.dart';
+import 'package:hooks_riverpod/hooks_riverpod.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 
 import 'package:ecolog/util/const/string/const_string.dart';
 import 'package:ecolog/widgets/widgets.dart';
+import 'package:ecolog/controllers/config/config.dart';
+import 'package:ecolog/application_model/firebases/exception/export_exception.dart';
+import 'package:ecolog/pages/pages.dart';
 
-class ConfigPage extends StatelessWidget {
+class ConfigPage extends HookWidget {
   const ConfigPage({
     Key? key,
   }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      backgroundColor: Color(0XFFEFEFF4),
-      appBar: AppBar(
-        title: Text(ConstString.configPageAppBarTitle),
-      ),
-      body: ListView(
-        physics: const NeverScrollableScrollPhysics(),
-        children: [
-          SizedBox(height: 32,),
-          Padding(
-            padding: EdgeInsets.only(left: 16),
-            child: Text(ConstString.configPageAppSectionHeader),
+    final controller = useProvider(configControllerProvider.notifier);
+    final state = useProvider(configControllerProvider);
+
+    return Stack(
+      fit: StackFit.expand,
+      clipBehavior: Clip.hardEdge,
+      children: [
+        Scaffold(
+          backgroundColor: Color(0XFFEFEFF4),
+          appBar: AppBar(
+            title: Text(ConstString.configPageAppBarTitle),
           ),
-          SizedBox(height: 8,),
-          NoIconCell(title: ConstString.configPageTermsOfUse, isLast: true,),
-          SizedBox(height: 44,),
-          SignOutCell(onPressed: (){}),
-        ],
-      ),
+          body: ListView(
+            physics: const NeverScrollableScrollPhysics(),
+            children: [
+              SizedBox(height: 32,),
+              Padding(
+                padding: EdgeInsets.only(left: 16),
+                child: Text(ConstString.configPageAppSectionHeader),
+              ),
+              SizedBox(height: 8,),
+              NoIconCell(title: ConstString.configPageTermsOfUse, isLast: true,),
+              SizedBox(height: 44,),
+              SignOutCell(onPressed: () async { await didSignOutButtonPush(context,controller);}),
+            ],
+          ),
+        ),
+        FullScreenLoading(isHidden: !state.isLoading,),
+        showErrorDialogHandler(state.exception),
+      ],
     );
+  }
+
+  //TODO: この辺の遷移周りの関数をどうにかしたい
+  Future<void> didSignOutButtonPush(BuildContext context,ConfigController controller) async {
+    controller.signOut().then((_) {
+      Navigator.of(context).pushReplacement(
+        MaterialPageRoute(builder: (context){
+          return SplashPage();
+        }),
+      );
+    });
+  }
+
+  /// ErrorDialog表示判定
+  Widget showErrorDialogHandler(Exception? exception) {
+    if (exception is FirebaseAuthException) {
+      final type = GetFirebaseAuthExceptionType.getFirebaseAuthExceptionType(exception);
+      return ErrorDialog(dialogTitle: type.message, isShow: true,);
+    } else {
+      return ErrorDialog(isShow: exception != null,);
+    }
   }
 }
