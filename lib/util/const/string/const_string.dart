@@ -14,7 +14,7 @@ class ConstString {
   static const configPageAppSectionHeader = 'アプリについて';
   static const configPageTermsOfUse = '利用規約';
   static const configPagePrivacyPolicy = 'プライバシーポリシー';
-  static const configPageLogOut = 'ログアウト';
+  static const configPageSignOut = 'サインアウト';
   static const configPageVersion = 'バージョン';
 
   /// Common Error Dialog
