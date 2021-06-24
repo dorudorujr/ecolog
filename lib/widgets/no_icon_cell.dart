@@ -1,14 +1,17 @@
 import 'package:flutter/material.dart';
 
 import 'package:ecolog/generated/assets.gen.dart';
+import 'package:freezed_annotation/freezed_annotation.dart';
 
 class NoIconCell extends StatelessWidget {
   const NoIconCell({
     Key? key,
     required this.title,
+    this.isLast = false,
   }) : super(key: key);
 
   final String title;
+  final bool isLast;
 
   @override
   Widget build(BuildContext context) {
@@ -40,12 +43,14 @@ class NoIconCell extends StatelessWidget {
             ],
           ),
           Spacer(),
-          Divider(
-            height: 1,
-            indent: 16,
-            thickness: 1,
-            color: Color(0X4C3C3C43,),
-          ),
+          isLast ?
+              Center() :
+              Divider(
+                height: 1,
+                indent: 16,
+                thickness: 1,
+                color: Color(0X4C3C3C43,),
+              ),
         ],
       ),
     );

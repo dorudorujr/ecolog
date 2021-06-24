@@ -24,7 +24,7 @@ class ConfigPage extends StatelessWidget {
             child: Text(ConstString.configPageAppSectionHeader),
           ),
           SizedBox(height: 8,),
-          NoIconCell(title: ConstString.configPageTermsOfUse,),
+          NoIconCell(title: ConstString.configPageTermsOfUse, isLast: true,),
           SizedBox(height: 44,),
           SignOutCell(onPressed: (){}),
         ],
