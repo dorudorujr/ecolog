@@ -8,6 +8,7 @@ import 'package:ecolog/widgets/widgets.dart';
 import 'package:ecolog/controllers/config/config.dart';
 import 'package:ecolog/application_model/firebases/exception/export_exception.dart';
 import 'package:ecolog/pages/pages.dart';
+import 'package:ecolog/util/extension/extensions.dart';
 
 class ConfigPage extends HookWidget {
   const ConfigPage({
@@ -39,7 +40,13 @@ class ConfigPage extends HookWidget {
               SizedBox(height: 8,),
               NoIconCell(title: ConstString.configPageTermsOfUse, isLast: true,),
               SizedBox(height: 44,),
-              SignOutCell(onPressed: () async { await didSignOutButtonPush(context,controller);} ),
+              SignOutCell(onPressed: () async {
+                showCommonDialog(context,
+                    ConstString.configPageSignOut,
+                    () async { await didSignOutButtonPush(context, controller); },
+                    description: ConstString.configSignOutDialogDescription,
+                );
+              }),
             ],
           ),
         ),
