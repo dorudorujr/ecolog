@@ -11,6 +11,8 @@ class $ImagesGen {
   const $ImagesGen();
 
   SvgGenImage get logo => const SvgGenImage('images/logo.svg');
+  SvgGenImage get rightArrowIcon =>
+      const SvgGenImage('images/right_arrow_icon.svg');
 }
 
 class Assets {
