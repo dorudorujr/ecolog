@@ -16,6 +16,7 @@ class ConstString {
   static const configPagePrivacyPolicy = 'プライバシーポリシー';
   static const configPageSignOut = 'サインアウト';
   static const configPageVersion = 'バージョン';
+  static const configSignOutDialogDescription = 'サインアウトしてもよろしいでしょうか？';
 
   /// Common Error Dialog
   static const commonErrorTitle = '予期せぬエラーが発生しました。時間をおいて再度お試しください';
@@ -33,4 +34,5 @@ class ConstString {
 
   /// common
   static const commonOK = 'OK';
+  static const commonCancel = 'キャンセル';
 }
