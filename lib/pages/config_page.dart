@@ -39,7 +39,7 @@ class ConfigPage extends HookWidget {
               SizedBox(height: 8,),
               NoIconCell(title: ConstString.configPageTermsOfUse, isLast: true,),
               SizedBox(height: 44,),
-              SignOutCell(onPressed: () async { await didSignOutButtonPush(context,controller);}),
+              SignOutCell(onPressed: () async { await didSignOutButtonPush(context,controller);} ),
             ],
           ),
         ),
