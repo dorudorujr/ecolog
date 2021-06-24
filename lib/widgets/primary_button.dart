@@ -3,14 +3,14 @@ import 'package:flutter/material.dart';
 class PrimaryButton extends StatelessWidget {
   const PrimaryButton({
     Key? key,
-    required this.width,
-    required this.height,
+    this.width,
+    this.height,
     required this.onPressed,
     required this.text,
   }) : super(key: key);
 
-  final double width;
-  final double height;
+  final double? width;
+  final double? height;
   final VoidCallback onPressed;
   final String text;
   
