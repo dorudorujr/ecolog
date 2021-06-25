@@ -75,7 +75,7 @@ class StartPage extends HookWidget {
     controller.anonymousSignIn().then((_) {
       Navigator.push(
         context,
-          MaterialPageRoute(builder: (context) => HomePage(),)
+          MaterialPageRoute(builder: (context) => ConfigPage(),)  /// TODO: HomePageに修正する
       );
     });
   }

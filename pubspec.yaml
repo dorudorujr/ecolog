@@ -61,5 +61,6 @@ flutter:
   assets:
     - images/
     - images/logo.svg
+    - images/right_arrow_icon.svg
 
   uses-material-design: true
