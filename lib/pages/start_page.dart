@@ -67,19 +67,6 @@ class StartPage extends HookWidget {
     );
   }
 
-  //TODO: この辺の遷移周りの関数をどうにかしたい
-  Future<void> didStartPageSignInButtonPush(BuildContext context,StartController controller) async {
-    /// TODO: signout機能を実装したら削除する
-    await FirebaseAuth.instance.signOut();
-
-    controller.anonymousSignIn().then((_) {
-      Navigator.push(
-        context,
-          MaterialPageRoute(builder: (context) => ConfigPage(),)  /// TODO: HomePageに修正する
-      );
-    });
-  }
-
   /// ErrorDialog表示判定
   Widget _showErrorDialogHandler(Exception? exception) {
     if (exception is FirebaseAuthException) {
@@ -88,5 +75,19 @@ class StartPage extends HookWidget {
     } else {
       return ErrorDialog(isShow: exception != null,);
     }
+  }
+}
+
+extension StartPageCoordinator on StartPage {
+  Future<void> didStartPageSignInButtonPush(BuildContext context,StartController controller) async {
+    /// TODO: signout機能を実装したら削除する
+    await FirebaseAuth.instance.signOut();
+
+    controller.anonymousSignIn().then((_) {
+      Navigator.push(
+          context,
+          MaterialPageRoute(builder: (context) => ConfigPage(),)  /// TODO: HomePageに修正する
+      );
+    });
   }
 }
