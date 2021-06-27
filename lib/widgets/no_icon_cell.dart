@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 
 import 'package:ecolog/generated/assets.gen.dart';
-import 'package:freezed_annotation/freezed_annotation.dart';
 
 class NoIconCell extends StatelessWidget {
   const NoIconCell({
@@ -21,31 +20,31 @@ class NoIconCell extends StatelessWidget {
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          Spacer(),
+          const Spacer(),
           Row(
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
-              SizedBox(width: 16,),
+              const SizedBox(width: 16,),
               Text(
                 title,
-                style: TextStyle(
+                style: const TextStyle(
                     fontWeight: FontWeight.normal,
                     fontSize: 15,
                     color: Color(0XFF5A5D5D)
                 ),
               ),
-              Spacer(),
+              const Spacer(),
               Assets.images.rightArrowIcon.svg(
                   width: 9,
                   height: 17
               ),
-              SizedBox(width: 16,),
+              const SizedBox(width: 16,),
             ],
           ),
-          Spacer(),
+          const Spacer(),
           isLast ?
-              Center() :
-              Divider(
+              const Center() :
+              const Divider(
                 height: 1,
                 indent: 16,
                 thickness: 1,

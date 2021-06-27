@@ -32,32 +32,32 @@ class StartPage extends HookWidget {
                     width: 180,
                     height: 50
                 ),
-                Spacer(),
+                const Spacer(),
                 PrimaryButton(
                   width: 275,
                   height: 47,
                   text: ConstString.startPageStartButton,
                   onPressed: () async { await didStartPageSignInButtonPush(context,controller);},
                 ),
-                SizedBox(height: 16,),
+                const SizedBox(height: 16,),
                 SecondaryButton(
                   width: 275,
                   height: 47,
                   text: ConstString.startPageSignInButton,
                   onPressed: () {},
                 ),
-                SizedBox(height: 16,),
+                const SizedBox(height: 16,),
                 SizedBox(
                   width: 275,
                   child: Row(
                     children: [
                       TextButton(onPressed: () {}, child: const Text(ConstString.startPageUseTermsOfUseButton)),
-                      Spacer(),
+                      const Spacer(),
                       TextButton(onPressed: () {}, child: const Text(ConstString.startPagePrivacyPolicyButton))
                     ],
                   ),
                 ),
-                SizedBox(height: 25,)
+                const SizedBox(height: 25,)
               ],
             ),
         ),

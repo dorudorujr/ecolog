@@ -26,7 +26,7 @@ class SecondaryButton extends StatelessWidget {
       child: ElevatedButton(
         child: Text(
           text,
-          style: TextStyle(
+          style: const TextStyle(
               fontSize: 15,
               fontWeight: FontWeight.normal
           ),

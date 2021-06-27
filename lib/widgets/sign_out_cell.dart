@@ -21,7 +21,7 @@ class SignOutCell extends HookWidget {
       height: 44,
       color: Colors.white,
       child: TextButton(
-        child: Text(
+        child: const Text(
           ConstString.configPageSignOut,
           style: TextStyle(
               fontWeight: FontWeight.normal,

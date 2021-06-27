@@ -21,12 +21,12 @@ class SplashPage extends HookWidget {
   /// splash画面の遷移処理
   Widget _splashCoordinator(SplashState state) {
     if (state.exception != null) {
-      return ErrorDialog(isShow: true,);
+      return const ErrorDialog(isShow: true,);
     }
 
     switch(state.type) {
       case SplashStatusType.forcibly:
-        return VersionCheckDialog();
+        return const VersionCheckDialog();
       default:
         return StartPage();
     }

@@ -25,21 +25,21 @@ class ConfigPage extends HookWidget {
       clipBehavior: Clip.hardEdge,
       children: [
         Scaffold(
-          backgroundColor: Color(0XFFEFEFF4),
+          backgroundColor: const Color(0XFFEFEFF4),
           appBar: AppBar(
-            title: Text(ConstString.configPageAppBarTitle),
+            title: const Text(ConstString.configPageAppBarTitle),
           ),
           body: ListView(
             physics: const NeverScrollableScrollPhysics(),
             children: [
-              SizedBox(height: 32,),
-              Padding(
+              const SizedBox(height: 32,),
+              const Padding(
                 padding: EdgeInsets.only(left: 16),
                 child: Text(ConstString.configPageAppSectionHeader),
               ),
-              SizedBox(height: 8,),
-              NoIconCell(title: ConstString.configPageTermsOfUse, isLast: true,),
-              SizedBox(height: 44,),
+              const SizedBox(height: 8,),
+              const NoIconCell(title: ConstString.configPageTermsOfUse, isLast: true,),
+              const SizedBox(height: 44,),
               SignOutCell(onPressed: () async {
                 showCommonDialog(context,
                     ConstString.configPageSignOut,
