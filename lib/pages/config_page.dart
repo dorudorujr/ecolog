@@ -56,17 +56,6 @@ class ConfigPage extends HookWidget {
     );
   }
 
-  //TODO: この辺の遷移周りの関数をどうにかしたい
-  Future<void> didSignOutButtonPush(BuildContext context,ConfigController controller) async {
-    controller.signOut().then((_) {
-      Navigator.of(context).pushReplacement(
-        MaterialPageRoute(builder: (context){
-          return SplashPage();
-        }),
-      );
-    });
-  }
-
   /// ErrorDialog表示判定
   Widget _showErrorDialogHandler(Exception? exception) {
     if (exception is FirebaseAuthException) {
@@ -75,5 +64,17 @@ class ConfigPage extends HookWidget {
     } else {
       return ErrorDialog(isShow: exception != null,);
     }
+  }
+}
+
+extension Coordinator on ConfigPage {
+  Future<void> didSignOutButtonPush(BuildContext context,ConfigController controller) async {
+    controller.signOut().then((_) {
+      Navigator.of(context).pushReplacement(
+        MaterialPageRoute(builder: (context){
+          return SplashPage();
+        }),
+      );
+    });
   }
 }
