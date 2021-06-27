@@ -51,12 +51,23 @@ class ConfigPage extends HookWidget {
           ),
         ),
         FullScreenLoading(isHidden: !state.isLoading,),
-        showErrorDialogHandler(state.exception),
+        _showErrorDialogHandler(state.exception),
       ],
     );
   }
 
-  //TODO: この辺の遷移周りの関数をどうにかしたい
+  /// ErrorDialog表示判定
+  Widget _showErrorDialogHandler(Exception? exception) {
+    if (exception is FirebaseAuthException) {
+      final type = GetFirebaseAuthExceptionType.getFirebaseAuthExceptionType(exception);
+      return ErrorDialog(dialogTitle: type.message, isShow: true,);
+    } else {
+      return ErrorDialog(isShow: exception != null,);
+    }
+  }
+}
+
+extension ConfigPageCoordinator on ConfigPage {
   Future<void> didSignOutButtonPush(BuildContext context,ConfigController controller) async {
     controller.signOut().then((_) {
       Navigator.of(context).pushReplacement(
@@ -65,15 +76,5 @@ class ConfigPage extends HookWidget {
         }),
       );
     });
-  }
-
-  /// ErrorDialog表示判定
-  Widget showErrorDialogHandler(Exception? exception) {
-    if (exception is FirebaseAuthException) {
-      final type = GetFirebaseAuthExceptionType.getFirebaseAuthExceptionType(exception);
-      return ErrorDialog(dialogTitle: type.message, isShow: true,);
-    } else {
-      return ErrorDialog(isShow: exception != null,);
-    }
   }
 }
