@@ -51,7 +51,7 @@ class ConfigPage extends HookWidget {
           ),
         ),
         FullScreenLoading(isHidden: !state.isLoading,),
-        showErrorDialogHandler(state.exception),
+        _showErrorDialogHandler(state.exception),
       ],
     );
   }
@@ -68,7 +68,7 @@ class ConfigPage extends HookWidget {
   }
 
   /// ErrorDialog表示判定
-  Widget showErrorDialogHandler(Exception? exception) {
+  Widget _showErrorDialogHandler(Exception? exception) {
     if (exception is FirebaseAuthException) {
       final type = GetFirebaseAuthExceptionType.getFirebaseAuthExceptionType(exception);
       return ErrorDialog(dialogTitle: type.message, isShow: true,);
