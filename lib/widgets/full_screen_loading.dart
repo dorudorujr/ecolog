@@ -19,7 +19,7 @@ class FullScreenLoading extends StatelessWidget {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-            CircularProgressIndicator()
+            const CircularProgressIndicator()
             ],
           ),
         );

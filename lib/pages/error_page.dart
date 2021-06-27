@@ -19,15 +19,15 @@ class ErrorPage extends StatelessWidget {
       backgroundColor: Colors.white,
       /// TODO: AppBarのWidgetクラス作成
       appBar: AppBar(
-        title: Text(ConstString.errorPageTitle),
+        title: const Text(ConstString.errorPageTitle),
       ),
       body: Padding(
-        padding: EdgeInsets.all(15),
+        padding: const EdgeInsets.all(15),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Text(ConstString.errorPageDescription),
-            SizedBox(height: 20,),
+            const Text(ConstString.errorPageDescription),
+            const SizedBox(height: 20,),
             Row(
               children: [
                 Expanded(
@@ -44,8 +44,8 @@ class ErrorPage extends StatelessWidget {
                 )
               ],
             ),
-            SizedBox(height: 20,),
-            Text(ConstString.errorPageErrorCode),
+            const SizedBox(height: 20,),
+            const Text(ConstString.errorPageErrorCode),
             Text('${error}'),
           ],
         ),
