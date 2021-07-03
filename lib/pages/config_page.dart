@@ -11,6 +11,8 @@ import 'package:ecolog/pages/pages.dart';
 import 'package:ecolog/util/extension/extensions.dart';
 
 class ConfigPage extends HookWidget {
+  static const routeName = 'config';
+
   const ConfigPage({
     Key? key,
   }) : super(key: key);
@@ -70,11 +72,7 @@ class ConfigPage extends HookWidget {
 extension ConfigPageCoordinator on ConfigPage {
   Future<void> didSignOutButtonPush(BuildContext context,ConfigController controller) async {
     controller.signOut().then((_) {
-      Navigator.of(context).pushReplacement(
-        MaterialPageRoute(builder: (context){
-          return SplashPage();
-        }),
-      );
+      Navigator.pushReplacementNamed(context, SplashPage.routeName);
     });
   }
 }

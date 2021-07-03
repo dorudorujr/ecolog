@@ -8,6 +8,8 @@ import 'package:ecolog/controllers/splash/splash.dart';
 import 'package:ecolog/pages/pages.dart';
 
 class SplashPage extends HookWidget {
+  static const routeName = '/';
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(

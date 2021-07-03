@@ -13,6 +13,8 @@ import 'package:ecolog/application_model/firebases/exception/export_exception.da
 
 
 class StartPage extends HookWidget {
+  static const routeName = '/start';
+
   @override
   Widget build(BuildContext context) {
     final deviceHeight = MediaQuery.of(context).size.height;
@@ -84,10 +86,7 @@ extension StartPageCoordinator on StartPage {
     await FirebaseAuth.instance.signOut();
 
     controller.anonymousSignIn().then((_) {
-      Navigator.push(
-          context,
-          MaterialPageRoute(builder: (context) => ConfigPage(),)  /// TODO: HomePageに修正する
-      );
+      Navigator.pushNamed(context, ConfigPage.routeName); /// TODO: HomePageに修正する
     });
   }
 }
