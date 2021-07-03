@@ -13,6 +13,8 @@ import 'package:ecolog/application_model/firebases/exception/export_exception.da
 
 
 class StartPage extends HookWidget {
+  static const routeName = '/start';
+
   @override
   Widget build(BuildContext context) {
     final deviceHeight = MediaQuery.of(context).size.height;

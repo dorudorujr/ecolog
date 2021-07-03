@@ -11,6 +11,8 @@ import 'package:ecolog/pages/pages.dart';
 import 'package:ecolog/util/extension/extensions.dart';
 
 class ConfigPage extends HookWidget {
+  static const routeName = 'config';
+
   const ConfigPage({
     Key? key,
   }) : super(key: key);
