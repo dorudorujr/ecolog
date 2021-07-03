@@ -1,3 +1,4 @@
+import 'package:ecolog/util/routest.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
@@ -30,7 +31,7 @@ class MyApp extends HookWidget {
       title: 'Flutter Demo',
       theme: ThemeData(
         primarySwatch: Colors.blue,
-        appBarTheme: AppBarTheme(
+        appBarTheme: const AppBarTheme(
           color: Colors.white,
           elevation: 0,
           textTheme: TextTheme(
@@ -39,6 +40,7 @@ class MyApp extends HookWidget {
         ),
       ),
       navigatorKey: useProvider(navigatorKeyProvider),
+      onGenerateRoute: Routes.onGenerateRoute,
       home: SplashPage(),
     );
   }
