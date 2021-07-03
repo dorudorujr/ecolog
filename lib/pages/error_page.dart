@@ -4,8 +4,6 @@ import 'package:ecolog/util/const/string/const_string.dart';
 import 'package:ecolog/widgets/widgets.dart';
 
 class ErrorPage extends StatelessWidget {
-  static const routeName = 'error';
-
   final dynamic? error;
   final VoidCallback? didTapButton;
 
