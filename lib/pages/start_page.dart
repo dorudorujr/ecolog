@@ -86,10 +86,7 @@ extension StartPageCoordinator on StartPage {
     await FirebaseAuth.instance.signOut();
 
     controller.anonymousSignIn().then((_) {
-      Navigator.push(
-          context,
-          MaterialPageRoute(builder: (context) => ConfigPage(),)  /// TODO: HomePageに修正する
-      );
+      Navigator.pushNamed(context, ConfigPage.routeName); /// TODO: HomePageに修正する
     });
   }
 }
