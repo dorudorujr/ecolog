@@ -1,10 +1,10 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
-final anonymousAuthenticationProvider = Provider((_) => AnonymousAuthentication());
+final ecologAuthProvider = Provider((_) => EcologAuth());
 
-class AnonymousAuthentication {
-  AnonymousAuthentication() : super();
+class EcologAuth {
+  EcologAuth() : super();
 
   final FirebaseAuth _firebaseAuth = FirebaseAuth.instance;
 
@@ -12,8 +12,11 @@ class AnonymousAuthentication {
     return _firebaseAuth.signInAnonymously();
   }
 
-  ///TODO: 正しい場所に移す
   Future<void> signout() async {
     await _firebaseAuth.signOut();
+  }
+
+  User? getUser() {
+    return _firebaseAuth.currentUser;
   }
 }

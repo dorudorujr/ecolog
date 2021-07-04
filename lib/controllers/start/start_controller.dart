@@ -2,7 +2,7 @@ import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:state_notifier/state_notifier.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 
-import 'package:ecolog/application_model/firebases/auth/anonymous/anonymous.dart';
+import 'package:ecolog/application_model/firebases/auth/ecolog_auth.dart';
 import 'start_state.dart';
 import 'package:ecolog/util/util.dart';
 
@@ -18,7 +18,7 @@ class StartController extends StateNotifier<StartState> {
   Future<void> anonymousSignIn() async {
     try {
       state = state.copyWith(exception: null, isLoading: true);
-      await _read(anonymousAuthenticationProvider).authentication().then((value) {
+      await _read(ecologAuthProvider).authentication().then((value) {
         state = state.copyWith(exception: null, isLoading: false);
       });
     } on FirebaseAuthException catch (e) {

@@ -12,11 +12,18 @@ class SplashPage extends HookWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: Center(
-        /// 強制アップデート有無
-          child: _splashCoordinator(useProvider(splashControllerProvider))
-      ),
+    final controller = useProvider(splashControllerProvider.notifier);
+    final state = useProvider(splashControllerProvider);
+    return FutureBuilder(
+        future: controller.check(),
+        builder: (_, dataSnapshot) {
+          return Scaffold(
+            body: Center(
+              /// 強制アップデート有無
+                child: _splashCoordinator(state)
+            ),
+          );
+        }
     );
   }
 
@@ -29,6 +36,12 @@ class SplashPage extends HookWidget {
     switch(state.type) {
       case SplashStatusType.forcibly:
         return const VersionCheckDialog();
+      case SplashStatusType.autoSignIn:
+        return const ConfigPage();  ///TODO: Homeに修正する
+      case SplashStatusType.notSignIn:
+        return StartPage();
+      case SplashStatusType.load:
+        return const Center();
       default:
         return StartPage();
     }
