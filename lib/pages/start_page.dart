@@ -82,9 +82,6 @@ class StartPage extends HookWidget {
 
 extension StartPageCoordinator on StartPage {
   Future<void> didStartPageSignInButtonPush(BuildContext context,StartController controller) async {
-    /// TODO: signout機能を実装したら削除する
-    await FirebaseAuth.instance.signOut();
-
     controller.anonymousSignIn().then((_) {
       Navigator.pushNamed(context, ConfigPage.routeName); /// TODO: HomePageに修正する
     });

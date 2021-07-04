@@ -1,5 +1,6 @@
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:state_notifier/state_notifier.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:version/version.dart';
 
 import 'package:ecolog/application_model/models/models.dart';
@@ -14,21 +15,19 @@ final splashControllerProvider = StateNotifierProvider<SplashController, SplashS
 );
 
 class SplashController extends StateNotifier<SplashState> {
-  SplashController(this._read) : super(SplashState()) {
-    () async {
-      await _check();
-    }();
-  }
+  SplashController(this._read) : super(SplashState());
 
   final Reader _read;
+  final FirebaseAuth fireBaseAuth = FirebaseAuth.instance;
 
-  /// testで使用するためにnot private
-  Future<void> _check() async {
+  Future<void> check() async {
     try {
       final isForcedUpdate = await _isForcedUpdate(await _read(forcedUpdateProvider.future));
 
       if (isForcedUpdate) {
         state = state.copyWith(type: SplashStatusType.forcibly);
+      } else if (fireBaseAuth.currentUser != null) {
+        state = state.copyWith(type: SplashStatusType.autoSignIn);
       } else {
         state = state.copyWith(type: SplashStatusType.notSignIn);
       }
