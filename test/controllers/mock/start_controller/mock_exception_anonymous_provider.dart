@@ -1,8 +1,8 @@
 import 'package:firebase_auth/firebase_auth.dart';
 
-import 'package:ecolog/application_model/firebases/auth/anonymous/anonymous.dart';
+import 'package:ecolog/application_model/firebases/auth/ecolog_auth.dart';
 
-class MockExceptionAnonymousProvider implements AnonymousAuthentication {
+class MockExceptionAnonymousProvider implements EcologAuth {
   MockExceptionAnonymousProvider() : super();
 
   @override

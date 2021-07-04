@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 
-import 'package:ecolog/application_model/firebases/auth/anonymous/anonymous.dart';
+import 'package:ecolog/application_model/firebases/auth/ecolog_auth.dart';
 import 'package:ecolog/controllers/start/start.dart';
 
 import 'mock/mock.dart';
@@ -14,7 +14,7 @@ void main() {
   test('正常な匿名認証', () async {
     final container = ProviderContainer(
       overrides: [
-        anonymousAuthenticationProvider.overrideWithProvider(Provider((_) => MockSuccessAnonymousProvider()))
+        ecologAuthProvider.overrideWithProvider(Provider((_) => MockSuccessAnonymousProvider()))
       ]
     );
     final target = container.read(startControllerProvider.notifier);
@@ -29,7 +29,7 @@ void main() {
   test('例外な匿名認証', () async {
     final container = ProviderContainer(
         overrides: [
-          anonymousAuthenticationProvider.overrideWithProvider(Provider((_) => MockExceptionAnonymousProvider()))
+          ecologAuthProvider.overrideWithProvider(Provider((_) => MockExceptionAnonymousProvider()))
         ]
     );
     final target = container.read(startControllerProvider.notifier);
