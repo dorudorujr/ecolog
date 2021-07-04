@@ -19,7 +19,6 @@ class SplashController extends StateNotifier<SplashState> {
   SplashController(this._read) : super(SplashState());
 
   final Reader _read;
-  final FirebaseAuth fireBaseAuth = FirebaseAuth.instance;
 
   Future<void> check() async {
     try {
