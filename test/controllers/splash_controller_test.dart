@@ -154,4 +154,22 @@ void main() {
     await target.check();
     expect(target.debugState, SplashState(exception: null, type: SplashStatusType.notSignIn));
   });
+
+  test('アップデート不要バージョン && 有効期限外 && サインイン済', () async {
+    final updateInfo = UpdateInfoEntity(
+        requiredVersion: "1.0.0",
+        enabledAt: DateTime.now().add(const Duration(days: -1)));
+
+    final container = ProviderContainer(
+        overrides: [
+          forcedUpdateProvider.overrideWithValue(AsyncValue.data(updateInfo)),
+          packageInfoProvider.overrideWithValue(const AsyncValue.data('2.0.0')),
+          ecologAuthProvider.overrideWithProvider(Provider((_) => MockAutoSignInEcologAuthProviderProvider()))
+        ]
+    );
+
+    final target = container.read(splashControllerProvider.notifier);
+    await target.check();
+    expect(target.debugState, SplashState(exception: null, type: SplashStatusType.autoSignIn));
+  });
 }
