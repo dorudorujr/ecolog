@@ -2,8 +2,8 @@ import 'package:firebase_auth/firebase_auth.dart';
 
 import 'package:ecolog/application_model/firebases/auth/ecolog_auth.dart';
 
-class MockAutoSignInEcologAuthProviderProvider implements EcologAuth {
-  MockAutoSignInEcologAuthProviderProvider() : super();
+class MockNotSignInEcologAuthProviderProvider implements EcologAuth {
+  MockNotSignInEcologAuthProviderProvider() : super();
 
   @override
   Future<UserCredential> authentication() async {

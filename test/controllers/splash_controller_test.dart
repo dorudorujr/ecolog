@@ -7,6 +7,8 @@ import 'package:ecolog/application_model/entities/update_info_entity/update_info
 import 'package:ecolog/application_model/firebases/firestore/forced_update/forced_update.dart';
 import 'package:ecolog/application_model/models/models.dart';
 import 'package:ecolog/util/provider/package_info/package_info.dart';
+import 'mock/mock.dart';
+import 'package:ecolog/application_model/firebases/auth/ecolog_auth.dart';
 
 void main() {
   WidgetsFlutterBinding.ensureInitialized();
@@ -18,14 +20,13 @@ void main() {
     final container = ProviderContainer(
       overrides: [
         forcedUpdateProvider.overrideWithValue(AsyncValue.data(updateInfo)),
-        packageInfoProvider.overrideWithValue(AsyncValue.data('1.0.0')),
+        packageInfoProvider.overrideWithValue(const AsyncValue.data('1.0.0')),
+        ecologAuthProvider.overrideWithProvider(Provider((_) => MockAutoSignInEcologAuthProviderProvider()))
       ]
     );
     final target = container.read(splashControllerProvider.notifier);
-
-    target.stream.listen((event) {
-      expect(event, SplashState(exception: null, type: SplashStatusType.forcibly));
-    });
+    await target.check();
+    expect(target.debugState, SplashState(exception: null, type: SplashStatusType.forcibly));
   });
 
   test('アップデート不要バージョン && 有効期限外', () async {
@@ -36,15 +37,14 @@ void main() {
     final container = ProviderContainer(
       overrides: [
         forcedUpdateProvider.overrideWithValue(AsyncValue.data(updateInfo)),
-        packageInfoProvider.overrideWithValue(AsyncValue.data('2.0.0')),
+        packageInfoProvider.overrideWithValue(const AsyncValue.data('2.0.0')),
+        ecologAuthProvider.overrideWithProvider(Provider((_) => MockNotSignInEcologAuthProviderProvider()))
       ]
     );
 
     final target = container.read(splashControllerProvider.notifier);
-
-    target.stream.listen((event) {
-      expect(event, SplashState(exception: null, type: SplashStatusType.notSignIn));
-    });
+    await target.check();
+    expect(target.debugState, SplashState(exception: null, type: SplashStatusType.notSignIn));
   });
 
   test('アップデート不要バージョン && 有効期限内', () async {
@@ -55,15 +55,14 @@ void main() {
     final container = ProviderContainer(
         overrides: [
           forcedUpdateProvider.overrideWithValue(AsyncValue.data(updateInfo)),
-          packageInfoProvider.overrideWithValue(AsyncValue.data('2.0.0')),
+          packageInfoProvider.overrideWithValue(const AsyncValue.data('2.0.0')),
+          ecologAuthProvider.overrideWithProvider(Provider((_) => MockNotSignInEcologAuthProviderProvider()))
         ]
     );
 
     final target = container.read(splashControllerProvider.notifier);
-
-    target.stream.listen((event) {
-      expect(event, SplashState(exception: null, type: SplashStatusType.notSignIn));
-    });
+    await target.check();
+    expect(target.debugState, SplashState(exception: null, type: SplashStatusType.notSignIn));
   });
 
   test('アップデート必要バージョン && 有効期限外', () async {
@@ -74,15 +73,14 @@ void main() {
     final container = ProviderContainer(
         overrides: [
           forcedUpdateProvider.overrideWithValue(AsyncValue.data(updateInfo)),
-          packageInfoProvider.overrideWithValue(AsyncValue.data('1.0.0')),
+          packageInfoProvider.overrideWithValue(const AsyncValue.data('1.0.0')),
+          ecologAuthProvider.overrideWithProvider(Provider((_) => MockNotSignInEcologAuthProviderProvider()))
         ]
     );
 
     final target = container.read(splashControllerProvider.notifier);
-
-    target.stream.listen((event) {
-      expect(event, SplashState(exception: null, type: SplashStatusType.notSignIn));
-    });
+    await target.check();
+    expect(target.debugState, SplashState(exception: null, type: SplashStatusType.notSignIn));
   });
 
   test('アップデートバージョンと同値 && 有効期限と同値', () async {
@@ -93,15 +91,14 @@ void main() {
     final container = ProviderContainer(
         overrides: [
           forcedUpdateProvider.overrideWithValue(AsyncValue.data(updateInfo)),
-          packageInfoProvider.overrideWithValue(AsyncValue.data('2.0.0')),
+          packageInfoProvider.overrideWithValue(const AsyncValue.data('2.0.0')),
+          ecologAuthProvider.overrideWithProvider(Provider((_) => MockNotSignInEcologAuthProviderProvider()))
         ]
     );
 
     final target = container.read(splashControllerProvider.notifier);
-
-    target.stream.listen((event) {
-      expect(event, SplashState(exception: null, type: SplashStatusType.notSignIn));
-    });
+    await target.check();
+    expect(target.debugState, SplashState(exception: null, type: SplashStatusType.notSignIn));
   });
 
   test('アップデートバージョンと同値 && 有効期限内', () async {
@@ -112,15 +109,14 @@ void main() {
     final container = ProviderContainer(
         overrides: [
           forcedUpdateProvider.overrideWithValue(AsyncValue.data(updateInfo)),
-          packageInfoProvider.overrideWithValue(AsyncValue.data('2.0.0')),
+          packageInfoProvider.overrideWithValue(const AsyncValue.data('2.0.0')),
+          ecologAuthProvider.overrideWithProvider(Provider((_) => MockNotSignInEcologAuthProviderProvider()))
         ]
     );
 
     final target = container.read(splashControllerProvider.notifier);
-
-    target.stream.listen((event) {
-      expect(event, SplashState(exception: null, type: SplashStatusType.notSignIn));
-    });
+    await target.check();
+    expect(target.debugState, SplashState(exception: null, type: SplashStatusType.notSignIn));
   });
 
   test('アップデートバージョンと同値 && 有効期限外', () async {
@@ -131,15 +127,14 @@ void main() {
     final container = ProviderContainer(
         overrides: [
           forcedUpdateProvider.overrideWithValue(AsyncValue.data(updateInfo)),
-          packageInfoProvider.overrideWithValue(AsyncValue.data('2.0.0')),
+          packageInfoProvider.overrideWithValue(const AsyncValue.data('2.0.0')),
+          ecologAuthProvider.overrideWithProvider(Provider((_) => MockNotSignInEcologAuthProviderProvider()))
         ]
     );
 
     final target = container.read(splashControllerProvider.notifier);
-
-    target.stream.listen((event) {
-      expect(event, SplashState(exception: null, type: SplashStatusType.notSignIn));
-    });
+    await target.check();
+    expect(target.debugState, SplashState(exception: null, type: SplashStatusType.notSignIn));
   });
 
   test('アップデートバージョン以上 && 有効期限同値', () async {
@@ -150,14 +145,13 @@ void main() {
     final container = ProviderContainer(
         overrides: [
           forcedUpdateProvider.overrideWithValue(AsyncValue.data(updateInfo)),
-          packageInfoProvider.overrideWithValue(AsyncValue.data('2.0.0')),
+          packageInfoProvider.overrideWithValue(const AsyncValue.data('2.0.0')),
+          ecologAuthProvider.overrideWithProvider(Provider((_) => MockNotSignInEcologAuthProviderProvider()))
         ]
     );
 
     final target = container.read(splashControllerProvider.notifier);
-
-    target.stream.listen((event) {
-      expect(event, SplashState(exception: null, type: SplashStatusType.notSignIn));
-    });
+    await target.check();
+    expect(target.debugState, SplashState(exception: null, type: SplashStatusType.notSignIn));
   });
 }
