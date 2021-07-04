@@ -15,4 +15,9 @@ class MockExceptionAnonymousProvider implements EcologAuth {
     // TODO: implement signout
     throw UnimplementedError();
   }
+
+  @override
+  User? getUser() {
+    return null;
+  }
 }

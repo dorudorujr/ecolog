@@ -8,6 +8,7 @@ import 'package:ecolog/application_model/firebases/firestore/forced_update/force
 import 'package:ecolog/application_model/entities/update_info_entity/update_info_entity.dart';
 import 'package:ecolog/util/provider/package_info/package_info.dart';
 import 'package:ecolog/util/util.dart';
+import 'package:ecolog/application_model/firebases/auth/ecolog_auth.dart';
 import 'splash_state.dart';
 
 final splashControllerProvider = StateNotifierProvider<SplashController, SplashState>(
@@ -23,10 +24,11 @@ class SplashController extends StateNotifier<SplashState> {
   Future<void> check() async {
     try {
       final isForcedUpdate = await _isForcedUpdate(await _read(forcedUpdateProvider.future));
+      final fireBaseUser = _read(ecologAuthProvider).getUser();
 
       if (isForcedUpdate) {
         state = state.copyWith(type: SplashStatusType.forcibly);
-      } else if (fireBaseAuth.currentUser != null) {
+      } else if (fireBaseUser != null) {
         state = state.copyWith(type: SplashStatusType.autoSignIn);
       } else {
         state = state.copyWith(type: SplashStatusType.notSignIn);

@@ -15,4 +15,8 @@ class EcologAuth {
   Future<void> signout() async {
     await _firebaseAuth.signOut();
   }
+
+  User? getUser() {
+    return _firebaseAuth.currentUser;
+  }
 }
