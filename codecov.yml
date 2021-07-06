@@ -2,7 +2,7 @@ codecov:
   require_ci_to_pass: yes
 
 coverage:
-  precision: 5
+  precision: 3
   round: down
   range: "70...100"
 
