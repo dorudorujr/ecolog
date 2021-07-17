@@ -21,8 +21,4 @@ jobs:
       with:
         flutter-version: '2.0.5'
     - run: flutter pub get
-    - run: flutter test --verbose --coverage --coverage-path=~/coverage/lcov.info
-    - uses: codecov/codecov-action@v1
-      with:
-        token: ${{secrets.CODECOV_TOKEN}}
-        file: ~/coverage/lcov.info
+    - run: flutter test
