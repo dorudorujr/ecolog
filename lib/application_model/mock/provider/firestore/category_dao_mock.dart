@@ -6,12 +6,30 @@ import 'package:ecolog/application_model/models/models.dart';
 final categoryDaoMockProvider = Provider((_) => CategoryDaoMock());
 
 class CategoryDaoMock {
-  List<CategoryEntity> getCategorys() {
-    return [
-      const CategoryEntity(categoryName: '照明', categoryType: CategoryType.electricity, defaultValue: 100),
-      const CategoryEntity(categoryName: '自家用車', categoryType: CategoryType.gasoline, defaultValue: 200),
-      const CategoryEntity(categoryName: '水道', categoryType: CategoryType.water, defaultValue: 150),
+  CategoryDaoMock() : super() {
+    _categoryEntitys = [
+      const CategoryEntity(categoryName: '間接照明', categoryType: CategoryType.electricity, defaultValue: 100),
+      const CategoryEntity(categoryName: '社用車', categoryType: CategoryType.gasoline, defaultValue: 200),
+      const CategoryEntity(categoryName: 'お風呂', categoryType: CategoryType.water, defaultValue: 150),
       const CategoryEntity(categoryName: '自宅のガス', categoryType: CategoryType.cityGas, defaultValue: 170)
     ];
+  }
+
+  late final List<CategoryEntity> _categoryEntitys;
+
+  List<CategoryEntity> getCategorys() {
+    return _categoryEntitys;
+  }
+
+  /// アカウント登録時にデフォルトのカテゴリーを追加する処理
+  /// アカウント登録時のみにしか呼ばない
+  void addDefaultCategorys() {
+    final defaultCategorys = [
+      const CategoryEntity(categoryName: '照明', categoryType: CategoryType.electricity, defaultValue: 30),
+      const CategoryEntity(categoryName: 'テレビ', categoryType: CategoryType.electricity, defaultValue: 280),
+    ];
+    defaultCategorys.forEach((element) {
+      _categoryEntitys.add(element);
+    });
   }
 }
