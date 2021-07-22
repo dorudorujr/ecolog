@@ -26,7 +26,7 @@ class CategorysPage extends HookWidget {
         Scaffold(
           backgroundColor: Colors.white,
           appBar: AppBar(
-            title: const Text(ConstString.configPageAppBarTitle),
+            title: const Text(ConstString.categorysTitle),
           ),
           body: ListView.builder(
               itemCount: state.categorys?.length,

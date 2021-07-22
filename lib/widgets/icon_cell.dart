@@ -17,7 +17,7 @@ class IconCell extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ListTile(
-      leading: const Icon(Icons.check),
+      leading: _getTypeIcon(categoryType),
       title: Text(
         title,
         style: const TextStyle(
@@ -28,5 +28,18 @@ class IconCell extends StatelessWidget {
       ),
       onTap: onTap,
     );
+  }
+
+  Icon _getTypeIcon(CategoryType categoryType) {
+    switch(categoryType) {
+      case CategoryType.electricity:
+        return const Icon(Icons.lightbulb_outline);
+      case CategoryType.gasoline:
+        return const Icon(Icons.local_gas_station_outlined);
+      case CategoryType.cityGas:
+        return const Icon(Icons.fire_extinguisher);
+      case CategoryType.water:
+        return const Icon(Icons.water_damage_outlined);
+    }
   }
 }
