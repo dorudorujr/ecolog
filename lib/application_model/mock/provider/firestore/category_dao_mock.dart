@@ -4,7 +4,7 @@ import 'package:ecolog/application_model/entities/entities.dart';
 import 'package:ecolog/application_model/models/models.dart';
 import 'package:ecolog/application_model/firebases/firestore/category/category.dart';
 
-final categoryDaoMockProvider = Provider((_) => CategoryDaoMock());
+final categoryDaoMockProvider = Provider<CategoryDaoInterFace>((_) => CategoryDaoMock());
 
 class CategoryDaoMock implements CategoryDaoInterFace {
   CategoryDaoMock() : super() {
