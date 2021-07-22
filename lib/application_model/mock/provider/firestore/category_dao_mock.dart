@@ -2,10 +2,11 @@ import 'package:hooks_riverpod/hooks_riverpod.dart';
 
 import 'package:ecolog/application_model/entities/entities.dart';
 import 'package:ecolog/application_model/models/models.dart';
+import 'package:ecolog/application_model/firebases/firestore/category/category.dart';
 
 final categoryDaoMockProvider = Provider((_) => CategoryDaoMock());
 
-class CategoryDaoMock {
+class CategoryDaoMock implements CategoryDaoInterFace {
   CategoryDaoMock() : super() {
     _categoryEntitys = [
       const CategoryEntity(categoryName: '間接照明', categoryType: CategoryType.electricity, defaultValue: 100),
