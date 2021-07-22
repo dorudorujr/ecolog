@@ -5,3 +5,4 @@ export 'package:ecolog/widgets/error_dialog.dart';
 export 'package:ecolog/widgets/full_screen_loading.dart';
 export 'package:ecolog/widgets/no_icon_cell.dart';
 export 'package:ecolog/widgets/sign_out_cell.dart';
+export 'package:ecolog/widgets/icon_cell.dart';
