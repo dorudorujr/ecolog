@@ -14,17 +14,13 @@ class SplashPage extends HookWidget {
   Widget build(BuildContext context) {
     final controller = useProvider(splashControllerProvider.notifier);
     final state = useProvider(splashControllerProvider);
-    return FutureBuilder(
-        future: controller.check(),
-        builder: (_, dataSnapshot) {
-          return Scaffold(
-            body: Center(
-              /// 強制アップデート有無
-                child: _splashCoordinator(state)
-            ),
-          );
-        }
-    );
+    useEffect(() {
+      WidgetsBinding.instance?.addPostFrameCallback((_) {
+        controller.check();
+      });
+      return controller.dispose;
+    }, const[]);
+    return _splashCoordinator(state);
   }
 
   /// splash画面の遷移処理
@@ -41,7 +37,7 @@ class SplashPage extends HookWidget {
       case SplashStatusType.notSignIn:
         return StartPage();
       case SplashStatusType.load:
-        return const Center();
+        return Container(color: Colors.white,);
       default:
         return StartPage();
     }
