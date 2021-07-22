@@ -26,7 +26,9 @@ class StartPage extends HookWidget {
       fit: StackFit.expand,
       clipBehavior: Clip.hardEdge,
       children: [
-        SafeArea(
+        Container(
+          color: Colors.white,
+          child: SafeArea(
             child: Column(
               children: [
                 SizedBox(height: deviceCenterHeight - 250,),
@@ -62,6 +64,7 @@ class StartPage extends HookWidget {
                 const SizedBox(height: 25,)
               ],
             ),
+          ),
         ),
         FullScreenLoading(isHidden: !state.isLoading,),
         _showErrorDialogHandler(state.exception),
