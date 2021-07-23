@@ -25,6 +25,20 @@ extension CategoryTypeExt on CategoryType {
         return 253;
     }
   }
+
+  /// カテゴリー名
+  String get categoryName {
+    switch(this) {
+      case CategoryType.electricity:
+        return '電気';
+      case CategoryType.gasoline:
+        return 'ガゾリン';
+      case CategoryType.cityGas:
+        return '都市ガス';
+      case CategoryType.water:
+        return '水道';
+    }
+  }
 }
 
 class GetCategoryType {
