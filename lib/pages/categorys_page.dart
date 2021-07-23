@@ -7,6 +7,7 @@ import 'package:ecolog/widgets/widgets.dart';
 import 'package:ecolog/controllers/categorys/categorys.dart';
 import 'package:ecolog/util/const/string/const_string.dart';
 import 'package:ecolog/application_model/firebases/exception/export_exception.dart';
+import 'package:ecolog/pages/pages.dart';
 
 class CategorysPage extends HookWidget {
   static const routeName = 'categorys_page';
@@ -27,6 +28,11 @@ class CategorysPage extends HookWidget {
           backgroundColor: Colors.white,
           appBar: AppBar(
             title: const Text(ConstString.categorysTitle),
+            actions: [
+              IconButton(
+                  icon: const Icon(Icons.add),
+                  onPressed: () { didAddPush(context); }),
+            ],
           ),
           body: ListView.builder(
               itemCount: state.categorys?.length,
@@ -55,5 +61,11 @@ class CategorysPage extends HookWidget {
     } else {
       return ErrorDialog(isShow: exception != null,);
     }
+  }
+}
+
+extension CategorysPageCoordinator on CategorysPage {
+  void didAddPush(BuildContext context) {
+    Navigator.pushNamed(context, AddCategoryPage.routeName);
   }
 }
