@@ -30,7 +30,7 @@ class CategorysPage extends HookWidget {
             title: const Text(ConstString.categorysTitle),
             actions: [
               IconButton(
-                  icon: const Icon(Icons.add),
+                  icon: const Icon(Icons.add, size: 30,),
                   onPressed: () { didAddPush(context); }),
             ],
           ),
