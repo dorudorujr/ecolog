@@ -21,6 +21,9 @@ class ConstString {
   /// categorys
   static const categorysTitle = 'カテゴリー';
 
+  /// add_category
+  static const addCategoryTitle = 'カテゴリー追加';
+
   /// Common Error Dialog
   static const commonErrorTitle = '予期せぬエラーが発生しました。時間をおいて再度お試しください';
   static const commonNetworkErrorTitle = '通信環境が不安定のようです。時間をおいて再度お試しください';

@@ -37,6 +37,9 @@ class MyApp extends HookWidget {
           textTheme: TextTheme(
             headline6: TextStyle(color: Color(0XFF5A5D5D), fontSize: 15),
           ),
+          iconTheme: IconThemeData(
+            color: Color(0XFF5A5D5D),
+          )
         ),
       ),
       navigatorKey: useProvider(navigatorKeyProvider),
