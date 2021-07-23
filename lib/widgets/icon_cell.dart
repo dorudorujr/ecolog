@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import 'package:ecolog/application_model/models/models.dart';
+import 'package:ecolog/util/extension/extensions.dart';
 
 class IconCell extends StatelessWidget {
   const IconCell({
@@ -17,7 +18,7 @@ class IconCell extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ListTile(
-      leading: _getTypeIcon(categoryType),
+      leading: categoryType.icon,
       title: Text(
         title,
         style: const TextStyle(
@@ -28,18 +29,5 @@ class IconCell extends StatelessWidget {
       ),
       onTap: onTap,
     );
-  }
-
-  Icon _getTypeIcon(CategoryType categoryType) {
-    switch(categoryType) {
-      case CategoryType.electricity:
-        return const Icon(Icons.lightbulb_outline);
-      case CategoryType.gasoline:
-        return const Icon(Icons.local_gas_station_outlined);
-      case CategoryType.cityGas:
-        return const Icon(Icons.fire_extinguisher);
-      case CategoryType.water:
-        return const Icon(Icons.water_damage_outlined);
-    }
   }
 }
