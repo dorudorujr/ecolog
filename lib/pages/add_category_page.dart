@@ -19,6 +19,7 @@ class AddCategoryPage extends StatelessWidget {
         title: const Text(ConstString.addCategoryTitle),
       ),
       body: ListView.builder(
+          physics: const NeverScrollableScrollPhysics(),
           itemCount: CategoryType.values.length,
           itemBuilder: (BuildContext context, int index) {
             return IconCell(
