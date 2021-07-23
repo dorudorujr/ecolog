@@ -21,6 +21,10 @@ class Routes {
         return MaterialPageRoute<ConfigPage>(
             builder: (context) => const ConfigPage()
         );
+      case CategorysPage.routeName:
+        return MaterialPageRoute<CategorysPage>(
+            builder: (context) => const CategorysPage()
+        );
       default:
         return null;
     }

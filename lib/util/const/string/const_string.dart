@@ -18,6 +18,9 @@ class ConstString {
   static const configPageVersion = 'バージョン';
   static const configSignOutDialogDescription = 'サインアウトしてもよろしいでしょうか？';
 
+  /// categorys
+  static const categorysTitle = 'カテゴリー';
+
   /// Common Error Dialog
   static const commonErrorTitle = '予期せぬエラーが発生しました。時間をおいて再度お試しください';
   static const commonNetworkErrorTitle = '通信環境が不安定のようです。時間をおいて再度お試しください';
