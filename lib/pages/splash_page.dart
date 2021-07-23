@@ -20,11 +20,12 @@ class SplashPage extends HookWidget {
       });
       return controller.dispose;
     }, const[]);
-    return _splashCoordinator(state);
+    return didCheck(state);
   }
+}
 
-  /// splash画面の遷移処理
-  Widget _splashCoordinator(SplashState state) {
+extension SplashCoordinator on SplashPage {
+  Widget didCheck(SplashState state) {
     if (state.exception != null) {
       return const ErrorDialog(isShow: true,);
     }
