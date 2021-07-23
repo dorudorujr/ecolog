@@ -33,4 +33,8 @@ class CategoryDaoMock implements CategoryDaoInterFace {
       _categoryEntitys.add(element);
     });
   }
+
+  Future<void> addCategory(CategoryEntity categoryEntity) {
+    return Future.delayed(const Duration(seconds: 2));
+  }
 }
