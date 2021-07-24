@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:ecolog/widgets/widgets.dart';
 import 'package:ecolog/application_model/models/models.dart';
 import 'package:ecolog/util/const/string/const_string.dart';
+import 'package:ecolog/pages/pages.dart';
 
 class AddCategoryPage extends StatelessWidget {
   static const routeName = '/add_category_page';
@@ -25,8 +26,15 @@ class AddCategoryPage extends StatelessWidget {
             return IconCell(
                 title: CategoryType.values[index].categoryName,
                 categoryType: CategoryType.values[index],
-                onTap: (){});
+                onTap: (){ didCellPush(context, CategoryType.values[index]); });
           }),
     );
+  }
+}
+
+extension AddCategoryPageCoordinator on AddCategoryPage {
+  void didCellPush(BuildContext context, CategoryType categoryType) {
+    final arg = AddCategoryDetailPageArguments(categoryType: categoryType);
+    Navigator.pushNamed(context, AddCategoryDetailPage.routeName, arguments: arg);
   }
 }

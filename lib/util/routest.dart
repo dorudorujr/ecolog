@@ -29,6 +29,11 @@ class Routes {
         return MaterialPageRoute<AddCategoryPage>(
             builder: (context) => const AddCategoryPage()
         );
+      case AddCategoryDetailPage.routeName:
+        final args = settings.arguments as AddCategoryDetailPageArguments;
+        return MaterialPageRoute<AddCategoryDetailPage>(
+            builder: (context) => AddCategoryDetailPage(categoryType: args.categoryType,)
+        );
       default:
         return null;
     }
