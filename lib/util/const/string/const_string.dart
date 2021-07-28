@@ -24,6 +24,12 @@ class ConstString {
   /// add_category
   static const addCategoryTitle = 'カテゴリー追加';
 
+  /// add_category_detail
+  static const addCategoryDetailName = 'カテゴリー名';
+  static const addCategoryDetailCoefficient = '排出係数';
+  static const addCategoryDetailNameHint = 'エアコン';
+  //static const addCategoryDetailDefaultValue = ''
+
   /// Common Error Dialog
   static const commonErrorTitle = '予期せぬエラーが発生しました。時間をおいて再度お試しください';
   static const commonNetworkErrorTitle = '通信環境が不安定のようです。時間をおいて再度お試しください';
