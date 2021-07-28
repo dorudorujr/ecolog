@@ -47,6 +47,11 @@ class InputView extends StatelessWidget {
                       textAlign: TextAlign.right,
                       decoration: InputDecoration(
                           border: InputBorder.none,
+                          hintStyle: TextStyle(
+                              fontWeight: FontWeight.normal,
+                              fontSize: 15,
+                              color: const Color(0XFF5A5D5D).withOpacity(0.5)
+                          ),
                           hintText: decoration
                       ),
                     ),
