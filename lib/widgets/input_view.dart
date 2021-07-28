@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 
 /// TextFieldのある入力Cell
 class InputView extends StatelessWidget {
-  const InputView({
+  InputView({
     Key? key,
     required this.title,
     required this.decoration,
@@ -11,11 +11,14 @@ class InputView extends StatelessWidget {
   final String title;
   final String decoration;
 
+  final controller = TextEditingController();
+  final focusNode = FocusNode();
+
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () {
-
+        focusNode.requestFocus();
       },
       child: Container(
         height: 44,
@@ -39,6 +42,8 @@ class InputView extends StatelessWidget {
                   Container(
                     height: 43,
                     child: TextField(
+                      focusNode: focusNode,
+                      controller: controller,
                       textAlign: TextAlign.right,
                       decoration: InputDecoration(
                           border: InputBorder.none,
