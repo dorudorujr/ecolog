@@ -6,13 +6,19 @@ class InputView extends StatelessWidget {
     Key? key,
     required this.title,
     this.decoration,
-  }) : super(key: key);
+    this.defaultValue,
+  }) : super(key: key) {
+    _textEditingController = TextEditingController(text: defaultValue);
+  }
 
   final String title;
   final String? decoration;
+  final String? defaultValue;
 
-  final controller = TextEditingController();
+  late TextEditingController _textEditingController;
   final _focusNode = FocusNode();
+
+  String get getText => _textEditingController.text;
 
   @override
   Widget build(BuildContext context) {
@@ -42,8 +48,13 @@ class InputView extends StatelessWidget {
                   Container(
                     height: 43,
                     child: TextField(
+                      style: const TextStyle(
+                          fontWeight: FontWeight.normal,
+                          fontSize: 15,
+                          color: Color(0XFF5A5D5D)
+                      ),
                       focusNode: _focusNode,
-                      controller: controller,
+                      controller: _textEditingController,
                       textAlign: TextAlign.right,
                       decoration: InputDecoration(
                           border: InputBorder.none,
