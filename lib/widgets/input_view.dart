@@ -5,20 +5,20 @@ class InputView extends StatelessWidget {
   InputView({
     Key? key,
     required this.title,
-    required this.decoration,
+    this.decoration,
   }) : super(key: key);
 
   final String title;
-  final String decoration;
+  final String? decoration;
 
   final controller = TextEditingController();
-  final focusNode = FocusNode();
+  final _focusNode = FocusNode();
 
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () {
-        focusNode.requestFocus();
+        _focusNode.requestFocus();
       },
       child: Container(
         height: 44,
@@ -42,7 +42,7 @@ class InputView extends StatelessWidget {
                   Container(
                     height: 43,
                     child: TextField(
-                      focusNode: focusNode,
+                      focusNode: _focusNode,
                       controller: controller,
                       textAlign: TextAlign.right,
                       decoration: InputDecoration(
