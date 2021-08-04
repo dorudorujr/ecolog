@@ -28,7 +28,7 @@ class ConstString {
   static const addCategoryDetailName = 'カテゴリー名';
   static const addCategoryDetailCoefficient = '排出係数';
   static const addCategoryDetailNameHint = 'エアコン';
-  //static const addCategoryDetailDefaultValue = ''
+  static const addCategoryDetailAddButton = '追加';
 
   /// Common Error Dialog
   static const commonErrorTitle = '予期せぬエラーが発生しました。時間をおいて再度お試しください';
