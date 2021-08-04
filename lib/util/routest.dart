@@ -7,31 +7,38 @@ class Routes {
     switch (settings.name) {
       case HomePage.routeName:
         return MaterialPageRoute<HomePage>(
-          builder: (context) => HomePage()
+            settings: const RouteSettings(name: HomePage.routeName),
+            builder: (context) => HomePage()
         );
       case StartPage.routeName:
         return MaterialPageRoute<StartPage>(
+            settings: const RouteSettings(name: StartPage.routeName),
             builder: (context) => StartPage()
         );
       case SplashPage.routeName:
         return MaterialPageRoute<SplashPage>(
+            settings: const RouteSettings(name: SplashPage.routeName),
             builder: (context) => SplashPage()
         );
       case ConfigPage.routeName:
         return MaterialPageRoute<ConfigPage>(
+            settings: const RouteSettings(name: ConfigPage.routeName),
             builder: (context) => const ConfigPage()
         );
       case CategorysPage.routeName:
         return MaterialPageRoute<CategorysPage>(
+            settings: const RouteSettings(name: CategorysPage.routeName),
             builder: (context) => const CategorysPage()
         );
       case AddCategoryPage.routeName:
         return MaterialPageRoute<AddCategoryPage>(
+            settings: const RouteSettings(name: AddCategoryPage.routeName),
             builder: (context) => const AddCategoryPage()
         );
       case AddCategoryDetailPage.routeName:
         final args = settings.arguments as AddCategoryDetailPageArguments;
         return MaterialPageRoute<AddCategoryDetailPage>(
+            settings: const RouteSettings(name: AddCategoryDetailPage.routeName),
             builder: (context) => AddCategoryDetailPage(categoryType: args.categoryType,)
         );
       default:
