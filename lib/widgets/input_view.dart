@@ -7,15 +7,17 @@ class InputView extends StatelessWidget {
     required this.title,
     this.decoration,
     this.defaultValue,
+    this.keyboardType,
   }) : super(key: key) {
-    _textEditingController = TextEditingController(text: defaultValue);
+    _textEditingController.text = defaultValue ?? '';
   }
 
   final String title;
   final String? decoration;
   final String? defaultValue;
+  final TextInputType? keyboardType;
 
-  late TextEditingController _textEditingController;
+  final _textEditingController = TextEditingController();
   final _focusNode = FocusNode();
 
   String get getText => _textEditingController.text;
@@ -53,6 +55,7 @@ class InputView extends StatelessWidget {
                           fontSize: 15,
                           color: Color(0XFF5A5D5D)
                       ),
+                      keyboardType: keyboardType,
                       focusNode: _focusNode,
                       controller: _textEditingController,
                       textAlign: TextAlign.right,
