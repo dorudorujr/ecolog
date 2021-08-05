@@ -27,8 +27,8 @@ class AddCategoryDetailPage extends HookWidget {
     final bottomSpace = MediaQuery.of(context).viewInsets.bottom;
 
     final _categoryNameInputView = InputView(title: ConstString.addCategoryDetailName, decoration: ConstString.addCategoryDetailNameHint);
-    final _coefficientInputView = InputView(title: ConstString.addCategoryDetailCoefficient, defaultValue: categoryType.coefficient.toString(),);
-    final _unitInputView = InputView(title: categoryType.displayUnitText, decoration: '0',);
+    final _coefficientInputView = InputView(title: ConstString.addCategoryDetailCoefficient, defaultValue: categoryType.coefficient.toString(), keyboardType: TextInputType.number,);
+    final _unitInputView = InputView(title: categoryType.displayUnitText, decoration: '0', keyboardType: TextInputType.number,);
 
     return Stack(
       fit: StackFit.expand,
