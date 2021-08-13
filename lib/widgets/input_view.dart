@@ -1,29 +1,25 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_hooks/flutter_hooks.dart';
 
 /// TextFieldのある入力Cell
-class InputView extends StatelessWidget {
-  InputView({
+class InputView extends HookWidget {
+  const InputView({
     Key? key,
     required this.title,
+    required this.textFieldController,
     this.decoration,
-    this.defaultValue,
     this.keyboardType,
-  }) : super(key: key) {
-    _textEditingController.text = defaultValue ?? '';
-  }
+  }) : super(key: key);
 
   final String title;
   final String? decoration;
-  final String? defaultValue;
   final TextInputType? keyboardType;
-
-  final _textEditingController = TextEditingController();
-  final _focusNode = FocusNode();
-
-  String get getText => _textEditingController.text;
+  final TextEditingController textFieldController ;
 
   @override
   Widget build(BuildContext context) {
+    final _focusNode = useFocusNode();
+
     return GestureDetector(
       onTap: () {
         _focusNode.requestFocus();
@@ -57,7 +53,7 @@ class InputView extends StatelessWidget {
                       ),
                       keyboardType: keyboardType,
                       focusNode: _focusNode,
-                      controller: _textEditingController,
+                      controller: textFieldController,
                       textAlign: TextAlign.right,
                       decoration: InputDecoration(
                           border: InputBorder.none,

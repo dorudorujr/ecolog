@@ -8,7 +8,6 @@ import 'package:ecolog/util/const/string/const_string.dart';
 import 'package:ecolog/controllers/add_category_detail/add_category_detail.dart';
 import 'package:ecolog/util/extension/extensions.dart';
 import 'package:ecolog/application_model/entities/category/category_entity.dart';
-import 'package:ecolog/pages/pages.dart';
 
 class AddCategoryDetailPage extends HookWidget {
   static const routeName = '/add_category_detail';
@@ -26,9 +25,9 @@ class AddCategoryDetailPage extends HookWidget {
     final state = useProvider(addCategoryDetailProvider);
     final bottomSpace = MediaQuery.of(context).viewInsets.bottom;
 
-    final _categoryNameInputView = InputView(title: ConstString.addCategoryDetailName, decoration: ConstString.addCategoryDetailNameHint);
-    final _coefficientInputView = InputView(title: ConstString.addCategoryDetailCoefficient, defaultValue: categoryType.coefficient.toString(), keyboardType: TextInputType.number,);
-    final _unitInputView = InputView(title: categoryType.displayUnitText, decoration: '0', keyboardType: TextInputType.number,);
+    final _categoryNameTextFieldController = useTextEditingController();
+    final _coefficientTextFieldController = useTextEditingController(text: categoryType.coefficient.toString());
+    final _unitTextFieldController = useTextEditingController();
 
     return Stack(
       fit: StackFit.expand,
@@ -47,9 +46,22 @@ class AddCategoryDetailPage extends HookWidget {
               child: Column(
                 children: [
                   const SizedBox(height: 50,),
-                  _categoryNameInputView,
-                  _coefficientInputView,
-                  _unitInputView,
+                  InputView(
+                      title: ConstString.addCategoryDetailName,
+                      textFieldController: _categoryNameTextFieldController,
+                      decoration: ConstString.addCategoryDetailNameHint
+                  ),
+                  InputView(
+                    title: ConstString.addCategoryDetailCoefficient,
+                    textFieldController: _coefficientTextFieldController,
+                    keyboardType: TextInputType.number,
+                  ),
+                  InputView(
+                    title: categoryType.displayUnitText,
+                    textFieldController: _unitTextFieldController,
+                    decoration: '0',
+                    keyboardType: TextInputType.number,
+                  ),
                   const SizedBox(height: 100,),
                   PrimaryButton(
                     width: 275,
@@ -57,9 +69,9 @@ class AddCategoryDetailPage extends HookWidget {
                     text: ConstString.addCategoryDetailAddButton,
                     onPressed: () async {
                       final category = CategoryEntity(
-                          categoryName: _categoryNameInputView.getText,
+                          categoryName: _categoryNameTextFieldController.text,
                           categoryType: categoryType,
-                          defaultValue: int.parse(_unitInputView.getText)
+                          defaultValue: int.parse(_unitTextFieldController.text)
                       );
                       await controller.addCategory(category);
                       //TODO: 正常の遷移に変わったら修正する
