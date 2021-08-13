@@ -5,13 +5,13 @@ class PrimaryButton extends StatelessWidget {
     Key? key,
     this.width,
     this.height,
-    required this.onPressed,
+    this.onPressed,
     required this.text,
   }) : super(key: key);
 
   final double? width;
   final double? height;
-  final VoidCallback onPressed;
+  final VoidCallback? onPressed;
   final String text;
   
   final primaryColor = const Color.fromRGBO(77, 181, 171, 1.0);

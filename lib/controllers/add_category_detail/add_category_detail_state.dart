@@ -6,6 +6,10 @@ part 'add_category_detail_state.freezed.dart';
 abstract class AddCategoryDetailState with _$AddCategoryDetailState {
   factory AddCategoryDetailState({
     Exception? exception,
+    @Default('') String categoryName,
+    @Default('') String coefficient,
+    @Default('') String unit,
+    @Default(false) isEnable,
     @Default(false) isLoading,
   }) = _AddCategoryDetailState;
 

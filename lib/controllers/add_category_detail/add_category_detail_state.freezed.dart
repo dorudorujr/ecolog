@@ -17,9 +17,18 @@ class _$AddCategoryDetailStateTearOff {
   const _$AddCategoryDetailStateTearOff();
 
   _AddCategoryDetailState call(
-      {Exception? exception, dynamic isLoading = false}) {
+      {Exception? exception,
+      String categoryName = '',
+      String coefficient = '',
+      String unit = '',
+      dynamic isEnable = false,
+      dynamic isLoading = false}) {
     return _AddCategoryDetailState(
       exception: exception,
+      categoryName: categoryName,
+      coefficient: coefficient,
+      unit: unit,
+      isEnable: isEnable,
       isLoading: isLoading,
     );
   }
@@ -31,6 +40,10 @@ const $AddCategoryDetailState = _$AddCategoryDetailStateTearOff();
 /// @nodoc
 mixin _$AddCategoryDetailState {
   Exception? get exception => throw _privateConstructorUsedError;
+  String get categoryName => throw _privateConstructorUsedError;
+  String get coefficient => throw _privateConstructorUsedError;
+  String get unit => throw _privateConstructorUsedError;
+  dynamic get isEnable => throw _privateConstructorUsedError;
   dynamic get isLoading => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
@@ -43,7 +56,13 @@ abstract class $AddCategoryDetailStateCopyWith<$Res> {
   factory $AddCategoryDetailStateCopyWith(AddCategoryDetailState value,
           $Res Function(AddCategoryDetailState) then) =
       _$AddCategoryDetailStateCopyWithImpl<$Res>;
-  $Res call({Exception? exception, dynamic isLoading});
+  $Res call(
+      {Exception? exception,
+      String categoryName,
+      String coefficient,
+      String unit,
+      dynamic isEnable,
+      dynamic isLoading});
 }
 
 /// @nodoc
@@ -58,6 +77,10 @@ class _$AddCategoryDetailStateCopyWithImpl<$Res>
   @override
   $Res call({
     Object? exception = freezed,
+    Object? categoryName = freezed,
+    Object? coefficient = freezed,
+    Object? unit = freezed,
+    Object? isEnable = freezed,
     Object? isLoading = freezed,
   }) {
     return _then(_value.copyWith(
@@ -65,6 +88,22 @@ class _$AddCategoryDetailStateCopyWithImpl<$Res>
           ? _value.exception
           : exception // ignore: cast_nullable_to_non_nullable
               as Exception?,
+      categoryName: categoryName == freezed
+          ? _value.categoryName
+          : categoryName // ignore: cast_nullable_to_non_nullable
+              as String,
+      coefficient: coefficient == freezed
+          ? _value.coefficient
+          : coefficient // ignore: cast_nullable_to_non_nullable
+              as String,
+      unit: unit == freezed
+          ? _value.unit
+          : unit // ignore: cast_nullable_to_non_nullable
+              as String,
+      isEnable: isEnable == freezed
+          ? _value.isEnable
+          : isEnable // ignore: cast_nullable_to_non_nullable
+              as dynamic,
       isLoading: isLoading == freezed
           ? _value.isLoading
           : isLoading // ignore: cast_nullable_to_non_nullable
@@ -80,7 +119,13 @@ abstract class _$AddCategoryDetailStateCopyWith<$Res>
           $Res Function(_AddCategoryDetailState) then) =
       __$AddCategoryDetailStateCopyWithImpl<$Res>;
   @override
-  $Res call({Exception? exception, dynamic isLoading});
+  $Res call(
+      {Exception? exception,
+      String categoryName,
+      String coefficient,
+      String unit,
+      dynamic isEnable,
+      dynamic isLoading});
 }
 
 /// @nodoc
@@ -97,6 +142,10 @@ class __$AddCategoryDetailStateCopyWithImpl<$Res>
   @override
   $Res call({
     Object? exception = freezed,
+    Object? categoryName = freezed,
+    Object? coefficient = freezed,
+    Object? unit = freezed,
+    Object? isEnable = freezed,
     Object? isLoading = freezed,
   }) {
     return _then(_AddCategoryDetailState(
@@ -104,6 +153,19 @@ class __$AddCategoryDetailStateCopyWithImpl<$Res>
           ? _value.exception
           : exception // ignore: cast_nullable_to_non_nullable
               as Exception?,
+      categoryName: categoryName == freezed
+          ? _value.categoryName
+          : categoryName // ignore: cast_nullable_to_non_nullable
+              as String,
+      coefficient: coefficient == freezed
+          ? _value.coefficient
+          : coefficient // ignore: cast_nullable_to_non_nullable
+              as String,
+      unit: unit == freezed
+          ? _value.unit
+          : unit // ignore: cast_nullable_to_non_nullable
+              as String,
+      isEnable: isEnable == freezed ? _value.isEnable : isEnable,
       isLoading: isLoading == freezed ? _value.isLoading : isLoading,
     ));
   }
@@ -112,18 +174,36 @@ class __$AddCategoryDetailStateCopyWithImpl<$Res>
 /// @nodoc
 
 class _$_AddCategoryDetailState extends _AddCategoryDetailState {
-  _$_AddCategoryDetailState({this.exception, this.isLoading = false})
+  _$_AddCategoryDetailState(
+      {this.exception,
+      this.categoryName = '',
+      this.coefficient = '',
+      this.unit = '',
+      this.isEnable = false,
+      this.isLoading = false})
       : super._();
 
   @override
   final Exception? exception;
+  @JsonKey(defaultValue: '')
+  @override
+  final String categoryName;
+  @JsonKey(defaultValue: '')
+  @override
+  final String coefficient;
+  @JsonKey(defaultValue: '')
+  @override
+  final String unit;
+  @JsonKey(defaultValue: false)
+  @override
+  final dynamic isEnable;
   @JsonKey(defaultValue: false)
   @override
   final dynamic isLoading;
 
   @override
   String toString() {
-    return 'AddCategoryDetailState(exception: $exception, isLoading: $isLoading)';
+    return 'AddCategoryDetailState(exception: $exception, categoryName: $categoryName, coefficient: $coefficient, unit: $unit, isEnable: $isEnable, isLoading: $isLoading)';
   }
 
   @override
@@ -133,6 +213,17 @@ class _$_AddCategoryDetailState extends _AddCategoryDetailState {
             (identical(other.exception, exception) ||
                 const DeepCollectionEquality()
                     .equals(other.exception, exception)) &&
+            (identical(other.categoryName, categoryName) ||
+                const DeepCollectionEquality()
+                    .equals(other.categoryName, categoryName)) &&
+            (identical(other.coefficient, coefficient) ||
+                const DeepCollectionEquality()
+                    .equals(other.coefficient, coefficient)) &&
+            (identical(other.unit, unit) ||
+                const DeepCollectionEquality().equals(other.unit, unit)) &&
+            (identical(other.isEnable, isEnable) ||
+                const DeepCollectionEquality()
+                    .equals(other.isEnable, isEnable)) &&
             (identical(other.isLoading, isLoading) ||
                 const DeepCollectionEquality()
                     .equals(other.isLoading, isLoading)));
@@ -142,6 +233,10 @@ class _$_AddCategoryDetailState extends _AddCategoryDetailState {
   int get hashCode =>
       runtimeType.hashCode ^
       const DeepCollectionEquality().hash(exception) ^
+      const DeepCollectionEquality().hash(categoryName) ^
+      const DeepCollectionEquality().hash(coefficient) ^
+      const DeepCollectionEquality().hash(unit) ^
+      const DeepCollectionEquality().hash(isEnable) ^
       const DeepCollectionEquality().hash(isLoading);
 
   @JsonKey(ignore: true)
@@ -152,12 +247,25 @@ class _$_AddCategoryDetailState extends _AddCategoryDetailState {
 }
 
 abstract class _AddCategoryDetailState extends AddCategoryDetailState {
-  factory _AddCategoryDetailState({Exception? exception, dynamic isLoading}) =
-      _$_AddCategoryDetailState;
+  factory _AddCategoryDetailState(
+      {Exception? exception,
+      String categoryName,
+      String coefficient,
+      String unit,
+      dynamic isEnable,
+      dynamic isLoading}) = _$_AddCategoryDetailState;
   _AddCategoryDetailState._() : super._();
 
   @override
   Exception? get exception => throw _privateConstructorUsedError;
+  @override
+  String get categoryName => throw _privateConstructorUsedError;
+  @override
+  String get coefficient => throw _privateConstructorUsedError;
+  @override
+  String get unit => throw _privateConstructorUsedError;
+  @override
+  dynamic get isEnable => throw _privateConstructorUsedError;
   @override
   dynamic get isLoading => throw _privateConstructorUsedError;
   @override

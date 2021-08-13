@@ -29,6 +29,12 @@ class AddCategoryDetailPage extends HookWidget {
     final _coefficientTextFieldController = useTextEditingController(text: categoryType.coefficient.toString());
     final _unitTextFieldController = useTextEditingController();
 
+    useEffect(() {
+      WidgetsBinding.instance?.addPostFrameCallback((_) {
+        controller.setCoefficient(categoryType.coefficient.toString());
+      });
+    }, const[]);
+
     return Stack(
       fit: StackFit.expand,
       clipBehavior: Clip.hardEdge,
@@ -49,16 +55,25 @@ class AddCategoryDetailPage extends HookWidget {
                   InputView(
                       title: ConstString.addCategoryDetailName,
                       textFieldController: _categoryNameTextFieldController,
+                      onChanged: (text) {
+                        controller.setCategoryName(text);
+                      },
                       decoration: ConstString.addCategoryDetailNameHint
                   ),
                   InputView(
                     title: ConstString.addCategoryDetailCoefficient,
                     textFieldController: _coefficientTextFieldController,
+                    onChanged: (text) {
+                      controller.setCoefficient(text);
+                    },
                     keyboardType: TextInputType.number,
                   ),
                   InputView(
                     title: categoryType.displayUnitText,
                     textFieldController: _unitTextFieldController,
+                    onChanged: (text) {
+                      controller.setUnit(text);
+                    },
                     decoration: '0',
                     keyboardType: TextInputType.number,
                   ),
@@ -67,7 +82,8 @@ class AddCategoryDetailPage extends HookWidget {
                     width: 275,
                     height: 47,
                     text: ConstString.addCategoryDetailAddButton,
-                    onPressed: () async {
+                    onPressed: state.isEnable ?
+                        () async {
                       final category = CategoryEntity(
                           categoryName: _categoryNameTextFieldController.text,
                           categoryType: categoryType,
@@ -77,7 +93,7 @@ class AddCategoryDetailPage extends HookWidget {
                       //TODO: 正常の遷移に変わったら修正する
                       //Navigator.popUntil(context, ModalRoute.withName(CategorysPage.routeName));
                       Navigator.popUntil(context, ModalRoute.withName('/'));
-                    },
+                    } : null,
                   ),
                 ],
               ),

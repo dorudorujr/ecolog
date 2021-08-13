@@ -32,4 +32,22 @@ class AddCategoryDetailController extends StateNotifier<AddCategoryDetailState> 
       rethrow;
     }
   }
+
+  void setCategoryName(String categoryName) {
+    state = state.copyWith(categoryName: categoryName);
+    final isEnable = state.categoryName.isNotEmpty && state.coefficient.isNotEmpty && state.unit.isNotEmpty;
+    state = state.copyWith(isEnable: isEnable);
+  }
+
+  void setCoefficient(String coefficient) {
+    state = state.copyWith(coefficient: coefficient);
+    final isEnable = state.categoryName.isNotEmpty && state.coefficient.isNotEmpty && state.unit.isNotEmpty;
+    state = state.copyWith(isEnable: isEnable);
+  }
+
+  void setUnit(String unit) {
+    state = state.copyWith(unit: unit);
+    final isEnable = state.categoryName.isNotEmpty && state.coefficient.isNotEmpty && state.unit.isNotEmpty;
+    state = state.copyWith(isEnable: isEnable);
+  }
 }

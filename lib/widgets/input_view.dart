@@ -7,6 +7,7 @@ class InputView extends HookWidget {
     Key? key,
     required this.title,
     required this.textFieldController,
+    required this.onChanged,
     this.decoration,
     this.keyboardType,
   }) : super(key: key);
@@ -14,7 +15,8 @@ class InputView extends HookWidget {
   final String title;
   final String? decoration;
   final TextInputType? keyboardType;
-  final TextEditingController textFieldController ;
+  final TextEditingController textFieldController;
+  final Function(String) onChanged;
 
   @override
   Widget build(BuildContext context) {
@@ -64,6 +66,7 @@ class InputView extends HookWidget {
                           ),
                           hintText: decoration
                       ),
+                      onChanged: onChanged,
                     ),
                   ),
                 ),
