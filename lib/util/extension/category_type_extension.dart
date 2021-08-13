@@ -15,4 +15,26 @@ extension GetCategoryTypeIcon on CategoryType {
         return const Icon(Icons.water_damage_outlined);
     }
   }
+
+  String get displayUnit {
+    switch(this) {
+      case CategoryType.electricity:
+        return 'W';
+      case CategoryType.gasoline:
+      case CategoryType.cityGas:
+      case CategoryType.water:
+        return 'L';
+    }
+  }
+
+  String get displayUnitText {
+    switch(this) {
+      case CategoryType.electricity:
+        return 'ワット数';
+      case CategoryType.gasoline:
+      case CategoryType.cityGas:
+      case CategoryType.water:
+        return 'リットル数';
+    }
+  }
 }
