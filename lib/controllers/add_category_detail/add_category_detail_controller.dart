@@ -19,8 +19,8 @@ class AddCategoryDetailController extends StateNotifier<AddCategoryDetailState> 
   Future<void> addCategory(CategoryEntity categoryEntity) async {
     try {
       state = state.copyWith(exception: null, isLoading: true);
+      ///TODO: Mockなので修正する
       await _read(categoryDaoMockProvider).addCategory(categoryEntity).then((_) {
-        ///TODO: Mockなので修正する
         state = state.copyWith(exception: null, isLoading: false);
       });
     } on FirebaseAuthException catch (e) {
