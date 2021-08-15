@@ -18,7 +18,7 @@ class SplashPage extends HookWidget {
       WidgetsBinding.instance?.addPostFrameCallback((_) {
         controller.check();
       });
-      return controller.dispose;
+      //return controller.dispose;
     }, const[]);
     return didCheck(state);
   }
