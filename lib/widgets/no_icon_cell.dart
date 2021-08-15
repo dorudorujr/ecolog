@@ -34,9 +34,10 @@ class NoIconCell extends StatelessWidget {
                 ),
               ),
               const Spacer(),
-              Assets.images.rightArrowIcon.svg(
-                  width: 9,
-                  height: 17
+              const Icon(
+                Icons.arrow_forward_ios_rounded,
+                size: 17,
+                color: Color(0XFF5A5D5D),
               ),
               const SizedBox(width: 16,),
             ],
