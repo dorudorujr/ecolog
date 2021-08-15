@@ -72,7 +72,7 @@ class ConfigPage extends HookWidget {
 extension ConfigPageCoordinator on ConfigPage {
   Future<void> didSignOutButtonPush(BuildContext context,ConfigController controller) async {
     controller.signOut().then((_) {
-      Navigator.pushReplacementNamed(context, SplashPage.routeName);
+      Navigator.pushNamedAndRemoveUntil(context, SplashPage.routeName, (_) => false);
     });
   }
 }
