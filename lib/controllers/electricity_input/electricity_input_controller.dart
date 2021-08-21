@@ -4,6 +4,10 @@ import 'package:state_notifier/state_notifier.dart';
 import 'package:ecolog/controllers/electricity_input/electricity_input.dart';
 import 'package:ecolog/application_model/entities/eco_log/eco_log_entity.dart';
 
+final electricityInputProvider = StateNotifierProvider<ElectricityInputController, ElectricityInputState>(
+      (ref) => ElectricityInputController(ref.read),
+);
+
 class ElectricityInputController extends StateNotifier<ElectricityInputState> {
   ElectricityInputController(this._read) : super(ElectricityInputState());
 
