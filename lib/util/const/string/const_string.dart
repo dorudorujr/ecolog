@@ -30,6 +30,12 @@ class ConstString {
   static const addCategoryDetailNameHint = 'エアコン';
   static const addCategoryDetailAddButton = '追加';
 
+  /// electricity_input
+  static const electricityInputTimeTextFieldTitle = '時間';
+  static const electricityInputDateTextFieldTitle = '日付';
+  static const electricityInputHelp = 'CO2量算出方法';
+
+
   /// Common Error Dialog
   static const commonErrorTitle = '予期せぬエラーが発生しました。時間をおいて再度お試しください';
   static const commonNetworkErrorTitle = '通信環境が不安定のようです。時間をおいて再度お試しください';
