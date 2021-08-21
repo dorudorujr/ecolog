@@ -39,6 +39,9 @@ dependencies:
 
   simple_logger:
 
+  # UUID
+  uuid:
+
 dev_dependencies:
   flutter_test:
     sdk: flutter
