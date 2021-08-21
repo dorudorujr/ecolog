@@ -9,6 +9,7 @@ part of 'eco_log_entity.dart';
 _$_EcoLogEntity _$_$_EcoLogEntityFromJson(Map<String, dynamic> json) {
   return _$_EcoLogEntity(
     id: json['id'] as String,
+    name: json['name'] as String,
     value: (json['value'] as num).toDouble(),
     categoryType: _$enumDecode(_$CategoryTypeEnumMap, json['categoryType']),
     date: DateTime.parse(json['date'] as String),
@@ -18,6 +19,7 @@ _$_EcoLogEntity _$_$_EcoLogEntityFromJson(Map<String, dynamic> json) {
 Map<String, dynamic> _$_$_EcoLogEntityToJson(_$_EcoLogEntity instance) =>
     <String, dynamic>{
       'id': instance.id,
+      'name': instance.name,
       'value': instance.value,
       'categoryType': _$CategoryTypeEnumMap[instance.categoryType],
       'date': instance.date.toIso8601String(),
