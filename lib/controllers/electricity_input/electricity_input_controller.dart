@@ -13,7 +13,7 @@ class ElectricityInputController extends StateNotifier<ElectricityInputState> {
 
   final Reader _read;
 
-  Future<void> addEcoLog(EcoLogEntity ecoLogEntity) async {
+  Future<void> addEcoLog() async {
     ////TODO: Firestoreとつなげる
     state = state.copyWith(exception: null, isLoading: true);
     return Future.delayed(const Duration(seconds: 2), () {
