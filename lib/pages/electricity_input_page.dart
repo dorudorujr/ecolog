@@ -84,7 +84,13 @@ class ElectricityInputPage extends HookWidget {
                     text: ConstString.addCategoryDetailAddButton,
                     onPressed: state.isEnable ?
                         () async {
-                      await controller.addEcoLog();
+                      await controller.addEcoLog(
+                        name: name,
+                        type: categoryType,
+                        unitValue: _unitTextFieldController.text,
+                        time: _timeTextFieldController.text,
+                        date: _dateTextFieldController.text,
+                      );
                       //TODO: 正常の遷移に変わったら修正する
                       //Navigator.popUntil(context, ModalRoute.withName(CategorysPage.routeName));
                       Navigator.popUntil(context, ModalRoute.withName('/'));
