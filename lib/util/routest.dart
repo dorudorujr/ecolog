@@ -41,6 +41,12 @@ class Routes {
             settings: const RouteSettings(name: AddCategoryDetailPage.routeName),
             builder: (context) => AddCategoryDetailPage(categoryType: args.categoryType,)
         );
+      case ElectricityInputPage.routeName:
+        final args = settings.arguments as ElectricityInputArguments;
+        return MaterialPageRoute<AddCategoryDetailPage>(
+            settings: const RouteSettings(name: ElectricityInputPage.routeName),
+            builder: (context) => ElectricityInputPage(name: args.name, defaultValue: args.defaultValue, categoryType: args.categoryType,)
+        );
       default:
         return null;
     }
