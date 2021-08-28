@@ -30,9 +30,8 @@ class ElectricityInputPage extends HookWidget {
 
     final bottomSpace = MediaQuery.of(context).viewInsets.bottom;
 
-    final _unitTextFieldController = useTextEditingController();
+    final _unitTextFieldController = useTextEditingController(text: defaultValue.toString());
     final _timeTextFieldController = useTextEditingController();
-    final _dateTextFieldController = useTextEditingController();
 
     useEffect(() {
       WidgetsBinding.instance?.addPostFrameCallback((_) {
