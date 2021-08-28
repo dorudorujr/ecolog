@@ -8,6 +8,7 @@ import 'package:ecolog/controllers/categorys/categorys.dart';
 import 'package:ecolog/util/const/string/const_string.dart';
 import 'package:ecolog/application_model/firebases/exception/export_exception.dart';
 import 'package:ecolog/pages/pages.dart';
+import 'package:ecolog/application_model/models/models.dart';
 
 class CategorysPage extends HookWidget {
   static const routeName = 'categorys_page';
@@ -42,7 +43,9 @@ class CategorysPage extends HookWidget {
                   return IconCell(
                       title: category.categoryName,
                       categoryType: category.categoryType,
-                      onTap: (){});
+                      onTap: (){
+                        _didTapCell(context, category.categoryType, category.categoryName, category.defaultValue);
+                      });
                 }
                 return const ListTile();
               }
@@ -67,5 +70,13 @@ class CategorysPage extends HookWidget {
 extension CategorysPageCoordinator on CategorysPage {
   void didAddPush(BuildContext context) {
     Navigator.pushNamed(context, AddCategoryPage.routeName);
+  }
+
+  void _didTapCell(BuildContext context, CategoryType categoryType, String name, int value) {
+    switch (categoryType) {
+      case CategoryType.electricity:
+        final arg = ElectricityInputArguments(name: name, defaultValue: value, categoryType: categoryType);
+        Navigator.pushNamed(context, ElectricityInputPage.routeName, arguments: arg);
+    }
   }
 }
