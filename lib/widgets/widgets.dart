@@ -7,3 +7,4 @@ export 'package:ecolog/widgets/no_icon_cell.dart';
 export 'package:ecolog/widgets/sign_out_cell.dart';
 export 'package:ecolog/widgets/icon_cell.dart';
 export 'package:ecolog/widgets/input_view.dart';
+export 'package:ecolog/widgets/input_view_to_date.dart';
