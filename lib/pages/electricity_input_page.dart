@@ -78,6 +78,7 @@ class ElectricityInputPage extends HookWidget {
                         controller.setDate(date);
                       }
                   ),
+                  const SizedBox(height: 20,),
                   PrimaryButton(
                     width: 275,
                     height: 47,
