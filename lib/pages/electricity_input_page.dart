@@ -75,7 +75,7 @@ class ElectricityInputPage extends HookWidget {
                       title: ConstString.electricityInputDateTextFieldTitle,
                       textFieldController: _dateTextFieldController,
                       onChanged: (text) {
-                        controller.setDate(text);
+                        //controller.setDate(text);
                       }
                   ),
                   PrimaryButton(
@@ -89,7 +89,6 @@ class ElectricityInputPage extends HookWidget {
                         type: categoryType,
                         unitValue: _unitTextFieldController.text,
                         time: _timeTextFieldController.text,
-                        date: _dateTextFieldController.text,
                       );
                       //TODO: 正常の遷移に変わったら修正する
                       //Navigator.popUntil(context, ModalRoute.withName(CategorysPage.routeName));
