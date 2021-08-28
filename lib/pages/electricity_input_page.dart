@@ -71,11 +71,11 @@ class ElectricityInputPage extends HookWidget {
                         controller.setTime(text);
                       }
                   ),
-                  InputView(
+                  InputViewToDate(
                       title: ConstString.electricityInputDateTextFieldTitle,
-                      textFieldController: _dateTextFieldController,
-                      onChanged: (text) {
-                        //controller.setDate(text);
+                      inputDate: state.date,
+                      onChanged: (date) {
+                        controller.setDate(date);
                       }
                   ),
                   PrimaryButton(
