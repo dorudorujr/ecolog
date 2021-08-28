@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import 'package:ecolog/util/extension/extensions.dart';
+
 /// 日付入力Cell
 class InputViewToDate extends StatelessWidget {
   const InputViewToDate({
@@ -40,7 +42,7 @@ class InputViewToDate extends StatelessWidget {
                 const SizedBox(width: 16,),
                 Expanded(
                   child: Text(
-                    (inputDate ?? DateTime.now()).toString(),
+                    (inputDate ?? DateTime.now()).toInputDateText(),
                     style: const TextStyle(
                         fontWeight: FontWeight.normal,
                         fontSize: 15,
