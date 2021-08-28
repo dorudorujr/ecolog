@@ -24,6 +24,7 @@ class InputViewToDate extends StatelessWidget {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
+            const Spacer(),
             Row(
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
@@ -38,21 +39,20 @@ class InputViewToDate extends StatelessWidget {
                 ),
                 const SizedBox(width: 16,),
                 Expanded(
-                  child: Container(
-                    height: 43,
-                    child: Text(
-                      (inputDate ?? DateTime.now()).toString(),
-                      style: const TextStyle(
-                          fontWeight: FontWeight.normal,
-                          fontSize: 15,
-                          color: Color(0XFF5A5D5D)
-                      ),
+                  child: Text(
+                    (inputDate ?? DateTime.now()).toString(),
+                    style: const TextStyle(
+                        fontWeight: FontWeight.normal,
+                        fontSize: 15,
+                        color: Color(0XFF5A5D5D)
                     ),
+                    textAlign: TextAlign.right,
                   ),
                 ),
                 const SizedBox(width: 16,),
               ],
             ),
+            const Spacer(),
             const Divider(
               height: 1,
               indent: 16,
