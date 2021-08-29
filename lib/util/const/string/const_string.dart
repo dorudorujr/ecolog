@@ -34,6 +34,8 @@ class ConstString {
   static const electricityInputTimeTextFieldTitle = '時間';
   static const electricityInputDateTextFieldTitle = '日付';
   static const electricityInputHelp = 'CO2量算出方法';
+  static const electricityInputTimeUnitText = '分';
+  static const electricityInputDefaultTimeText = '0';
 
 
   /// Common Error Dialog
