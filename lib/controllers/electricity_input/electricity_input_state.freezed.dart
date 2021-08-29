@@ -20,7 +20,7 @@ class _$ElectricityInputStateTearOff {
       {Exception? exception,
       String unit = '',
       String time = '',
-      String date = '',
+      DateTime? date,
       dynamic isEnable = false,
       dynamic isLoading = false}) {
     return _ElectricityInputState(
@@ -42,7 +42,7 @@ mixin _$ElectricityInputState {
   Exception? get exception => throw _privateConstructorUsedError;
   String get unit => throw _privateConstructorUsedError;
   String get time => throw _privateConstructorUsedError;
-  String get date => throw _privateConstructorUsedError;
+  DateTime? get date => throw _privateConstructorUsedError;
   dynamic get isEnable => throw _privateConstructorUsedError;
   dynamic get isLoading => throw _privateConstructorUsedError;
 
@@ -60,7 +60,7 @@ abstract class $ElectricityInputStateCopyWith<$Res> {
       {Exception? exception,
       String unit,
       String time,
-      String date,
+      DateTime? date,
       dynamic isEnable,
       dynamic isLoading});
 }
@@ -99,7 +99,7 @@ class _$ElectricityInputStateCopyWithImpl<$Res>
       date: date == freezed
           ? _value.date
           : date // ignore: cast_nullable_to_non_nullable
-              as String,
+              as DateTime?,
       isEnable: isEnable == freezed
           ? _value.isEnable
           : isEnable // ignore: cast_nullable_to_non_nullable
@@ -123,7 +123,7 @@ abstract class _$ElectricityInputStateCopyWith<$Res>
       {Exception? exception,
       String unit,
       String time,
-      String date,
+      DateTime? date,
       dynamic isEnable,
       dynamic isLoading});
 }
@@ -164,7 +164,7 @@ class __$ElectricityInputStateCopyWithImpl<$Res>
       date: date == freezed
           ? _value.date
           : date // ignore: cast_nullable_to_non_nullable
-              as String,
+              as DateTime?,
       isEnable: isEnable == freezed ? _value.isEnable : isEnable,
       isLoading: isLoading == freezed ? _value.isLoading : isLoading,
     ));
@@ -178,7 +178,7 @@ class _$_ElectricityInputState extends _ElectricityInputState {
       {this.exception,
       this.unit = '',
       this.time = '',
-      this.date = '',
+      this.date,
       this.isEnable = false,
       this.isLoading = false})
       : super._();
@@ -191,9 +191,8 @@ class _$_ElectricityInputState extends _ElectricityInputState {
   @JsonKey(defaultValue: '')
   @override
   final String time;
-  @JsonKey(defaultValue: '')
   @override
-  final String date;
+  final DateTime? date;
   @JsonKey(defaultValue: false)
   @override
   final dynamic isEnable;
@@ -249,7 +248,7 @@ abstract class _ElectricityInputState extends ElectricityInputState {
       {Exception? exception,
       String unit,
       String time,
-      String date,
+      DateTime? date,
       dynamic isEnable,
       dynamic isLoading}) = _$_ElectricityInputState;
   _ElectricityInputState._() : super._();
@@ -261,7 +260,7 @@ abstract class _ElectricityInputState extends ElectricityInputState {
   @override
   String get time => throw _privateConstructorUsedError;
   @override
-  String get date => throw _privateConstructorUsedError;
+  DateTime? get date => throw _privateConstructorUsedError;
   @override
   dynamic get isEnable => throw _privateConstructorUsedError;
   @override

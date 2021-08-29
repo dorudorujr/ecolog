@@ -6,3 +6,4 @@ export 'package:ecolog/pages/error_page.dart';
 export 'package:ecolog/pages/categorys_page.dart';
 export 'package:ecolog/pages/add_category_page.dart';
 export 'package:ecolog/pages/add_category_detail_page.dart';
+export 'package:ecolog/pages/electricity_input_page.dart';

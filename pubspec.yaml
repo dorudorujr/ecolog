@@ -42,6 +42,9 @@ dependencies:
   # UUID
   uuid:
 
+  # 日付フォーマット
+  intl: ^0.17.0
+
 dev_dependencies:
   flutter_test:
     sdk: flutter

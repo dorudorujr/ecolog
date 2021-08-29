@@ -1,38 +1,32 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_hooks/flutter_hooks.dart';
 
-/// TextFieldのある入力Cell
-class InputView extends HookWidget {
-  const InputView({
+import 'package:ecolog/util/extension/extensions.dart';
+
+/// 日付入力Cell
+class InputViewToDate extends StatelessWidget {
+  const InputViewToDate({
     Key? key,
     required this.title,
-    required this.textFieldController,
+    required this.inputDate,
     required this.onChanged,
-    this.decoration,
-    this.unit,
-    this.keyboardType,
   }) : super(key: key);
 
   final String title;
-  final String? decoration;
-  final String? unit;
-  final TextInputType? keyboardType;
-  final TextEditingController textFieldController;
-  final Function(String) onChanged;
+  final DateTime? inputDate;
+  final Function(DateTime) onChanged;
 
   @override
   Widget build(BuildContext context) {
-    final _focusNode = useFocusNode();
-
     return GestureDetector(
       onTap: () {
-        _focusNode.requestFocus();
+        _showDatePicker(context);
       },
       child: Container(
         height: 49,
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
+            const Spacer(),
             Row(
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
@@ -47,34 +41,14 @@ class InputView extends HookWidget {
                 ),
                 const SizedBox(width: 16,),
                 Expanded(
-                  child: TextField(
+                  child: Text(
+                    (inputDate ?? DateTime.now()).toInputDateText(),
                     style: const TextStyle(
                         fontWeight: FontWeight.normal,
                         fontSize: 15,
                         color: Color(0XFF5A5D5D)
                     ),
-                    keyboardType: keyboardType,
-                    focusNode: _focusNode,
-                    controller: textFieldController,
                     textAlign: TextAlign.right,
-                    decoration: InputDecoration(
-                        border: InputBorder.none,
-                        hintStyle: TextStyle(
-                            fontWeight: FontWeight.normal,
-                            fontSize: 15,
-                            color: const Color(0XFF5A5D5D).withOpacity(0.5)
-                        ),
-                        hintText: decoration
-                    ),
-                    onChanged: onChanged,
-                  ),
-                ),
-                Text(
-                  textFieldController.text.isNotEmpty ? unit ?? "" : "",
-                  style: const TextStyle(
-                      fontWeight: FontWeight.normal,
-                      fontSize: 15,
-                      color: Color(0XFF5A5D5D)
                   ),
                 ),
                 const SizedBox(width: 16,),
@@ -89,7 +63,17 @@ class InputView extends HookWidget {
             ),
           ],
         ),
-      )
+      ),
     );
+  }
+
+  Future<void> _showDatePicker(BuildContext context) async {
+    final selectDate = await showDatePicker(
+        context: context,
+        initialDate: DateTime.now(),
+        firstDate: DateTime.now().add(const Duration(days: 365) * -1),
+        lastDate: DateTime.now().add(const Duration(days: 365)),
+    );
+    if(selectDate != null) onChanged(selectDate);
   }
 }

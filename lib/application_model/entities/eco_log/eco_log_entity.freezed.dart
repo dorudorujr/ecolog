@@ -22,11 +22,13 @@ class _$EcoLogEntityTearOff {
 
   _EcoLogEntity call(
       {required String id,
+      required String name,
       required double value,
       required CategoryType categoryType,
       required DateTime date}) {
     return _EcoLogEntity(
       id: id,
+      name: name,
       value: value,
       categoryType: categoryType,
       date: date,
@@ -44,6 +46,7 @@ const $EcoLogEntity = _$EcoLogEntityTearOff();
 /// @nodoc
 mixin _$EcoLogEntity {
   String get id => throw _privateConstructorUsedError;
+  String get name => throw _privateConstructorUsedError;
   double get value => throw _privateConstructorUsedError;
   CategoryType get categoryType => throw _privateConstructorUsedError;
   DateTime get date => throw _privateConstructorUsedError;
@@ -60,7 +63,11 @@ abstract class $EcoLogEntityCopyWith<$Res> {
           EcoLogEntity value, $Res Function(EcoLogEntity) then) =
       _$EcoLogEntityCopyWithImpl<$Res>;
   $Res call(
-      {String id, double value, CategoryType categoryType, DateTime date});
+      {String id,
+      String name,
+      double value,
+      CategoryType categoryType,
+      DateTime date});
 }
 
 /// @nodoc
@@ -74,6 +81,7 @@ class _$EcoLogEntityCopyWithImpl<$Res> implements $EcoLogEntityCopyWith<$Res> {
   @override
   $Res call({
     Object? id = freezed,
+    Object? name = freezed,
     Object? value = freezed,
     Object? categoryType = freezed,
     Object? date = freezed,
@@ -82,6 +90,10 @@ class _$EcoLogEntityCopyWithImpl<$Res> implements $EcoLogEntityCopyWith<$Res> {
       id: id == freezed
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
+              as String,
+      name: name == freezed
+          ? _value.name
+          : name // ignore: cast_nullable_to_non_nullable
               as String,
       value: value == freezed
           ? _value.value
@@ -107,7 +119,11 @@ abstract class _$EcoLogEntityCopyWith<$Res>
       __$EcoLogEntityCopyWithImpl<$Res>;
   @override
   $Res call(
-      {String id, double value, CategoryType categoryType, DateTime date});
+      {String id,
+      String name,
+      double value,
+      CategoryType categoryType,
+      DateTime date});
 }
 
 /// @nodoc
@@ -123,6 +139,7 @@ class __$EcoLogEntityCopyWithImpl<$Res> extends _$EcoLogEntityCopyWithImpl<$Res>
   @override
   $Res call({
     Object? id = freezed,
+    Object? name = freezed,
     Object? value = freezed,
     Object? categoryType = freezed,
     Object? date = freezed,
@@ -131,6 +148,10 @@ class __$EcoLogEntityCopyWithImpl<$Res> extends _$EcoLogEntityCopyWithImpl<$Res>
       id: id == freezed
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
+              as String,
+      name: name == freezed
+          ? _value.name
+          : name // ignore: cast_nullable_to_non_nullable
               as String,
       value: value == freezed
           ? _value.value
@@ -153,6 +174,7 @@ class __$EcoLogEntityCopyWithImpl<$Res> extends _$EcoLogEntityCopyWithImpl<$Res>
 class _$_EcoLogEntity implements _EcoLogEntity {
   const _$_EcoLogEntity(
       {required this.id,
+      required this.name,
       required this.value,
       required this.categoryType,
       required this.date});
@@ -163,6 +185,8 @@ class _$_EcoLogEntity implements _EcoLogEntity {
   @override
   final String id;
   @override
+  final String name;
+  @override
   final double value;
   @override
   final CategoryType categoryType;
@@ -171,7 +195,7 @@ class _$_EcoLogEntity implements _EcoLogEntity {
 
   @override
   String toString() {
-    return 'EcoLogEntity(id: $id, value: $value, categoryType: $categoryType, date: $date)';
+    return 'EcoLogEntity(id: $id, name: $name, value: $value, categoryType: $categoryType, date: $date)';
   }
 
   @override
@@ -180,6 +204,8 @@ class _$_EcoLogEntity implements _EcoLogEntity {
         (other is _EcoLogEntity &&
             (identical(other.id, id) ||
                 const DeepCollectionEquality().equals(other.id, id)) &&
+            (identical(other.name, name) ||
+                const DeepCollectionEquality().equals(other.name, name)) &&
             (identical(other.value, value) ||
                 const DeepCollectionEquality().equals(other.value, value)) &&
             (identical(other.categoryType, categoryType) ||
@@ -193,6 +219,7 @@ class _$_EcoLogEntity implements _EcoLogEntity {
   int get hashCode =>
       runtimeType.hashCode ^
       const DeepCollectionEquality().hash(id) ^
+      const DeepCollectionEquality().hash(name) ^
       const DeepCollectionEquality().hash(value) ^
       const DeepCollectionEquality().hash(categoryType) ^
       const DeepCollectionEquality().hash(date);
@@ -211,6 +238,7 @@ class _$_EcoLogEntity implements _EcoLogEntity {
 abstract class _EcoLogEntity implements EcoLogEntity {
   const factory _EcoLogEntity(
       {required String id,
+      required String name,
       required double value,
       required CategoryType categoryType,
       required DateTime date}) = _$_EcoLogEntity;
@@ -220,6 +248,8 @@ abstract class _EcoLogEntity implements EcoLogEntity {
 
   @override
   String get id => throw _privateConstructorUsedError;
+  @override
+  String get name => throw _privateConstructorUsedError;
   @override
   double get value => throw _privateConstructorUsedError;
   @override

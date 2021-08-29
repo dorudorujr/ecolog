@@ -8,7 +8,7 @@ abstract class ElectricityInputState with _$ElectricityInputState {
     Exception? exception,
     @Default('') String unit,
     @Default('') String time,
-    @Default('') String date,
+    DateTime? date,
     @Default(false) isEnable,
     @Default(false) isLoading,
   }) = _ElectricityInputState;
