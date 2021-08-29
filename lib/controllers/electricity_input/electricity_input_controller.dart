@@ -39,19 +39,19 @@ class ElectricityInputController extends StateNotifier<ElectricityInputState> {
 
   void setUnit(String unit) {
     state = state.copyWith(unit: unit);
-    final isEnable = state.unit.isNotEmpty && state.time.isNotEmpty && state.date != null;
+    final isEnable = state.unit.isNotEmpty && state.time.isNotEmpty;
     state = state.copyWith(isEnable: isEnable);
   }
 
   void setTime(String time) {
     state = state.copyWith(time: time);
-    final isEnable = state.unit.isNotEmpty && state.time.isNotEmpty && state.date != null;
+    final isEnable = state.unit.isNotEmpty && state.time.isNotEmpty;
     state = state.copyWith(isEnable: isEnable);
   }
 
   void setDate(DateTime date) {
     state = state.copyWith(date: date);
-    final isEnable = state.unit.isNotEmpty && state.time.isNotEmpty && state.date != null;
+    final isEnable = state.unit.isNotEmpty && state.time.isNotEmpty;
     state = state.copyWith(isEnable: isEnable);
   }
 }
