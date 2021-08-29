@@ -31,7 +31,7 @@ class ElectricityInputPage extends HookWidget {
     final bottomSpace = MediaQuery.of(context).viewInsets.bottom;
 
     final _unitTextFieldController = useTextEditingController(text: defaultValue.toString());
-    final _timeTextFieldController = useTextEditingController(text: ConstString.electricityInputDefaultTimeText);
+    final _timeTextFieldController = useTextEditingController();
 
     useEffect(() {
       WidgetsBinding.instance?.addPostFrameCallback((_) {
@@ -69,6 +69,7 @@ class ElectricityInputPage extends HookWidget {
                       title: ConstString.electricityInputTimeTextFieldTitle,
                       unit: ConstString.electricityInputTimeUnitText,
                       textFieldController: _timeTextFieldController,
+                      decoration: ConstString.electricityInputTimeDecoration,
                       onChanged: (text) {
                         controller.setTime(text);
                       },
