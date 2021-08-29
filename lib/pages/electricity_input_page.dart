@@ -61,14 +61,17 @@ class ElectricityInputPage extends HookWidget {
                       textFieldController: _unitTextFieldController,
                       onChanged: (text) {
                         controller.setUnit(text);
-                      }
+                      },
+                      keyboardType: TextInputType.number,
                   ),
                   InputView(
                       title: ConstString.electricityInputTimeTextFieldTitle,
+                      decoration: '2分',
                       textFieldController: _timeTextFieldController,
                       onChanged: (text) {
                         controller.setTime(text);
-                      }
+                      },
+                      keyboardType: TextInputType.number,
                   ),
                   InputViewToDate(
                       title: ConstString.electricityInputDateTextFieldTitle,
