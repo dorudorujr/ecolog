@@ -22,7 +22,7 @@ class InputViewToDate extends StatelessWidget {
         _showDatePicker(context);
       },
       child: Container(
-        height: 44,
+        height: 49,
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
