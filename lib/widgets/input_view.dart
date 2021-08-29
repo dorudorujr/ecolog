@@ -9,11 +9,13 @@ class InputView extends HookWidget {
     required this.textFieldController,
     required this.onChanged,
     this.decoration,
+    this.unit,
     this.keyboardType,
   }) : super(key: key);
 
   final String title;
   final String? decoration;
+  final String? unit;
   final TextInputType? keyboardType;
   final TextEditingController textFieldController;
   final Function(String) onChanged;
@@ -27,7 +29,7 @@ class InputView extends HookWidget {
         _focusNode.requestFocus();
       },
       child: Container(
-        height: 44,
+        height: 49,
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
@@ -44,35 +46,41 @@ class InputView extends HookWidget {
                   ),
                 ),
                 const SizedBox(width: 16,),
-                Expanded(child:
-                  Container(
-                    height: 43,
-                    child: TextField(
-                      style: const TextStyle(
-                          fontWeight: FontWeight.normal,
-                          fontSize: 15,
-                          color: Color(0XFF5A5D5D)
-                      ),
-                      keyboardType: keyboardType,
-                      focusNode: _focusNode,
-                      controller: textFieldController,
-                      textAlign: TextAlign.right,
-                      decoration: InputDecoration(
-                          border: InputBorder.none,
-                          hintStyle: TextStyle(
-                              fontWeight: FontWeight.normal,
-                              fontSize: 15,
-                              color: const Color(0XFF5A5D5D).withOpacity(0.5)
-                          ),
-                          hintText: decoration
-                      ),
-                      onChanged: onChanged,
+                Expanded(
+                  child: TextField(
+                    style: const TextStyle(
+                        fontWeight: FontWeight.normal,
+                        fontSize: 15,
+                        color: Color(0XFF5A5D5D)
                     ),
+                    keyboardType: keyboardType,
+                    focusNode: _focusNode,
+                    controller: textFieldController,
+                    textAlign: TextAlign.right,
+                    decoration: InputDecoration(
+                        border: InputBorder.none,
+                        hintStyle: TextStyle(
+                            fontWeight: FontWeight.normal,
+                            fontSize: 15,
+                            color: const Color(0XFF5A5D5D).withOpacity(0.5)
+                        ),
+                        hintText: decoration
+                    ),
+                    onChanged: onChanged,
+                  ),
+                ),
+                Text(
+                  textFieldController.text.isNotEmpty ? unit ?? "" : "",
+                  style: const TextStyle(
+                      fontWeight: FontWeight.normal,
+                      fontSize: 15,
+                      color: Color(0XFF5A5D5D)
                   ),
                 ),
                 const SizedBox(width: 16,),
               ],
             ),
+            const Spacer(),
             const Divider(
               height: 1,
               indent: 16,

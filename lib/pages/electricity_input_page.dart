@@ -31,7 +31,7 @@ class ElectricityInputPage extends HookWidget {
     final bottomSpace = MediaQuery.of(context).viewInsets.bottom;
 
     final _unitTextFieldController = useTextEditingController(text: defaultValue.toString());
-    final _timeTextFieldController = useTextEditingController();
+    final _timeTextFieldController = useTextEditingController(text: ConstString.electricityInputDefaultTimeText);
 
     useEffect(() {
       WidgetsBinding.instance?.addPostFrameCallback((_) {
@@ -58,6 +58,7 @@ class ElectricityInputPage extends HookWidget {
                   const SizedBox(height: 50,),
                   InputView(
                       title: categoryType.displayUnitText,
+                      unit: categoryType.displayUnit,
                       textFieldController: _unitTextFieldController,
                       onChanged: (text) {
                         controller.setUnit(text);
@@ -66,7 +67,7 @@ class ElectricityInputPage extends HookWidget {
                   ),
                   InputView(
                       title: ConstString.electricityInputTimeTextFieldTitle,
-                      decoration: '2分',
+                      unit: ConstString.electricityInputTimeUnitText,
                       textFieldController: _timeTextFieldController,
                       onChanged: (text) {
                         controller.setTime(text);
