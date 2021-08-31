@@ -37,6 +37,9 @@ class ConstString {
   static const electricityInputTimeUnitText = '分';
   static const electricityInputTimeDecoration = '2分';
 
+  /// ecolog_input
+  static const ecologInputDateTextFieldTitle = '日付';
+  static const ecologInputUnitTextFieldTitle = '燃料使用量';
 
   /// Common Error Dialog
   static const commonErrorTitle = '予期せぬエラーが発生しました。時間をおいて再度お試しください';
