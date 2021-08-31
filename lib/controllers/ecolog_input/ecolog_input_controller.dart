@@ -17,7 +17,7 @@ class EcologInputController extends StateNotifier<EcologInputState> {
   Future<void> addEcolog({
     required String name,
     required CategoryType type,
-    required unit
+    required String unit
   }) async {
     state = state.copyWith(exception: null, isLoading: true);
     ////TODO: Firestoreとつなげる
@@ -25,7 +25,7 @@ class EcologInputController extends StateNotifier<EcologInputState> {
     //// dateの入力値はstateでしか保持していないので
     final entity = EcoLogEntity.toEcoLogEntity(
         name: name,
-        value: unit,
+        value: int.parse(unit),
         categoryType: type
     );
     return Future.delayed(const Duration(seconds: 2), () {
