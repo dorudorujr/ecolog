@@ -77,6 +77,13 @@ extension CategorysPageCoordinator on CategorysPage {
       case CategoryType.electricity:
         final arg = ElectricityInputArguments(name: name, defaultValue: value, categoryType: categoryType);
         Navigator.pushNamed(context, ElectricityInputPage.routeName, arguments: arg);
+        return;
+      case CategoryType.gasoline:
+      case CategoryType.cityGas:
+      case CategoryType.water:
+        final arg = EcologInputArguments(name: name, defaultValue: value, categoryType: categoryType);
+        Navigator.pushNamed(context, EcologInputPage.routeName, arguments: arg);
+        return;
     }
   }
 }

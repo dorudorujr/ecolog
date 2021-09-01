@@ -43,9 +43,15 @@ class Routes {
         );
       case ElectricityInputPage.routeName:
         final args = settings.arguments as ElectricityInputArguments;
-        return MaterialPageRoute<AddCategoryDetailPage>(
+        return MaterialPageRoute<ElectricityInputPage>(
             settings: const RouteSettings(name: ElectricityInputPage.routeName),
             builder: (context) => ElectricityInputPage(name: args.name, defaultValue: args.defaultValue, categoryType: args.categoryType,)
+        );
+      case EcologInputPage.routeName:
+        final args = settings.arguments as EcologInputArguments;
+        return MaterialPageRoute<EcologInputPage>(
+            settings: const RouteSettings(name: EcologInputPage.routeName),
+            builder: (context) => EcologInputPage(name: args.name, defaultValue: args.defaultValue, categoryType: args.categoryType,)
         );
       default:
         return null;
