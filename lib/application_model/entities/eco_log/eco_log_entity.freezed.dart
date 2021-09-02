@@ -171,13 +171,14 @@ class __$EcoLogEntityCopyWithImpl<$Res> extends _$EcoLogEntityCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$_EcoLogEntity implements _EcoLogEntity {
+class _$_EcoLogEntity extends _EcoLogEntity {
   const _$_EcoLogEntity(
       {required this.id,
       required this.name,
       required this.value,
       required this.categoryType,
-      required this.date});
+      required this.date})
+      : super._();
 
   factory _$_EcoLogEntity.fromJson(Map<String, dynamic> json) =>
       _$_$_EcoLogEntityFromJson(json);
@@ -235,13 +236,14 @@ class _$_EcoLogEntity implements _EcoLogEntity {
   }
 }
 
-abstract class _EcoLogEntity implements EcoLogEntity {
+abstract class _EcoLogEntity extends EcoLogEntity {
   const factory _EcoLogEntity(
       {required String id,
       required String name,
       required double value,
       required CategoryType categoryType,
       required DateTime date}) = _$_EcoLogEntity;
+  const _EcoLogEntity._() : super._();
 
   factory _EcoLogEntity.fromJson(Map<String, dynamic> json) =
       _$_EcoLogEntity.fromJson;
