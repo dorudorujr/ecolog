@@ -16,8 +16,6 @@ class EcoLogEntity with _$EcoLogEntity {
     required DateTime date,
   }) = _EcoLogEntity;
 
-  EcoLogEntity._();
-
   factory EcoLogEntity.fromJson(Map<String, dynamic> json) => _$EcoLogEntityFromJson(json);
 
   factory EcoLogEntity.toEcoLogEntity({
