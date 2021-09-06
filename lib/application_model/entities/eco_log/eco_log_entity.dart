@@ -38,7 +38,6 @@ class EcoLogEntity with _$EcoLogEntity {
     }
 
     if (categoryType == CategoryType.electricity) {
-      assert(time != null);
       return EcoLogEntity._fromElectricity(
           name: name,
           unitValue: value,
