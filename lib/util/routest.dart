@@ -53,6 +53,11 @@ class Routes {
             settings: const RouteSettings(name: EcologInputPage.routeName),
             builder: (context) => EcologInputPage(name: args.name, defaultValue: args.defaultValue, categoryType: args.categoryType,)
         );
+      case HistoryPage.routeName:
+        return MaterialPageRoute<HistoryPage>(
+            settings: const RouteSettings(name: HistoryPage.routeName),
+            builder: (context) => const HistoryPage()
+        );
       default:
         return null;
     }
