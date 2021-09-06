@@ -7,8 +7,9 @@ import 'package:ecolog/widgets/widgets.dart';
 import 'package:ecolog/controllers/history/history.dart';
 import 'package:ecolog/util/const/string/const_string.dart';
 import 'package:ecolog/application_model/firebases/exception/export_exception.dart';
-import 'package:ecolog/pages/pages.dart';
-import 'package:ecolog/application_model/models/models.dart';
+import 'package:ecolog/application_model/entities/entities.dart';
+import 'package:ecolog/util/extension/extensions.dart';
+import "package:collection/collection.dart";
 
 class HistoryPage extends HookWidget {
   static const routeName = 'history_page';
@@ -19,8 +20,8 @@ class HistoryPage extends HookWidget {
 
   @override
   Widget build(BuildContext context) {
-    final controller = useProvider(historyControllerProvider.notifier);
     final state = useProvider(historyControllerProvider);
+    final histories = _makeCells(state.histories);
 
     return Stack(
       fit: StackFit.expand,
@@ -32,32 +33,42 @@ class HistoryPage extends HookWidget {
             title: const Text(ConstString.historyTitle),
           ),
           body: ListView.builder(
-              itemCount: state.histories.length,
+              itemCount: histories.length,
               itemBuilder: (BuildContext context, int index) {
-                if (state.histories[index] != null) {
-                  return IconCell(
-                    title: state.histories[index]!.name,
-                    categoryType: state.histories[index]!.categoryType,
-                    onTap: () {},
-                  );
-                } else {
-                  return ListTile(
-                    title: Text(
-                      '${state.histories[index + 1]!.date}',
-                      style: const TextStyle(
-                          fontWeight: FontWeight.normal,
-                          fontSize: 15,
-                          color: Color(0XFF5A5D5D)
-                      ),
-                    ),
-                  );
-                }
+                return histories[index];
               }
           ),
         ),
         _showErrorDialogHandler(state.exception),
       ],
     );
+  }
+
+  List<Widget> _makeCells(List<EcoLogEntity> histories) {
+    final mapHistories = histories.groupListsBy((element) => element.date);
+    List<Widget> result = [];
+    mapHistories.forEach((key, list) {
+      final subHeader = ListTile(
+        title: Text(
+          '${key.toInputDateText()}',
+          style: const TextStyle(
+              fontWeight: FontWeight.normal,
+              fontSize: 15,
+              color: Color(0XFF5A5D5D)
+          ),
+        ),
+      );
+      result.add(subHeader);
+      list.forEach((element) {
+        final cell = IconCell(
+          title: element.name,
+          categoryType: element.categoryType,
+          onTap: () {},
+        );
+        result.add(cell);
+      });
+    });
+    return result;
   }
 
   /// ErrorDialog表示判定
