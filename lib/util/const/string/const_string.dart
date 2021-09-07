@@ -41,6 +41,9 @@ class ConstString {
   static const ecologInputDateTextFieldTitle = '日付';
   static const ecologInputUnitTextFieldTitle = '燃料使用量';
 
+  /// history
+  static const historyTitle = '履歴';
+
   /// Common Error Dialog
   static const commonErrorTitle = '予期せぬエラーが発生しました。時間をおいて再度お試しください';
   static const commonNetworkErrorTitle = '通信環境が不安定のようです。時間をおいて再度お試しください';
