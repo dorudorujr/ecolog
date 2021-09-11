@@ -9,12 +9,11 @@ class TabBarPage extends HookWidget {
 
   const TabBarPage({
     Key? key,
-  }) : super(key: key)
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     final navigationIndex = useState(0);
-
     return Scaffold(
       body: Center(
         child: [
