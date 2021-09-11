@@ -28,7 +28,8 @@ class Routes {
       case CategorysPage.routeName:
         return MaterialPageRoute<CategorysPage>(
             settings: const RouteSettings(name: CategorysPage.routeName),
-            builder: (context) => const CategorysPage()
+            builder: (context) => const CategorysPage(),
+            fullscreenDialog: true,
         );
       case AddCategoryPage.routeName:
         return MaterialPageRoute<AddCategoryPage>(

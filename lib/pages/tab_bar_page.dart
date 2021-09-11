@@ -47,7 +47,14 @@ class TabBarPage extends HookWidget {
         unselectedItemColor: const Color(0XFF5A5D5D),
         showUnselectedLabels: true,
         type: BottomNavigationBarType.fixed,
-        onTap: (int index) => navigationIndex.value = index,
+        onTap: (int index) {
+          final inputIndex = 2;
+          if (index != inputIndex) {
+            navigationIndex.value = index;
+          } else {
+            Navigator.pushNamed(context, CategorysPage.routeName);
+          }
+        },
       ),
     );
   }
