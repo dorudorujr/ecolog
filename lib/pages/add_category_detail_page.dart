@@ -84,12 +84,11 @@ class AddCategoryDetailPage extends HookWidget {
                     text: ConstString.addCategoryDetailAddButton,
                     onPressed: state.isEnable ?
                         () async {
-                      final category = CategoryEntity(
-                          categoryName: _categoryNameTextFieldController.text,
-                          categoryType: categoryType,
+                      await controller.addCategory(
+                          name: _categoryNameTextFieldController.text,
+                          type: categoryType,
                           defaultValue: int.parse(_unitTextFieldController.text)
                       );
-                      await controller.addCategory(category);
                       //TODO: 正常の遷移に変わったら修正する
                       //Navigator.popUntil(context, ModalRoute.withName(CategorysPage.routeName));
                       Navigator.popUntil(context, ModalRoute.withName('/'));

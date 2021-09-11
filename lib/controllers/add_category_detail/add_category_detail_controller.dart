@@ -4,7 +4,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 
 import 'package:ecolog/application_model/mock/provider/firestore/mock_firestore.dart';
 import 'package:ecolog/controllers/add_category_detail/add_category_detail.dart';
-import 'package:ecolog/application_model/entities/entities.dart';
+import 'package:ecolog/application_model/models/models.dart';
 import 'package:ecolog/util/util.dart';
 
 final addCategoryDetailProvider = StateNotifierProvider<AddCategoryDetailController, AddCategoryDetailState>(
@@ -16,11 +16,11 @@ class AddCategoryDetailController extends StateNotifier<AddCategoryDetailState> 
 
   final Reader _read;
 
-  Future<void> addCategory(CategoryEntity categoryEntity) async {
+  Future<void> addCategory({required String name, required CategoryType type, required int defaultValue }) async {
     try {
       state = state.copyWith(exception: null, isLoading: true);
       ///TODO: Mockなので修正する
-      await _read(categoryDaoMockProvider).addCategory(categoryEntity).then((_) {
+      await _read(categoryDaoMockProvider).addCategory(name: name, type: type, defaultValue: defaultValue).then((_) {
         state = state.copyWith(exception: null, isLoading: false);
       });
     } on FirebaseAuthException catch (e) {

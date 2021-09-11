@@ -1,4 +1,5 @@
 import 'package:ecolog/application_model/entities/entities.dart';
+import 'package:ecolog/application_model/models/models.dart';
 
 abstract class CategoryDaoInterFace {
   /// カテゴリー取得
@@ -8,5 +9,5 @@ abstract class CategoryDaoInterFace {
   void addDefaultCategorys();
 
   /// カテゴリー追加
-  Future<void> addCategory(CategoryEntity categoryEntity);
+  Future<void> addCategory({required String name, required CategoryType type, required int defaultValue });
 }
