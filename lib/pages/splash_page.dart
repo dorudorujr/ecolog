@@ -33,7 +33,7 @@ extension SplashCoordinator on SplashPage {
       case SplashStatusType.forcibly:
         return const VersionCheckDialog();
       case SplashStatusType.autoSignIn:
-        return const ConfigPage();  ///TODO: Homeに修正する
+        return const TabBarPage();
       case SplashStatusType.notSignIn:
         return StartPage();
       case SplashStatusType.load:

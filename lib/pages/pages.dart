@@ -9,3 +9,4 @@ export 'package:ecolog/pages/add_category_detail_page.dart';
 export 'package:ecolog/pages/electricity_input_page.dart';
 export 'package:ecolog/pages/ecolog_input_page.dart';
 export 'package:ecolog/pages/history_page.dart';
+export 'package:ecolog/pages/tab_bar_page.dart';

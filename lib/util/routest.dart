@@ -28,7 +28,8 @@ class Routes {
       case CategorysPage.routeName:
         return MaterialPageRoute<CategorysPage>(
             settings: const RouteSettings(name: CategorysPage.routeName),
-            builder: (context) => const CategorysPage()
+            builder: (context) => const CategorysPage(),
+            fullscreenDialog: true,
         );
       case AddCategoryPage.routeName:
         return MaterialPageRoute<AddCategoryPage>(
@@ -57,6 +58,11 @@ class Routes {
         return MaterialPageRoute<HistoryPage>(
             settings: const RouteSettings(name: HistoryPage.routeName),
             builder: (context) => const HistoryPage()
+        );
+      case TabBarPage.routeName:
+        return MaterialPageRoute<TabBarPage>(
+            settings: const RouteSettings(name: TabBarPage.routeName),
+            builder: (context) => const TabBarPage()
         );
       default:
         return null;

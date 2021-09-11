@@ -86,7 +86,7 @@ class StartPage extends HookWidget {
 extension StartPageCoordinator on StartPage {
   Future<void> didStartPageSignInButtonPush(BuildContext context,StartController controller) async {
     controller.anonymousSignIn().then((_) {
-      Navigator.pushNamed(context, ConfigPage.routeName); /// TODO: HomePageに修正する
+      Navigator.pushNamed(context, TabBarPage.routeName);
     });
   }
 }
