@@ -18,13 +18,13 @@ class CategoryDaoMock implements CategoryDaoInterFace {
 
   late final List<CategoryEntity> _categoryEntitys;
 
-  List<CategoryEntity> getCategorys() {
+  List<CategoryEntity> getCategories() {
     return _categoryEntitys;
   }
 
   /// アカウント登録時にデフォルトのカテゴリーを追加する処理
   /// アカウント登録時のみにしか呼ばない
-  void addDefaultCategorys() {
+  void addDefaultCategories() {
     final defaultCategorys = [
       const CategoryEntity(id: '5', categoryName: '照明', categoryType: CategoryType.electricity, defaultValue: 30),
       const CategoryEntity(id: '6', categoryName: 'テレビ', categoryType: CategoryType.electricity, defaultValue: 280),

@@ -21,7 +21,7 @@ class StartController extends StateNotifier<StartState> {
       state = state.copyWith(exception: null, isLoading: true);
       await _read(ecologAuthProvider).authentication().then((value) {
         ///TODO: Mockなので修正する
-        _read(categoryDaoMockProvider).addDefaultCategorys();
+        _read(categoryDaoMockProvider).addDefaultCategories();
         state = state.copyWith(exception: null, isLoading: false);
       });
     } on FirebaseAuthException catch (e) {

@@ -11,7 +11,7 @@ final categorysControllerProvider = StateNotifierProvider<CategorysController, C
 class CategorysController extends StateNotifier<CategorysState> {
   CategorysController(this._read) : super(CategorysState()) {
     ///TODO: Mockなので本番に変える
-    state = state.copyWith(categorys: _read(categoryDaoMockProvider).getCategorys());
+    state = state.copyWith(categorys: _read(categoryDaoMockProvider).getCategories());
   }
 
   final Reader _read;
