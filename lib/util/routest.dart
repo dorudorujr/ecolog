@@ -58,6 +58,11 @@ class Routes {
             settings: const RouteSettings(name: HistoryPage.routeName),
             builder: (context) => const HistoryPage()
         );
+      case TabBarPage.routeName:
+        return MaterialPageRoute<TabBarPage>(
+            settings: const RouteSettings(name: TabBarPage.routeName),
+            builder: (context) => const TabBarPage()
+        );
       default:
         return null;
     }
