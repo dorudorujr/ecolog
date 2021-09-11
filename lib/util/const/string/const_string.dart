@@ -1,4 +1,10 @@
 class ConstString {
+  /// TabBar
+  static const tabBarConfigTitle = '設定';
+  static const tabBarHistoryTitle = '履歴';
+  static const tabBarInputTitle = '入力';
+  static const tabBarOutputTitle = 'グラフ';
+
   /// VersionCheckDialog
   static const versionCheckDialogText = '最新の更新があります。\nアップデートをお願いします。';
   static const versionCheckDialogButtonText = 'アップデート';
