@@ -5,7 +5,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:ecolog/application_model/firebases/auth/ecolog_auth.dart';
 import 'start_state.dart';
 import 'package:ecolog/util/util.dart';
-import 'package:ecolog/application_model/mock/provider/firestore/mock_firestore.dart';
+import 'package:ecolog/application_model/firebases/firestore/category/category.dart';
 
 final startControllerProvider = StateNotifierProvider<StartController, StartState>(
       (ref) => StartController(ref.read),
@@ -20,12 +20,11 @@ class StartController extends StateNotifier<StartState> {
     try {
       state = state.copyWith(exception: null, isLoading: true);
       await _read(ecologAuthProvider).authentication().then((value) {
-        ///TODO: Mockなので修正する
-        _read(categoryDaoMockProvider).addDefaultCategories();
+        _read(categoryDaoProvider).addDefaultCategories();
         state = state.copyWith(exception: null, isLoading: false);
       });
     } on FirebaseAuthException catch (e) {
-      logger.shout('StartController Error:${e}');
+      logger.shout('StartController Error:$e');
       state = state.copyWith(
         exception: e,
         isLoading: false,
