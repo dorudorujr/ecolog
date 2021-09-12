@@ -3,7 +3,7 @@ import 'package:ecolog/application_model/models/models.dart';
 
 abstract class CategoryDaoInterFace {
   /// カテゴリー取得
-  List<CategoryEntity> getCategories();
+  Future<List<CategoryEntity>> getCategories();
 
   /// デフォルトカテゴリー追加
   void addDefaultCategories();

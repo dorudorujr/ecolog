@@ -18,8 +18,10 @@ class CategoryDaoMock implements CategoryDaoInterFace {
 
   late final List<CategoryEntity> _categoryEntitys;
 
-  List<CategoryEntity> getCategories() {
-    return _categoryEntitys;
+  Future<List<CategoryEntity>> getCategories() {
+    return Future.delayed(const Duration(seconds: 2), () {
+      return _categoryEntitys;
+    });
   }
 
   /// アカウント登録時にデフォルトのカテゴリーを追加する処理
