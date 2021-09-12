@@ -29,9 +29,9 @@ class CategoryEntity with _$CategoryEntity {
   
   factory CategoryEntity.fromJson(Map<String, dynamic> json) {
     return CategoryEntity(
-        id: json['categoryName'],
-        categoryName: json['categoryName'],
-        categoryType: GetCategoryType.get(json['categoryType']),
-        defaultValue: json['defaultValue']);
+        id: json['id'],
+        categoryName: json['category_name'],
+        categoryType: GetCategoryType.get(json['category_type']),
+        defaultValue: json['default_value']);
   }
 }
