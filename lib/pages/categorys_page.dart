@@ -36,10 +36,10 @@ class CategorysPage extends HookWidget {
             ],
           ),
           body: ListView.builder(
-              itemCount: state.categorys?.length,
+              itemCount: state.categories?.length,
               itemBuilder: (BuildContext context, int index) {
-                if (state.categorys != null) {
-                  final category = state.categorys![index];
+                if (state.categories != null) {
+                  final category = state.categories![index];
                   return IconCell(
                       title: category.categoryName,
                       categoryType: category.categoryType,
@@ -51,6 +51,7 @@ class CategorysPage extends HookWidget {
               }
           ),
         ),
+        FullScreenLoading(isHidden: !state.isLoading,),
         _showErrorDialogHandler(state.exception),
       ],
     );

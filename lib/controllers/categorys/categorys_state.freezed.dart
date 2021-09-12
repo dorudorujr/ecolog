@@ -17,10 +17,13 @@ class _$CategorysStateTearOff {
   const _$CategorysStateTearOff();
 
   _CategorysState call(
-      {Exception? exception, List<CategoryEntity>? categorys}) {
+      {Exception? exception,
+      dynamic isLoading = false,
+      List<CategoryEntity>? categories}) {
     return _CategorysState(
       exception: exception,
-      categorys: categorys,
+      isLoading: isLoading,
+      categories: categories,
     );
   }
 }
@@ -31,7 +34,8 @@ const $CategorysState = _$CategorysStateTearOff();
 /// @nodoc
 mixin _$CategorysState {
   Exception? get exception => throw _privateConstructorUsedError;
-  List<CategoryEntity>? get categorys => throw _privateConstructorUsedError;
+  dynamic get isLoading => throw _privateConstructorUsedError;
+  List<CategoryEntity>? get categories => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $CategorysStateCopyWith<CategorysState> get copyWith =>
@@ -43,7 +47,10 @@ abstract class $CategorysStateCopyWith<$Res> {
   factory $CategorysStateCopyWith(
           CategorysState value, $Res Function(CategorysState) then) =
       _$CategorysStateCopyWithImpl<$Res>;
-  $Res call({Exception? exception, List<CategoryEntity>? categorys});
+  $Res call(
+      {Exception? exception,
+      dynamic isLoading,
+      List<CategoryEntity>? categories});
 }
 
 /// @nodoc
@@ -58,16 +65,21 @@ class _$CategorysStateCopyWithImpl<$Res>
   @override
   $Res call({
     Object? exception = freezed,
-    Object? categorys = freezed,
+    Object? isLoading = freezed,
+    Object? categories = freezed,
   }) {
     return _then(_value.copyWith(
       exception: exception == freezed
           ? _value.exception
           : exception // ignore: cast_nullable_to_non_nullable
               as Exception?,
-      categorys: categorys == freezed
-          ? _value.categorys
-          : categorys // ignore: cast_nullable_to_non_nullable
+      isLoading: isLoading == freezed
+          ? _value.isLoading
+          : isLoading // ignore: cast_nullable_to_non_nullable
+              as dynamic,
+      categories: categories == freezed
+          ? _value.categories
+          : categories // ignore: cast_nullable_to_non_nullable
               as List<CategoryEntity>?,
     ));
   }
@@ -80,7 +92,10 @@ abstract class _$CategorysStateCopyWith<$Res>
           _CategorysState value, $Res Function(_CategorysState) then) =
       __$CategorysStateCopyWithImpl<$Res>;
   @override
-  $Res call({Exception? exception, List<CategoryEntity>? categorys});
+  $Res call(
+      {Exception? exception,
+      dynamic isLoading,
+      List<CategoryEntity>? categories});
 }
 
 /// @nodoc
@@ -97,16 +112,18 @@ class __$CategorysStateCopyWithImpl<$Res>
   @override
   $Res call({
     Object? exception = freezed,
-    Object? categorys = freezed,
+    Object? isLoading = freezed,
+    Object? categories = freezed,
   }) {
     return _then(_CategorysState(
       exception: exception == freezed
           ? _value.exception
           : exception // ignore: cast_nullable_to_non_nullable
               as Exception?,
-      categorys: categorys == freezed
-          ? _value.categorys
-          : categorys // ignore: cast_nullable_to_non_nullable
+      isLoading: isLoading == freezed ? _value.isLoading : isLoading,
+      categories: categories == freezed
+          ? _value.categories
+          : categories // ignore: cast_nullable_to_non_nullable
               as List<CategoryEntity>?,
     ));
   }
@@ -115,16 +132,20 @@ class __$CategorysStateCopyWithImpl<$Res>
 /// @nodoc
 
 class _$_CategorysState extends _CategorysState {
-  _$_CategorysState({this.exception, this.categorys}) : super._();
+  _$_CategorysState({this.exception, this.isLoading = false, this.categories})
+      : super._();
 
   @override
   final Exception? exception;
+  @JsonKey(defaultValue: false)
   @override
-  final List<CategoryEntity>? categorys;
+  final dynamic isLoading;
+  @override
+  final List<CategoryEntity>? categories;
 
   @override
   String toString() {
-    return 'CategorysState(exception: $exception, categorys: $categorys)';
+    return 'CategorysState(exception: $exception, isLoading: $isLoading, categories: $categories)';
   }
 
   @override
@@ -134,16 +155,20 @@ class _$_CategorysState extends _CategorysState {
             (identical(other.exception, exception) ||
                 const DeepCollectionEquality()
                     .equals(other.exception, exception)) &&
-            (identical(other.categorys, categorys) ||
+            (identical(other.isLoading, isLoading) ||
                 const DeepCollectionEquality()
-                    .equals(other.categorys, categorys)));
+                    .equals(other.isLoading, isLoading)) &&
+            (identical(other.categories, categories) ||
+                const DeepCollectionEquality()
+                    .equals(other.categories, categories)));
   }
 
   @override
   int get hashCode =>
       runtimeType.hashCode ^
       const DeepCollectionEquality().hash(exception) ^
-      const DeepCollectionEquality().hash(categorys);
+      const DeepCollectionEquality().hash(isLoading) ^
+      const DeepCollectionEquality().hash(categories);
 
   @JsonKey(ignore: true)
   @override
@@ -154,13 +179,16 @@ class _$_CategorysState extends _CategorysState {
 abstract class _CategorysState extends CategorysState {
   factory _CategorysState(
       {Exception? exception,
-      List<CategoryEntity>? categorys}) = _$_CategorysState;
+      dynamic isLoading,
+      List<CategoryEntity>? categories}) = _$_CategorysState;
   _CategorysState._() : super._();
 
   @override
   Exception? get exception => throw _privateConstructorUsedError;
   @override
-  List<CategoryEntity>? get categorys => throw _privateConstructorUsedError;
+  dynamic get isLoading => throw _privateConstructorUsedError;
+  @override
+  List<CategoryEntity>? get categories => throw _privateConstructorUsedError;
   @override
   @JsonKey(ignore: true)
   _$CategorysStateCopyWith<_CategorysState> get copyWith =>
