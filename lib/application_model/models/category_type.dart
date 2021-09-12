@@ -44,13 +44,13 @@ extension CategoryTypeExt on CategoryType {
 class GetCategoryType {
   static CategoryType get(String categoryType) {
     switch(categoryType) {
-      case 'electricity':
+      case 'CategoryType.electricity':
         return CategoryType.electricity;
-      case 'water':
+      case 'CategoryType.water':
         return CategoryType.water;
-      case 'gasoline':
+      case 'CategoryType.gasoline':
         return CategoryType.gasoline;
-      case 'cityGas':
+      case 'CategoryType.cityGas':
         return CategoryType.cityGas;
       default:
         logger.shout('CategoryType Mapping Error');
