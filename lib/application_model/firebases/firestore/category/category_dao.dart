@@ -8,6 +8,8 @@ import 'package:ecolog/application_model/models/models.dart';
 import 'package:ecolog/util/util.dart';
 import 'package:ecolog/application_model/firebases/firestore/category/category_dao_interface.dart';
 
+final categoryDaoProvider = Provider<CategoryDaoInterFace>((_) => CategoryDao());
+
 ///TODO: errorハンドリングの追加
 class CategoryDao implements CategoryDaoInterFace {
   CategoryDao() : super();
@@ -28,7 +30,7 @@ class CategoryDao implements CategoryDaoInterFace {
       _categories.add({
         'id': element.id,
         'category_name': element.categoryName,
-        'category_type': element.categoryType,
+        'category_type': element.categoryType.toString(),
         'default_value': element.defaultValue,
       });
     });
@@ -40,7 +42,7 @@ class CategoryDao implements CategoryDaoInterFace {
         .add({
           'id': id,
           'category_name': name,
-          'category_type': type,
+          'category_type': type.toString(),
           'default_value': defaultValue,
         })
         .then((value) => logger.info('addCategory success'))
