@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:firebase_auth/firebase_auth.dart';
@@ -15,10 +17,19 @@ class CategoryDao implements CategoryDaoInterFace {
   CategoryDao() : super();
 
   final _categories = FirebaseFirestore.instance.collection('users').doc(FirebaseAuth.instance.currentUser?.uid).collection('categories');
+  final streamController = StreamController<List<CategoryEntity>>();
 
-  Future<List<CategoryEntity>> getCategories() async {
-    final categories = await _categories.get();
-    return categories.docs.map((value) => CategoryEntity.fromJson(value.data())).toList();
+  ///SnapshotじゃないListを取得するサンプル
+  // Future<List<CategoryEntity>> getCategories() async {
+  //   final categories = await _categories.get();
+  //   return categories.docs.map((value) => CategoryEntity.fromJson(value.data())).toList();
+  // }
+
+  Stream<List<CategoryEntity>> getCategories() {
+    final stream = _categories.snapshots().map(
+          (event) => event.docs.map((e) => CategoryEntity.fromJson(e.data())).toList(),
+    );
+    return stream;
   }
 
   void addDefaultCategories() {

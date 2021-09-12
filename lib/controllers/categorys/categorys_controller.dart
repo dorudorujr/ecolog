@@ -10,9 +10,9 @@ final categorysControllerProvider = StateNotifierProvider<CategorysController, C
 
 class CategorysController extends StateNotifier<CategorysState> {
   CategorysController(this._read) : super(CategorysState()) {
-    state = state.copyWith(isLoading: true);
-    _read(categoryDaoProvider).getCategories().then((value) => {
-      state = state.copyWith(isLoading: false, categories: value)
+    final stream = _read(categoryDaoProvider).getCategories();
+    stream.listen((event) {
+      state = state.copyWith(categories: event);
     });
   }
 
