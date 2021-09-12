@@ -17,7 +17,6 @@ class CategoryDao implements CategoryDaoInterFace {
   CategoryDao() : super();
 
   final _categories = FirebaseFirestore.instance.collection('users').doc(FirebaseAuth.instance.currentUser?.uid).collection('categories');
-  final streamController = StreamController<List<CategoryEntity>>();
 
   ///SnapshotじゃないListを取得するサンプル
   // Future<List<CategoryEntity>> getCategories() async {
