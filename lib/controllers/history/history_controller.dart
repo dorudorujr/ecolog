@@ -11,7 +11,7 @@ final historyControllerProvider = StateNotifierProvider<HistoryController, Histo
 class HistoryController extends StateNotifier<HistoryState> {
   HistoryController(this._read) : super(HistoryState()) {
     final firestoreDao = _read(ecoLogDaoMockProvider);
-    final stream = firestoreDao.getEcoLogs();
+    final stream = firestoreDao.getFirstEcoLogs();
 
     stream.listen((event) {
       state = state.copyWith(histories: event);
