@@ -51,8 +51,11 @@ class EcoLogDaoMock implements EcoLogDaoInterFace {
     return Stream<List<EcoLogEntity>>.value(ecoLogs);
   }
 
-  Stream<List<EcoLogEntity>> getNextEcoLogs() {
-    return Stream<List<EcoLogEntity>>.value([]);
+  Future<List<EcoLogEntity>> getNextEcoLogs({
+    String startAfterDate = '',
+    String startAfterId = '',
+  }) {
+    return Future.delayed(const Duration(seconds: 2));
   }
 
   Future<void> addEcoLog(EcoLogEntity ecoLog) {

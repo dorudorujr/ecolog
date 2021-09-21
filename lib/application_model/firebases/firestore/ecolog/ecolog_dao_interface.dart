@@ -5,7 +5,10 @@ abstract class EcoLogDaoInterFace {
   Stream<List<EcoLogEntity>> getFirstEcoLogs();
 
   /// ページング用の追加読み込み
-  Stream<List<EcoLogEntity>> getNextEcoLogs();
+  Future<List<EcoLogEntity>> getNextEcoLogs({
+      String startAfterDate = '',
+      String startAfterId = '',
+  });
 
   /// 履歴追加
   Future<void> addEcoLog(EcoLogEntity ecoLog);
