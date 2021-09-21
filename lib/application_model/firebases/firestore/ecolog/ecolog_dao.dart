@@ -43,7 +43,7 @@ class EcoLogDao implements EcoLogDaoInterFace {
           'id': ecoLog.id,
           'name': ecoLog.name,
           'value': ecoLog.value,
-          'category_type': ecoLog.categoryType,
+          'category_type': ecoLog.categoryType.toString(),
           'date': ecoLog.date
         })
         .then((value) => logger.info('addEcoLog success'))

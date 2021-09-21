@@ -4,6 +4,7 @@ import 'package:state_notifier/state_notifier.dart';
 import 'package:ecolog/application_model/models/models.dart';
 import 'package:ecolog/controllers/ecolog_input/ecolog_input.dart';
 import 'package:ecolog/application_model/entities/eco_log/eco_log_entity.dart';
+import 'package:ecolog/application_model/firebases/firestore/ecolog/ecolog.dart';
 
 final ecologInputProvider = StateNotifierProvider<EcologInputController, EcologInputState>(
       (ref) => EcologInputController(ref.read),
@@ -20,7 +21,6 @@ class EcologInputController extends StateNotifier<EcologInputState> {
     required String unit
   }) async {
     state = state.copyWith(exception: null, isLoading: true);
-    ////TODO: Firestoreとつなげる
     //// dateはstateから取得する
     //// dateの入力値はstateでしか保持していないので
     final entity = EcoLogEntity.toEcoLogEntity(
@@ -28,9 +28,8 @@ class EcologInputController extends StateNotifier<EcologInputState> {
         value: int.parse(unit),
         categoryType: type
     );
-    return Future.delayed(const Duration(seconds: 2), () {
-      state = state.copyWith(exception: null, isLoading: false);
-    });
+    await _read(ecoLogDaoProvider).addEcoLog(entity);
+    state = state.copyWith(exception: null, isLoading: false);
   }
 
   void setUnit(String unit) {

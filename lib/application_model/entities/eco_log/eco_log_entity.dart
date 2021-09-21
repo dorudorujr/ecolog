@@ -1,5 +1,6 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:uuid/uuid.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 
 import 'package:ecolog/application_model/models/models.dart';
 
@@ -12,11 +13,18 @@ class EcoLogEntity with _$EcoLogEntity {
     required String id,
     required String name,
     required double value,
-    @JsonKey(name: 'category_type') required CategoryType categoryType,
+    required CategoryType categoryType,
     required DateTime date,
   }) = _EcoLogEntity;
 
-  factory EcoLogEntity.fromJson(Map<String, dynamic> json) => _$EcoLogEntityFromJson(json);
+  factory EcoLogEntity.fromJson(Map<String, dynamic> json) {
+    return EcoLogEntity(
+        id: json['id'],
+        name: json['name'],
+        value: json['value'],
+        categoryType: GetCategoryType.get(json['category_type']),
+        date: (json['date'] as Timestamp).toDate());
+  }
 
   factory EcoLogEntity.toEcoLogEntity({
     required String name,
