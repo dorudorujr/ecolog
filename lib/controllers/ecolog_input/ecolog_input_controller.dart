@@ -26,7 +26,8 @@ class EcologInputController extends StateNotifier<EcologInputState> {
     final entity = EcoLogEntity.toEcoLogEntity(
         name: name,
         value: int.parse(unit),
-        categoryType: type
+        categoryType: type,
+        date: state.date,
     );
     await _read(ecoLogDaoProvider).addEcoLog(entity);
     state = state.copyWith(exception: null, isLoading: false);
