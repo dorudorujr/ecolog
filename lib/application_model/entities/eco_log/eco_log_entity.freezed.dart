@@ -24,7 +24,7 @@ class _$EcoLogEntityTearOff {
       {required String id,
       required String name,
       required double value,
-      required CategoryType categoryType,
+      @JsonKey(name: 'category_type') required CategoryType categoryType,
       required DateTime date}) {
     return _EcoLogEntity(
       id: id,
@@ -48,6 +48,7 @@ mixin _$EcoLogEntity {
   String get id => throw _privateConstructorUsedError;
   String get name => throw _privateConstructorUsedError;
   double get value => throw _privateConstructorUsedError;
+  @JsonKey(name: 'category_type')
   CategoryType get categoryType => throw _privateConstructorUsedError;
   DateTime get date => throw _privateConstructorUsedError;
 
@@ -66,7 +67,7 @@ abstract class $EcoLogEntityCopyWith<$Res> {
       {String id,
       String name,
       double value,
-      CategoryType categoryType,
+      @JsonKey(name: 'category_type') CategoryType categoryType,
       DateTime date});
 }
 
@@ -122,7 +123,7 @@ abstract class _$EcoLogEntityCopyWith<$Res>
       {String id,
       String name,
       double value,
-      CategoryType categoryType,
+      @JsonKey(name: 'category_type') CategoryType categoryType,
       DateTime date});
 }
 
@@ -176,7 +177,7 @@ class _$_EcoLogEntity implements _EcoLogEntity {
       {required this.id,
       required this.name,
       required this.value,
-      required this.categoryType,
+      @JsonKey(name: 'category_type') required this.categoryType,
       required this.date});
 
   factory _$_EcoLogEntity.fromJson(Map<String, dynamic> json) =>
@@ -189,6 +190,7 @@ class _$_EcoLogEntity implements _EcoLogEntity {
   @override
   final double value;
   @override
+  @JsonKey(name: 'category_type')
   final CategoryType categoryType;
   @override
   final DateTime date;
@@ -240,7 +242,7 @@ abstract class _EcoLogEntity implements EcoLogEntity {
       {required String id,
       required String name,
       required double value,
-      required CategoryType categoryType,
+      @JsonKey(name: 'category_type') required CategoryType categoryType,
       required DateTime date}) = _$_EcoLogEntity;
 
   factory _EcoLogEntity.fromJson(Map<String, dynamic> json) =
@@ -253,6 +255,7 @@ abstract class _EcoLogEntity implements EcoLogEntity {
   @override
   double get value => throw _privateConstructorUsedError;
   @override
+  @JsonKey(name: 'category_type')
   CategoryType get categoryType => throw _privateConstructorUsedError;
   @override
   DateTime get date => throw _privateConstructorUsedError;

@@ -12,7 +12,7 @@ class EcoLogEntity with _$EcoLogEntity {
     required String id,
     required String name,
     required double value,
-    required CategoryType categoryType,
+    @JsonKey(name: 'category_type') required CategoryType categoryType,
     required DateTime date,
   }) = _EcoLogEntity;
 
