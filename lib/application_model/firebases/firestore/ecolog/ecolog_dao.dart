@@ -16,7 +16,7 @@ class EcoLogDao implements EcoLogDaoInterFace {
 
   Stream<List<EcoLogEntity>> getFirstEcoLogs() {
     final stream = _ecologs
-        .orderBy('date')
+        .orderBy('date', descending: true)
         .orderBy('id')
         .limit(_limit)
         .snapshots()
