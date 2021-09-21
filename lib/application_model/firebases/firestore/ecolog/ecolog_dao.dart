@@ -1,11 +1,12 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:uuid/uuid.dart';
 
 import 'package:ecolog/application_model/firebases/firestore/ecolog/ecolog.dart';
 import 'package:ecolog/application_model/entities/entities.dart';
 import 'package:ecolog/util/util.dart';
+
+final ecoLogDaoProvider = Provider<EcoLogDaoInterFace>((_) => EcoLogDao());
 
 class EcoLogDao implements EcoLogDaoInterFace {
   EcoLogDao() : super();
