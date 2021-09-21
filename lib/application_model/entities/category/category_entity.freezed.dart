@@ -17,10 +17,12 @@ class _$CategoryEntityTearOff {
   const _$CategoryEntityTearOff();
 
   _CategoryEntity call(
-      {required String categoryName,
+      {required String id,
+      required String categoryName,
       required CategoryType categoryType,
       required int defaultValue}) {
     return _CategoryEntity(
+      id: id,
       categoryName: categoryName,
       categoryType: categoryType,
       defaultValue: defaultValue,
@@ -33,6 +35,7 @@ const $CategoryEntity = _$CategoryEntityTearOff();
 
 /// @nodoc
 mixin _$CategoryEntity {
+  String get id => throw _privateConstructorUsedError;
   String get categoryName => throw _privateConstructorUsedError;
   CategoryType get categoryType => throw _privateConstructorUsedError;
   int get defaultValue => throw _privateConstructorUsedError;
@@ -47,7 +50,11 @@ abstract class $CategoryEntityCopyWith<$Res> {
   factory $CategoryEntityCopyWith(
           CategoryEntity value, $Res Function(CategoryEntity) then) =
       _$CategoryEntityCopyWithImpl<$Res>;
-  $Res call({String categoryName, CategoryType categoryType, int defaultValue});
+  $Res call(
+      {String id,
+      String categoryName,
+      CategoryType categoryType,
+      int defaultValue});
 }
 
 /// @nodoc
@@ -61,11 +68,16 @@ class _$CategoryEntityCopyWithImpl<$Res>
 
   @override
   $Res call({
+    Object? id = freezed,
     Object? categoryName = freezed,
     Object? categoryType = freezed,
     Object? defaultValue = freezed,
   }) {
     return _then(_value.copyWith(
+      id: id == freezed
+          ? _value.id
+          : id // ignore: cast_nullable_to_non_nullable
+              as String,
       categoryName: categoryName == freezed
           ? _value.categoryName
           : categoryName // ignore: cast_nullable_to_non_nullable
@@ -89,7 +101,11 @@ abstract class _$CategoryEntityCopyWith<$Res>
           _CategoryEntity value, $Res Function(_CategoryEntity) then) =
       __$CategoryEntityCopyWithImpl<$Res>;
   @override
-  $Res call({String categoryName, CategoryType categoryType, int defaultValue});
+  $Res call(
+      {String id,
+      String categoryName,
+      CategoryType categoryType,
+      int defaultValue});
 }
 
 /// @nodoc
@@ -105,11 +121,16 @@ class __$CategoryEntityCopyWithImpl<$Res>
 
   @override
   $Res call({
+    Object? id = freezed,
     Object? categoryName = freezed,
     Object? categoryType = freezed,
     Object? defaultValue = freezed,
   }) {
     return _then(_CategoryEntity(
+      id: id == freezed
+          ? _value.id
+          : id // ignore: cast_nullable_to_non_nullable
+              as String,
       categoryName: categoryName == freezed
           ? _value.categoryName
           : categoryName // ignore: cast_nullable_to_non_nullable
@@ -130,10 +151,13 @@ class __$CategoryEntityCopyWithImpl<$Res>
 
 class _$_CategoryEntity implements _CategoryEntity {
   const _$_CategoryEntity(
-      {required this.categoryName,
+      {required this.id,
+      required this.categoryName,
       required this.categoryType,
       required this.defaultValue});
 
+  @override
+  final String id;
   @override
   final String categoryName;
   @override
@@ -143,13 +167,15 @@ class _$_CategoryEntity implements _CategoryEntity {
 
   @override
   String toString() {
-    return 'CategoryEntity(categoryName: $categoryName, categoryType: $categoryType, defaultValue: $defaultValue)';
+    return 'CategoryEntity(id: $id, categoryName: $categoryName, categoryType: $categoryType, defaultValue: $defaultValue)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other is _CategoryEntity &&
+            (identical(other.id, id) ||
+                const DeepCollectionEquality().equals(other.id, id)) &&
             (identical(other.categoryName, categoryName) ||
                 const DeepCollectionEquality()
                     .equals(other.categoryName, categoryName)) &&
@@ -164,6 +190,7 @@ class _$_CategoryEntity implements _CategoryEntity {
   @override
   int get hashCode =>
       runtimeType.hashCode ^
+      const DeepCollectionEquality().hash(id) ^
       const DeepCollectionEquality().hash(categoryName) ^
       const DeepCollectionEquality().hash(categoryType) ^
       const DeepCollectionEquality().hash(defaultValue);
@@ -176,10 +203,13 @@ class _$_CategoryEntity implements _CategoryEntity {
 
 abstract class _CategoryEntity implements CategoryEntity {
   const factory _CategoryEntity(
-      {required String categoryName,
+      {required String id,
+      required String categoryName,
       required CategoryType categoryType,
       required int defaultValue}) = _$_CategoryEntity;
 
+  @override
+  String get id => throw _privateConstructorUsedError;
   @override
   String get categoryName => throw _privateConstructorUsedError;
   @override

@@ -8,7 +8,8 @@ part 'categorys_state.freezed.dart';
 abstract class CategorysState with _$CategorysState {
   factory CategorysState({
     Exception? exception,
-    List<CategoryEntity>? categorys,
+    @Default(false) isLoading,
+    List<CategoryEntity>? categories,
   }) = _CategorysState;
 
   CategorysState._();

@@ -7,7 +7,7 @@ import 'package:ecolog/widgets/widgets.dart';
 import 'package:ecolog/util/const/string/const_string.dart';
 import 'package:ecolog/controllers/add_category_detail/add_category_detail.dart';
 import 'package:ecolog/util/extension/extensions.dart';
-import 'package:ecolog/application_model/entities/category/category_entity.dart';
+import 'package:ecolog/pages/pages.dart';
 
 class AddCategoryDetailPage extends HookWidget {
   static const routeName = '/add_category_detail';
@@ -84,15 +84,12 @@ class AddCategoryDetailPage extends HookWidget {
                     text: ConstString.addCategoryDetailAddButton,
                     onPressed: state.isEnable ?
                         () async {
-                      final category = CategoryEntity(
-                          categoryName: _categoryNameTextFieldController.text,
-                          categoryType: categoryType,
+                      await controller.addCategory(
+                          name: _categoryNameTextFieldController.text,
+                          type: categoryType,
                           defaultValue: int.parse(_unitTextFieldController.text)
                       );
-                      await controller.addCategory(category);
-                      //TODO: 正常の遷移に変わったら修正する
-                      //Navigator.popUntil(context, ModalRoute.withName(CategorysPage.routeName));
-                      Navigator.popUntil(context, ModalRoute.withName('/'));
+                      Navigator.popUntil(context, ModalRoute.withName(CategorysPage.routeName));
                     } : null,
                   ),
                 ],

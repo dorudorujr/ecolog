@@ -5,6 +5,8 @@ import 'package:firebase_auth/firebase_auth.dart';
 
 import 'package:ecolog/application_model/firebases/auth/ecolog_auth.dart';
 import 'package:ecolog/controllers/start/start.dart';
+import 'package:ecolog/application_model/firebases/firestore/category/category.dart';
+import 'package:ecolog/application_model/mock/provider/firestore/mock_firestore.dart';
 
 import 'mock/mock.dart';
 
@@ -14,7 +16,8 @@ void main() {
   test('正常な匿名認証', () async {
     final container = ProviderContainer(
       overrides: [
-        ecologAuthProvider.overrideWithProvider(Provider((_) => MockSuccessAnonymousProvider()))
+        ecologAuthProvider.overrideWithProvider(Provider((_) => MockSuccessAnonymousProvider())),
+        categoryDaoProvider.overrideWithProvider(Provider((_) => CategoryDaoMock())),
       ]
     );
     final target = container.read(startControllerProvider.notifier);
