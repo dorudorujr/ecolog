@@ -3,6 +3,7 @@ import 'package:uuid/uuid.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 
 import 'package:ecolog/application_model/models/models.dart';
+import 'package:ecolog/application_model/util/extension/extension.dart';
 
 part 'eco_log_entity.freezed.dart';
 part 'eco_log_entity.g.dart';
@@ -35,7 +36,7 @@ class EcoLogEntity with _$EcoLogEntity {
     String? id,
   })
   {
-    DateTime propertyDate = DateTime.now();
+    DateTime propertyDate = DateTime.now().inputDateTime;
     if (date != null) {
       propertyDate = date;
     }
