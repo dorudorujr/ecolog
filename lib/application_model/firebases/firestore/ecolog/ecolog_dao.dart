@@ -25,11 +25,11 @@ class EcoLogDao implements EcoLogDaoInterFace {
   }
 
   Future<List<EcoLogEntity>> getNextEcoLogs({
-    String startAfterDate = '',
-    String startAfterId = '',
+    required DateTime startAfterDate,
+    required String startAfterId,
   }) async {
     final list = await _ecologs
-        .orderBy('date')
+        .orderBy('date', descending: true)
         .orderBy('id')
         .startAfter([startAfterDate, startAfterId])
         .limit(_limit)

@@ -19,4 +19,10 @@ class HistoryController extends StateNotifier<HistoryState> {
   }
 
   final Reader _read;
+
+  Future<void> getNextEcoLogs() async {
+    final addHistories = await _read(ecoLogDaoProvider).getNextEcoLogs(startAfterDate: state.histories.last.date, startAfterId: state.histories.last.id);
+    final newHistories = [...state.histories, ...addHistories];
+    state = state.copyWith(histories: newHistories);
+  }
 }

@@ -20,8 +20,25 @@ class HistoryPage extends HookWidget {
 
   @override
   Widget build(BuildContext context) {
+    final controller = useProvider(historyControllerProvider.notifier);
     final state = useProvider(historyControllerProvider);
     final histories = _makeCells(state.histories);
+    final scrollController = useScrollController();
+
+    useEffect(() {
+      scrollController.addListener(() {
+        if (scrollController.offset >= scrollController.position.maxScrollExtent &&
+            !scrollController.position.outOfRange) {
+          controller.getNextEcoLogs();
+        }
+      });
+      return () => scrollController.removeListener(() {
+        if (scrollController.offset >= scrollController.position.maxScrollExtent &&
+            !scrollController.position.outOfRange) {
+          controller.getNextEcoLogs();
+        }
+      });
+    }, [scrollController]);
 
     return Stack(
       fit: StackFit.expand,
@@ -33,6 +50,7 @@ class HistoryPage extends HookWidget {
             title: const Text(ConstString.historyTitle),
           ),
           body: ListView.builder(
+              controller: scrollController,
               itemCount: histories.length,
               itemBuilder: (BuildContext context, int index) {
                 return histories[index];

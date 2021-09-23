@@ -6,8 +6,8 @@ abstract class EcoLogDaoInterFace {
 
   /// ページング用の追加読み込み
   Future<List<EcoLogEntity>> getNextEcoLogs({
-      String startAfterDate = '',
-      String startAfterId = '',
+      required DateTime startAfterDate,
+      required String startAfterId,
   });
 
   /// 履歴追加

@@ -52,8 +52,8 @@ class EcoLogDaoMock implements EcoLogDaoInterFace {
   }
 
   Future<List<EcoLogEntity>> getNextEcoLogs({
-    String startAfterDate = '',
-    String startAfterId = '',
+    required DateTime startAfterDate,
+    required String startAfterId,
   }) {
     return Future.delayed(const Duration(seconds: 2));
   }
