@@ -9,7 +9,7 @@ final ecoLogDaoMockProvider = Provider<EcoLogDaoInterFace>((_) => EcoLogDaoMock(
 class EcoLogDaoMock implements EcoLogDaoInterFace {
   const EcoLogDaoMock() : super();
 
-  Stream<List<EcoLogEntity>> getEcoLogs() {
+  Stream<List<EcoLogEntity>> getFirstEcoLogs() {
     final ecoLogs = [
       EcoLogEntity.toEcoLogEntity(
           name: 'エアコン',
@@ -49,6 +49,13 @@ class EcoLogDaoMock implements EcoLogDaoInterFace {
       ),
     ];
     return Stream<List<EcoLogEntity>>.value(ecoLogs);
+  }
+
+  Future<List<EcoLogEntity>> getNextEcoLogs({
+    required DateTime startAfterDate,
+    required String startAfterId,
+  }) {
+    return Future.delayed(const Duration(seconds: 2));
   }
 
   Future<void> addEcoLog(EcoLogEntity ecoLog) {

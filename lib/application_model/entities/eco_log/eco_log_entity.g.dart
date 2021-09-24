@@ -11,7 +11,7 @@ _$_EcoLogEntity _$_$_EcoLogEntityFromJson(Map<String, dynamic> json) {
     id: json['id'] as String,
     name: json['name'] as String,
     value: (json['value'] as num).toDouble(),
-    categoryType: _$enumDecode(_$CategoryTypeEnumMap, json['categoryType']),
+    categoryType: _$enumDecode(_$CategoryTypeEnumMap, json['category_type']),
     date: DateTime.parse(json['date'] as String),
   );
 }
@@ -21,7 +21,7 @@ Map<String, dynamic> _$_$_EcoLogEntityToJson(_$_EcoLogEntity instance) =>
       'id': instance.id,
       'name': instance.name,
       'value': instance.value,
-      'categoryType': _$CategoryTypeEnumMap[instance.categoryType],
+      'category_type': _$CategoryTypeEnumMap[instance.categoryType],
       'date': instance.date.toIso8601String(),
     };
 
