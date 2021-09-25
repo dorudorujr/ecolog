@@ -54,8 +54,17 @@ class EcoLogDaoMock implements EcoLogDaoInterFace {
   Future<List<EcoLogEntity>> getNextEcoLogs({
     required DateTime startAfterDate,
     required String startAfterId,
-  }) {
-    return Future.delayed(const Duration(seconds: 2));
+  }) async {
+    //return Future.delayed(const Duration(seconds: 2));
+    await Future.delayed(const Duration(seconds: 2));
+    return [
+      EcoLogEntity.toEcoLogEntity(
+          name: 'エアコン',
+          value: 200,
+          categoryType: CategoryType.electricity,
+          date: DateTime.parse('2021-07-29').toLocal()
+      ),
+    ];
   }
 
   Future<void> addEcoLog(EcoLogEntity ecoLog) {

@@ -2,8 +2,28 @@ import 'package:flutter_test/flutter_test.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
 import 'package:ecolog/controllers/add_category_detail/add_category_detail.dart';
+import 'package:ecolog/application_model/firebases/firestore/category/category.dart';
+import 'package:ecolog/application_model/mock/provider/firestore/mock_firestore.dart';
+import 'package:ecolog/application_model/models/models.dart';
 
 void main() {
+  test('addCategory', () async {
+    final container = ProviderContainer(
+      overrides: [
+        categoryDaoProvider.overrideWithProvider(Provider((ref) => ref.read(categoryDaoMockProvider)))
+      ]
+    );
+    final target = container.read(addCategoryDetailProvider.notifier);
+    expect(target.debugState.isLoading, false);
+    expect(target.debugState.exception, null);
+    target.addCategory(name: '', type: CategoryType.water, defaultValue: 0).then((_) {
+      expect(target.debugState.isLoading, false);
+    });
+    /// Mockで2秒待機することは確定なのでここはtrueになる
+    expect(target.debugState.isLoading, true);
+    expect(target.debugState.exception, null);
+  });
+
   test('setCategoryName', () async {
     final container = ProviderContainer(overrides: []);
     final target = container.read(addCategoryDetailProvider.notifier);
