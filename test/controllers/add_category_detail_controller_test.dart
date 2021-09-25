@@ -16,7 +16,6 @@ void main() {
     final target = container.read(addCategoryDetailProvider.notifier);
     expect(target.debugState.isLoading, false);
     expect(target.debugState.exception, null);
-    //await target.addCategory(name: '', type: CategoryType.water, defaultValue: 0);
     target.addCategory(name: '', type: CategoryType.water, defaultValue: 0).then((_) {
       expect(target.debugState.isLoading, false);
     });
