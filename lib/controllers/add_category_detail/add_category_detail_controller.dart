@@ -2,7 +2,6 @@ import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:state_notifier/state_notifier.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 
-import 'package:ecolog/application_model/mock/provider/firestore/mock_firestore.dart';
 import 'package:ecolog/controllers/add_category_detail/add_category_detail.dart';
 import 'package:ecolog/application_model/models/models.dart';
 import 'package:ecolog/util/util.dart';
